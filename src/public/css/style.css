@@ -7,7 +7,7 @@ body {
 }
 #header{
     margin-top:  1em;
-    margin-bottom: 2em;
+    margin-bottom: 0.5cm;
     border: 10px groove rgb(215,15,192);
     height: 10em;
 }
@@ -19,12 +19,18 @@ header h1 {
     top: 6em;
     padding-bottom: 1em;
 }
+#grid{
+    display: grid;
+    grid-gap: 1cm;
+    grid-template-columns: 8cm 16cm ;
+    background-color: rgb(255,255,255);
+}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 300px;
+    width: 8cm;
     height: 1000px;
     background-color: #f1f1f1;
 }
@@ -41,6 +47,18 @@ li a:hover {
     background-color: rgb(215,15,192);;
     color: white;
 }
-.sidebar{
+#sidebarSection{
+
+}
+#mySidebar{
+    width: 8cm;
+    height:auto;
+    border: 10px groove rgb(215,15,192);
     style:block;
+}
+#mainframe{
+    width:38cm;
+    height: auto;
+
+    border: 10px groove rgb(215,15,192);
 }
