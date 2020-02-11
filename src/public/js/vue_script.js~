@@ -1,0 +1,104 @@
+'use strict';
+const socket = io();
+
+
+const form = new Vue({
+    el: '#main',
+    data: {
+        v1: food[0],
+        v2: food[1],
+        v3: food[2],
+        v4: food[3],
+        v5: food[4],
+        id: 0,
+        order: {
+            orderId: "T",
+            details: {
+                x:0,
+                y:0
+            }
+        },
+        orders: {},
+        Fullname: '',
+        email: '',
+        selected: 'Klarna',
+        gender: 'other',
+        arr:[],
+        checkedBurger: []
+
+    },
+
+    methods:{
+        getNext: function() {
+            /* This function returns the next available key (order number) in
+             * the orders object, it works under the assumptions that all keys
+             * are integers. */
+          /*  let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
+                return Math.max(last,next)
+            },0);
+            return this.order.orderId;*/
+            this.id += 1;
+            return this.id;
+        },
+        addOrder: function(event) {
+            /* When you click in the map, a click event object is sent as parameter
+             * to the function designated in v-on:click (i.e. this one).
+             * The click event object contains among other things different
+             * coordinates that we need when calculating where in the map the click
+             * actually happened. */
+
+
+            let offset = {
+                x: event.currentTarget.getBoundingClientRect().left,
+                y: event.currentTarget.getBoundingClientRect().top,
+            };
+            socket.emit('addOrder', {
+                orderId: this.getNext(),
+                details: {
+                    x: this.order.details.x,
+                    y: this.order.details.y,
+                },
+                orderItems: this.checkedBurger,
+                personalInfo: [this.Fullname, this.email, this.selected, this.gender],
+
+            });
+            let name = "Name"
+            if(this.arr.length === 0){
+                this.arr.push("Personal Information:\n")
+                this.arr.push(name.bold()+this.Fullname + " " +"email:"+this.email+" "+" "+"Paymentmethod:"+this.selected +" "+"gender:"+" "+this.gender)
+                for(let i = 0; i < this.checkedBurger.length; i++){
+                    this.arr.push(this.checkedBurger[i])
+                }
+                let hr= document.createElement('hr');
+                let elem = document.getElementById("list");
+                elem.appendChild(hr);
+            }
+        },
+        displayOrder: function() {
+            /* When you click in the map, a click event object is sent as parameter
+             * to the function designated in v-on:click (i.e. this one).
+             * The click event object contains among other things different
+             * coordinates that we need when calculating where in the map the click
+             * actually happened. */
+            let offset = {
+                x: event.currentTarget.getBoundingClientRect().left,
+                y: event.currentTarget.getBoundingClientRect().top,
+            };
+            this.order.orderId = "T";
+            this.order.details.x = event.clientX - 10 - offset.x;
+            this.order.details.y = event.clientY - 10 - offset.y;
+
+
+            /*socket.emit('displayOrder', {
+                orderId: getNext,
+                details: {
+                    x: event.clientX - 10 - offset.x,
+                    y: event.clientY - 10 - offset.y,
+                },
+                orderItems: ['Beans', 'Curry'],
+            })*/
+        }
+    }
+})
+
+
