@@ -13,7 +13,7 @@ body {
     width:46.5cm;
     margin-top:  1em;
     margin-bottom: 0.5cm;
-    border: 10px groove rgb(215,15,192);
+    border: 10px groove rgb(0,190,200);
     height: 10em;
 }
 header h1 {
@@ -26,6 +26,7 @@ header h1 {
     padding-bottom: 1em;
 
 }
+/*EVERYTHING BELOW REGARDS THE OUTER AND INNER GRID STYLE AND LAYOUT*/
 #grid{
 
     display: grid;
@@ -34,6 +35,65 @@ header h1 {
     background-color: rgb(255,255,255);
 }
 
+#gridInsideMainFrame{
+    display: grid;
+
+    background-color: rgb(255,255,255);
+}
+
+#unMatchBox{
+    margin-top: 2cm;
+    grid-column:1;
+    grid-row:1;
+}
+
+#matchBox{
+    margin-top: 2cm;
+    grid-column:2;
+    grid-row:1;
+}
+/*EVERYTHIN BELOW REGARDS THE TABLE STYLE*/
+
+#mainframe{
+    width:38.5cm auto;
+    height: auto;
+    border: 10px groove rgb(215,15,192);
+
+}
+#unMatchTable{
+
+    margin-left: 1cm;
+    width:10cm;
+    border:10px solid rgb(255,190,200) ;
+}
+#matchTable{
+
+
+    width:18cm;
+    margin-left: 1cm;
+    border:10px solid rgb(255,190,200) ;
+}
+.infoRow{
+    border: 10px groove rgb(0,0,0);
+}
+.menColumn , .womenColumn, .unMatched{
+    border: 10px groove rgb(255,190,200);
+
+}
+
+
+td{
+    height: 3cm;
+}
+
+td p:hover{
+    height:3cm;
+    background-color: rgb(215,15,192);;
+    color: white;
+}
+
+
+/* EVERYTHING BELOW REGARDS THE SIDEBAR*/
 ul {
     list-style-type: none;
     margin: 0;
@@ -64,37 +124,4 @@ li a:hover {
     height:auto;
     border: 10px groove rgb(215,15,192);
     style:block;
-}
-#mainframe{
-    width:38.5cm auto;
-    height: auto;
-    border: 10px groove rgb(255,190,200);
-
-}
-#myTable{
-    width:37cm;
-
-}
-.infoRow{
-    border: 10px groove rgb(0,0,0);
-}
-.menColumn{
-    border: 10px groove rgb(215,15,192);
-
-}
-.womenColumn{
-    border: 10px groove rgb(215,15,192);
-}
-.unMatched{
-    border: 10px groove rgb(215,15,192);
-
-}
-td{
-    height: 3cm;
-}
-
-td p:hover{
-    height:3cm;
-    background-color: rgb(215,15,192);;
-    color: white;
 }

@@ -9,26 +9,33 @@ const vm= new Vue({
     },
     methods:{
         unMatch: function(event){
-
-            let newrow= document.createElement("tr");
-            let newtd= document.createElement("td");
-            newtd.className ="unMatched";
-            let p = document.createElement("p");
-
-            let id = event.currentTarget.id;
-
-            let text = document.createTextNode(id);
-            p.appendChild(text);
-            newtd.appendChild(p);
-            newrow.appendChild(newtd);
-            let table= document.getElementById("myTable");
-            table.appendChild(newrow);
-            let elem = document.getElementById(id);
-            elem.parentNode.removeChild(elem);
+            //create necessary elements and fetch unmatchtable
+            let matchtable = event.currentTarget.parentNode.parentNode.parentNode.parentNode.id;
+            if(matchtable === "matchTable"){
+                let uTable= document.getElementById("unMatchTable");
+                let newrow= document.createElement("tr");
+                let newtd= document.createElement("td");
+                let p = document.createElement("p");
 
 
+                let id = event.currentTarget.id;
+                let elem= document.getElementById(id);
+                let cName= elem.parentNode.className;
+                let text = document.createTextNode(id);
+                newtd.className= cName;
 
+                p.appendChild(text);
+                newtd.appendChild(p);
+                newrow.appendChild(newtd);
+                uTable.appendChild(newrow);
 
+                elem.parentNode.removeChild(elem);
+
+            }
+            else{
+                alert("Flyttar till matchtable");
+            }
         }
+
     }
 })

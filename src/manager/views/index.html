@@ -18,12 +18,16 @@
     <header id="header">
       <h1>Welcome to SonicDating! </h1>
     </header>
+
+    <!--------------------------MAINFRAME---------------->
     <main id="main">
-      <section id="sidebarSection" >
+      <!-----------------SIDEBARSECTION-------------------->
+      <section id="sidebarSection">
 
         <div id="grid">
 
           <div  id="mySidebar">
+
             <ul>
               <li><a href="default.asp">Algorithm</a></li>
               <li><a href="news.asp">Participant Information</a></li>
@@ -32,54 +36,69 @@
               <li><a href="quit.asp">Quit</a></li>
             </ul>
           </div>
-
+          <!--------------------------TABLE--------------------------->
           <div id="mainframe">
-            <p>Lägg till hårdkodade matchningar i en tabell</p>
-            <table id="myTable">
-              <tr class="infoRow">
-                <th> Unmatched </th>
-                <th> Men</th>
-                <th> Women </th>
-              </tr>
-              <tr id="1">
+            <!-------------------UNMATCHED-------------------->
+            <div id="gridInsideMainFrame">
 
-                <td class="unMatched">
-                 <p> David<p>
-                </td>
-                <td class="menColumn">
-                  <p id="Ingmar" v-on:click="unMatch($event)">
-                    Ingmar
-                  </p>
-                </td>
+              <div id="unMatchBox">
+                <table id="unMatchTable">
+                  <tr class="unMatchHeader">
+                    <th>Unmtached</th>
+                  </tr>
+                  <tr>
+                    <td  class="menColumn">
+                     <p> David</p>
+                    </td>
 
-                <td class="womenColumn">
-                  <p id="Ida" v-on:click="unMatch($event)">
-                    Ida
-                  <p>
-                </td>
+                  </tr>
+                  <tr>
+                    <td class="womenColumn">
+                    <p> Monika<p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!-------------------MATCHED----------------------------->
+              <div id="matchBox">
+                <table id="matchTable">
 
+                  <tr class="matchHeader">
+                    <th> Men</th>
+                    <th> Women </th>
+                  </tr>
 
-              </tr>
+                  <tr>
 
-              <tr id="2">
-                <td class="unMatched">
-                  <p>Monika</p>
-                </td>
+                    <td class="menColumn">
+                      <p id="Ingmar" v-on:click="unMatch($event)">
+                        Ingmar
+                      </p>
+                    </td>
 
-                <td class="menColumn">
-                  <p id="Lars" v-on:click="unMatch($event)"
->Lars-Erik</p>
-                </td>
+                    <td class="womenColumn">
+                      <p id="Ida" v-on:click="unMatch($event)">
+                        Ida
+                      <p>
+                    </td>
+                  </tr>
 
-                <td class="womenColumn">
-                  <p id="Helena" v-on:click="unMatch($event)"
->Helena</p>
-                </td>
+                  <tr>
 
-                <td>
-                </td>
-              </tr>
-            </table>
+                    <td class="menColumn">
+                      <p id="Lars" v-on:click="unMatch($event)"
+                         >Lars-Erik</p>
+                    </td>
+
+                    <td class="womenColumn">
+                      <p id="Helena" v-on:click="unMatch($event)"
+                         >Helena</p>
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
             <button>EDIT</button>
           </div>
 
