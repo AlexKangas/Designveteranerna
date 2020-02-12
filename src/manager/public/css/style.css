@@ -5,24 +5,32 @@ body {
     font-size: 0.5cm;
     margin: 0 auto;
 }
+#main{
+    width:46.5cm auto;
+}
 #header{
+
+    width:46.5cm;
     margin-top:  1em;
     margin-bottom: 0.5cm;
     border: 10px groove rgb(215,15,192);
     height: 10em;
 }
 header h1 {
+
     position: absolute ;
     color:rgb(0,0,0);
     font-weight: solid;
     left: 37em;
     top: 6em;
     padding-bottom: 1em;
+
 }
 #grid{
+
     display: grid;
-    grid-gap: 1cm;
-    grid-template-columns: 8cm 16cm ;
+    grid-gap: 0cm;
+    grid-template-columns: 8cm 38.5cm ;
     background-color: rgb(255,255,255);
 }
 
@@ -30,7 +38,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 8cm;
+    width: 7.5cm;
     height: 1000px;
     background-color: #f1f1f1;
 }
@@ -44,12 +52,13 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-    background-color: rgb(215,15,192);;
+    background-color: rgb(0,50,255);;
     color: white;
 }
-#sidebarSection{
-
-}
+/*tr td:hover{
+    background-color: rgb(215,15,192);;
+    color: white;
+}*/
 #mySidebar{
     width: 8cm;
     height:auto;
@@ -57,8 +66,35 @@ li a:hover {
     style:block;
 }
 #mainframe{
-    width:38cm;
+    width:38.5cm auto;
     height: auto;
+    border: 10px groove rgb(255,190,200);
 
+}
+#myTable{
+    width:37cm;
+
+}
+.infoRow{
+    border: 10px groove rgb(0,0,0);
+}
+.menColumn{
     border: 10px groove rgb(215,15,192);
+
+}
+.womenColumn{
+    border: 10px groove rgb(215,15,192);
+}
+.unMatched{
+    border: 10px groove rgb(215,15,192);
+
+}
+td{
+    height: 3cm;
+}
+
+td p:hover{
+    height:3cm;
+    background-color: rgb(215,15,192);;
+    color: white;
 }

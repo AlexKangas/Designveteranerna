@@ -5,8 +5,10 @@
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" href="css/deli-very.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 
     <title>Order your burgers!</title>
     <meta charset="utf-8"/>
@@ -33,14 +35,50 @@
 
           <div id="mainframe">
             <p>Lägg till hårdkodade matchningar i en tabell</p>
-            <table>
-              <tr>
-                <th>Men</th>
-                <th></th>
-                <th></th>
+            <table id="myTable">
+              <tr class="infoRow">
+                <th> Unmatched </th>
+                <th> Men</th>
+                <th> Women </th>
+              </tr>
+              <tr id="1">
+
+                <td class="unMatched">David</td>
+                <td class="menColumn">
+                  <p id="Ingmar" v-on:click="unMatch($event)">
+                    Ingmar
+                  </p>
+                </td>
+
+                <td class="womenColumn">
+                  <p id="Ida" v-on:click="unMatch($event)">
+                    Ida
+                  <p>
+                </td>
+
 
               </tr>
+
+              <tr id="2">
+                <td class="unMatched">
+                  <p>Monika</p>
+                </td>
+
+                <td class="menColumn">
+                  <p id="Lars" v-on:click="unMatch($event)"
+>Lars-Erik</p>
+                </td>
+
+                <td class="womenColumn">
+                  <p id="Helena" v-on:click="unMatch($event)"
+>Helena</p>
+                </td>
+
+                <td>
+                </td>
+              </tr>
             </table>
+            <button>EDIT</button>
           </div>
 
         </div>
