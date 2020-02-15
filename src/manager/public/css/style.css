@@ -20,7 +20,7 @@ body {
 }
 #header{
 
-    width:46.5cm;
+    width:51.5cm;
     margin-top:  1em;
     margin-bottom: 0.5cm;
     border: 10px groove rgb(254,127,156);
@@ -41,7 +41,7 @@ header h1 {
 
     display: grid;
     grid-gap: 0cm;
-    grid-template-columns: 8cm 38.5cm ;
+    grid-template-columns: 8cm 43.5cm ;
 
 }
 
