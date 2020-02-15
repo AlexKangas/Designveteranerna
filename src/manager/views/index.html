@@ -46,15 +46,15 @@
                   <tr class="unMatchHeader">
                     <th>Unmtached</th>
                   </tr>
-                  <tr>
-                    <td  class="menColumn">
-                     <p> David</p>
+                  <tr  v-on:click="unMatch($event)">
+                    <td class="menColumn" id="David">
+                      David
                     </td>
 
                   </tr>
-                  <tr>
-                    <td class="womenColumn">
-                    <p> Monika<p>
+                  <tr  v-on:click="unMatch($event)">
+                    <td class="womenColumn" id="Monika">
+                      Monika
                     </td>
                   </tr>
                 </table>
@@ -68,38 +68,33 @@
                     <th> Women </th>
                   </tr>
 
-                  <tr>
+                  <tr  v-on:click="unMatch($event)">
 
-                    <td class="menColumn">
-                      <p id="Ingmar" v-on:click="unMatch($event)">
-                        Ingmar
-                      </p>
+                    <td class="menColumn"  id="Ingmar">
+                      Ingmar
                     </td>
 
-                    <td class="womenColumn">
-                      <p id="Ida" v-on:click="unMatch($event)">
-                        Ida
-                      <p>
+                    <td class="womenColumn" id="Ida">
+                      Ida
                     </td>
                   </tr>
 
-                  <tr>
+                  <tr v-on:click="unMatch($event)">
 
-                    <td class="menColumn">
-                      <p id="Lars" v-on:click="unMatch($event)"
-                         >Lars-Erik</p>
+                    <td class="menColumn"  id="Lars">
+                      Lars-Erik
                     </td>
 
-                    <td class="womenColumn">
-                      <p id="Helena" v-on:click="unMatch($event)"
-                         >Helena</p>
+                    <td class="womenColumn" id="Helena">
+                      Helena
                     </td>
 
                   </tr>
+                  {{selected}}
                 </table>
               </div>
             </div>
-            <button>EDIT</button>
+            <button v-on:click="rematch">Match</button>
           </div>
 
         </div>
