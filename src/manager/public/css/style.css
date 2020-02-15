@@ -152,3 +152,12 @@ li a:hover {
 
     style:block;
 }
+/*BUTTONS*/
+#match{
+
+    width:5.5cm;
+    height: 1.2cm;
+    grid-column:1;
+    grid-row:2;
+    margin-left: 1cm;
+}
