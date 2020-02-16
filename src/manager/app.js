@@ -36,6 +36,9 @@ app.get('/algorithm', function(req, res) {
 app.get('/userinfo', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/userinfo.html'));
 });
+app.get('/about', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/about.html'));
+});
 
 
 // Store data in an object to keep the global namespace clean and
