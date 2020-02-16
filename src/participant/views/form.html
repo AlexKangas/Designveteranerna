@@ -4,12 +4,11 @@
     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
-    <link rel="stylesheet" href="css/deli-very.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
 
 
-    <title>SonucDating!</title>
+    <title>SonicDating!</title>
     <meta charset="utf-8"/>
   </head>
 
@@ -24,7 +23,7 @@
             </p>
             <p>
               <label for="phone">Phone number:</label><br />
-              <input type="text" id="phone" name="pn" required="required" placeholder="Phone number" />
+              <input type="number" id="phone" name="pn" required="required" placeholder="Phone number" />
             </p>
             <p>
               <label for="email">E-mail:</label><br />
@@ -42,7 +41,7 @@
               <label for="female">Female</label><br />
             </p>
       </form>
-      <button type="submit"><a href="waiting_for_matching.html">Send Info</a></button>
+      <button type="submit"><a href="/waiting_for_matching">Send Info</a></button>
     </main>
   </body>
 

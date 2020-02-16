@@ -1,0 +1,11 @@
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+body {
+    background-color: pink;
+    font-family: Times New Roman;
+}
+
+h2 {
+    font-size: 60px;
+    margin: 500px 50px;
+}
