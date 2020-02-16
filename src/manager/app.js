@@ -30,6 +30,13 @@ app.get('/map', function(req, res) {
 app.get('/dispatcher', function(req, res) {
   res.sendFile(path.join(__dirname, 'views/dispatcher.html'));
 });
+app.get('/algorithm', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/algorithm.html'));
+});
+app.get('/userinfo', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/userinfo.html'));
+});
+
 
 // Store data in an object to keep the global namespace clean and
 // prepare for multiple instances of data if necessary
@@ -53,8 +60,10 @@ const data = new Data();
 
 io.on('connection', function(socket) {
   // Send list of orders when a client connects
-  socket.emit('initialize', { orders: data.getAllOrders() });
-
+    socket.emit('initialize', { orders: data.getAllOrders() });
+    socket.on('disconnect', function(){
+        console.log('user disconnected');});
+    console.log('a user connected');
   // When a connected client emits an "addOrder" message
   socket.on('addOrder', function(order) {
     data.addOrder(order);

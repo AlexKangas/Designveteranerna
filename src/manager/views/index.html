@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
-    <title>Order your burgers!</title>
+    <title>Sonic dating</title>
     <meta charset="utf-8"/>
   </head>
 
@@ -22,22 +22,22 @@
     <!--------------------------MAINFRAME---------------->
     <main id="main">
       <!-----------------SIDEBARSECTION-------------------->
-      <section id="sidebarSection">
+
 
         <div id="grid">
 
           <div  id="mySidebar">
 
             <ul>
-              <li><a href="default.asp">Algorithm</a></li>
-              <li><a href="news.asp">Participant Information</a></li>
-              <li><a href="contact.asp">Evaluations</a></li>
-              <li><a href="about.asp">About</a></li>
+              <li><a href="algorithm">Algorithm</a></li>
+              <li><a href="userinfo">Participant Information</a></li>
+a              <li><a href="about.asp">About</a></li>
               <li><a href="quit.asp">Quit</a></li>
             </ul>
           </div>
           <!--------------------------TABLE--------------------------->
           <div id="mainframe">
+
             <!-------------------UNMATCHED-------------------->
             <div id="gridInsideMainFrame">
 
@@ -92,15 +92,20 @@
                   </tr>
 
                 </table>
-
               </div>
-              <button id="match" v-on:click="rematch">Match</button>
-            </div>
+              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
+              <div>
+                <button id="startEvent" class="buttons" v-on:click="startEvent">Start Event</button>
+              </div>
 
+              <div id="timer"> </div>
+
+            </div>
+           
           </div>
 
         </div>
-      </section>
+
 
 
     </main>
