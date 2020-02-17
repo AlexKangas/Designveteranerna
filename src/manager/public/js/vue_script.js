@@ -8,6 +8,7 @@ const vm= new Vue({
         selected: [],
         minutes:0,
         seconds:0,
+        counter:0
 
     },
     methods:{
@@ -154,6 +155,8 @@ const vm= new Vue({
             }
         },
         startEvent: function(){
+            this.counter += 1;
+            document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
             var countDownDate = new Date().getTime() + 1000*10;
 
             // Update the count down every 1 second
@@ -170,6 +173,8 @@ const vm= new Vue({
                 this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Output the result in an element with id="demo"
+                //document.getElementById("eventState").innerHTML= "Date number:"+this.date;
+
                 document.getElementById("timer").innerHTML =  this.minutes + "m " + this.seconds + "s ";
                 let button = document.getElementById("startEvent");
                 button.disabled=true;
@@ -177,10 +182,12 @@ const vm= new Vue({
                 // If the count down is over, write some text
                 if (distance < 0) {
                     clearInterval(x);
+                    document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
                     document.getElementById("timer").innerHTML = "Date End";
                     button.disabled=false;
                     button.className="buttons";
                 }
+
             }, 1000);
         }
     }
