@@ -50,21 +50,16 @@ header h1 {
 
 #gridInsideMainFrame{
     display: grid;
-
-
-
+    grid-gap: 7cm;
+    grid-template-columns: 5cm 10cm ;
 }
 
 #unMatchBox{
     margin-top: 2cm;
-    grid-column:1;
-    grid-row:1;
 }
 
 #matchBox{
     margin-top: 2cm;
-    grid-column:2;
-    grid-row:1;
 }
 /*EVERYTHIN BELOW REGARDS THE TABLE STYLE*/
 
@@ -179,7 +174,7 @@ li a:hover {
 }
 
 #timer{
-    margin-left: 1cm;
+    text-align:center;
     grid-column:1;
     grid-row:3;
 }

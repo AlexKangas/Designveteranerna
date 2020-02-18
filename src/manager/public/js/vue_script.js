@@ -8,7 +8,8 @@ const vm= new Vue({
         selected: [],
         minutes:0,
         seconds:0,
-        counter:0
+        counter:0,
+        ongoing: false,
 
     },
     methods:{
@@ -175,7 +176,7 @@ const vm= new Vue({
                 // Output the result in an element with id="demo"
                 //document.getElementById("eventState").innerHTML= "Date number:"+this.date;
 
-                document.getElementById("timer").innerHTML =  this.minutes + "m " + this.seconds + "s ";
+                document.getElementById("timer").innerHTML = "Time left:"+this.minutes + "m " + this.seconds + "s ";
                 let button = document.getElementById("startEvent");
                 button.disabled=true;
                 button.className="uClickAble";
