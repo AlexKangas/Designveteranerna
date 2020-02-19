@@ -30,6 +30,7 @@ app.get('/form', function(req, res) {
 app.get('/waiting_for_matching', function(req, res) {
   res.sendFile(path.join(__dirname, 'views/waiting_for_matching.html'));
 });
+
 app.get('/go_to_table', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/go_to_table.html'));
 });
@@ -42,6 +43,15 @@ app.get('/contact_information_sent', function(req, res) {
 app.get('/confirm_contact_information', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/confirm_contact_information.html'));
 });
+// Serve dispatcher.html as /dispatcher
+app.get('/go_to_table', function(req, res) {
+  res.sendFile(path.join(__dirname, 'views/go_to_table.html'));
+});
+// Serve dispatcher.html as /dispatcher
+app.get('/review', function(req, res) {
+  res.sendFile(path.join(__dirname, 'views/review.html'));
+
+})
 
 // Store data in an object to keep the global namespace clean and
 // prepare for multiple instances of data if necessary
