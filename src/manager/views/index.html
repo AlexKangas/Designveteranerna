@@ -1,116 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+<html>
   <head>
-    <script src="https://vuejs.org/js/vue.js" ></script>
+     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" href="css/deli-very.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-
-    <title>Sonic dating</title>
-    <meta charset="utf-8"/>
   </head>
-
-  <body>
-    <header id="header">
-      <h1>Welcome to SonicDating! </h1>
-    </header>
-
-    <!--------------------------MAINFRAME---------------->
-    <main id="main">
-      <!-----------------SIDEBARSECTION-------------------->
-
-        <div id="grid">
-
-          <div  id="mySidebar">
-
-            <ul>
-              <li><a href="/algorithm">Algorithm</a></li>
-              <li><a href="/userinfo">Participant Information</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="quit.asp">Quit</a></li>
-            </ul>
-          </div>
-          <!--------------------------TABLE--------------------------->
-          <div id="mainframe">
-
-            <div id="eventState" >
-              <p>Status: Not started yet </p>
-            </div>
-            <!-------------------UNMATCHED-------------------->
-            <div id="gridInsideMainFrame">
-
-              <div id="unMatchBox">
-                <table id="unMatchTable">
-                  <tr class="unMatchHeader">
-                    <th>Unmtached participants</th>
-                  </tr>
-                  <tr  v-on:click="unMatch($event)">
-                    <td class="menColumn" id="David">
-                      David
-                    </td>
-
-                  </tr>
-                  <tr  v-on:click="unMatch($event)">
-                    <td class="womenColumn" id="Monika">
-                      Monika
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!-------------------MATCHED----------------------------->
-              <div id="matchBox">
-                <table id="matchTable">
-
-                  <tr class="matchHeader">
-                    <th> Men</th>
-                    <th> Women </th>
-                  </tr>
-
-                  <tr  v-on:click="unMatch($event)">
-
-                    <td class="menColumn"  id="Ingmar">
-                      Ingmar
-                    </td>
-
-                    <td class="womenColumn" id="Ida">
-                      Ida
-                    </td>
-                  </tr>
-
-                  <tr v-on:click="unMatch($event)">
-
-                    <td class="menColumn"  id="Lars">
-                      Lars-Erik
-                    </td>
-
-                    <td class="womenColumn" id="Helena">
-                      Helena
-                    </td>
-
-                  </tr>
-
-                </table>
-              </div>
-              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
-              <div>
-                <button id="startEvent" class="buttons" v-on:click="startEvent">Start Event</button>
-              </div>
-
-              <div id="timer"> </div>
-
-            </div>
-           
-          </div>
-
-        </div>
-
-
-
-    </main>
+  <header id="header1">
+    <h1>Welcome to SonicDating! </h1>
+  </header>
+  <body id="login">
+    <a href="/manager_start" alt="manager login">Login as manager</a>
+    <br>
+    <br>
+    <a href="/participant_start" alt="participant login">Login as participant</a>
   </body>
-
 </html>

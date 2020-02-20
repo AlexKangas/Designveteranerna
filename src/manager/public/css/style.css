@@ -1,7 +1,4 @@
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
-
-
-
 body {
     width:100%;
     height:100%;
@@ -12,22 +9,39 @@ body {
     background-image: linear-gradient(pink, white);
 
 }
+#login{
+    width:50%;
+    font-size:2cm;
+    text-align:center;
+    margin-top: 20%;
+}
 #main{
 
     width:100%;
     height:100%;
     border: 10px groove rgb(254,127,156);
-    width:46.5cm auto;
-}
 
-#header{
+}
+#header1{
+    text-align:center;
+    width:100%;
+    border: 10px groove rgb(254,127,156);
+}
+#header2{
     width:100%;
     height:100%;
     margin-top:  1em;
     margin-bottom: 0.5cm;
     border: 10px groove rgb(254,127,156);
     height: 10em;
+    text-align:center;
+
 }
+#header2 h1{
+    margin-top: 2.5cm;
+    font-size: 1cm;
+}
+/*
 header h1 {
 
     position: absolute ;
@@ -37,7 +51,7 @@ header h1 {
     top: 6em;
     padding-bottom: 1em;
 
-}
+}*/
 /*EVERYTHING BELOW REGARDS THE OUTER AND INNER GRID STYLE AND LAYOUT*/
 #grid{
     width:inherit;
@@ -66,11 +80,13 @@ header h1 {
 #mainframe{
     width:100%;
     height:100%;
+    display:grid;
+    grid-template-columns: 40cm;
 
 }
 #eventState{
-    width: 50%;
-    font-size:1cm;
+    width: 100%%;
+    font-size:1.4cm;
     text-align: center;
 }
 #unMatchTable{
@@ -159,8 +175,6 @@ li a:hover {
 #match{
 
     width:5.5cm;
-    grid-column:1;
-    grid-row:2;
     margin-left: 1cm;
 }
 #startEvent{
@@ -175,6 +189,5 @@ li a:hover {
 
 #timer{
     text-align:center;
-    grid-column:1;
-    grid-row:3;
+
 }

@@ -69,6 +69,10 @@ app.get('/participant_start', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/participant_start.html'));
 
 });
+app.get('/manager_start', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/manager_start.html'));
+
+});
 
 
 
