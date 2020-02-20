@@ -56,6 +56,9 @@ app.get('/contact_information_sent', function(req, res) {
 app.get('/confirm_contact_information', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/confirm_contact_information.html'));
 });
+app.get('/user_shared_contact', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/user_shared_contact.html'));
+});
 // Serve dispatcher.html as /dispatcher
 app.get('/go_to_table', function(req, res) {
   res.sendFile(path.join(__dirname, 'views/go_to_table.html'));
