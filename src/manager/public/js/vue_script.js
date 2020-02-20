@@ -180,6 +180,12 @@ const vm= new Vue({
                 let button = document.getElementById("startEvent");
                 button.disabled=true;
                 button.className="uClickAble";
+
+                socket.emit('addOrder', {
+                    min: this.minutes,
+                    sec: this.seconds
+                });
+
                 // If the count down is over, write some text
                 if (distance < 0) {
                     clearInterval(x);
