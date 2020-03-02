@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
   <head>
-     <script src="https://vuejs.org/js/vue.js" ></script>
+    <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <link rel="stylesheet" href="css/deli-very.css">
@@ -13,9 +13,39 @@
     <h1>Welcome to SonicDating! </h1>
   </header>
   <body id="login">
-    <a href="/manager_start" alt="manager login">Login as manager</a>
-    <br>
-    <br>
-    <a href="/participant_start" alt="participant login">Login as participant</a>
+    <main id="main">
+      <a href="/manager_start" alt="manager login">Login as manager</a>
+      <br>
+      <br>
+      <a href="/form" alt="participant login">Login as participant</a>
+   <!--   <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+
+      <div id="id01" class="modal">
+
+        <form class="modal-content animate">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          </div>
+
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="password"required>
+
+            <button  v-on:click="loginAsManager()">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

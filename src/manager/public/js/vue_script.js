@@ -2,18 +2,37 @@
 const socket = io();
 
 
-const vm= new Vue({
+const vm = new Vue({
     el:"#main",
     data:{
+        //Tänkte användas till att skicka information via socket.
+        info: {},
+        infoId: 0,
+        // Markerade användare stoppas in här vid manuell matchning
         selected: [],
+        //Variabler för att visa timerns nedräkning.
         minutes:0,
         seconds:0,
         counter:0,
-        ongoing: false,
 
+        //deltagar information sätt in i arrayen participants
+        fullname:'',
+        phone: 0,
+        email: '',
+        age: 0,
+        gender: '',
+        participants: [],
+    },
+    created: function() {
+        socket.on('initialize', function(infoData) {
+            this.info = infoData.info;
+        }.bind(this));
+
+        socket.on('currentInfo', function(infoData) {
+            this.info = infoData.info;
+        }.bind(this));
     },
     methods:{
-
         unMatch: function(event){
             let children = document.getElementById("matchTable").childNodes;
             let bool = false;
@@ -64,7 +83,7 @@ const vm= new Vue({
                 let target = event.currentTarget;
                 let child = event.currentTarget.firstChild;
 
-                if((this.selected.includes(child.id) && child.className=="menColumn") || (this.selected.includes(child.id) && child.className == "womenColumn")){
+                if((this.selected.includes(child.id) && child.className=="Male") || (this.selected.includes(child.id) && child.className == "Female")){
 
                     for(var i = 0; i < this.selected.length; i++ ){
                         if(this.selected[i] === child.id){
@@ -89,14 +108,14 @@ const vm= new Vue({
             let mTable = document.getElementById("matchTable");
 
 
-            if(this.selected.length == 2 &&( (person1.className=="menColumn" && person2.className =="womenColumn") || (person1.className=="womenColumn" && person2.className=="menColumn" ))){
+            if(this.selected.length == 2 &&( (person1.className=="Male" && person2.className =="Female") || (person1.className=="Female" && person2.className=="Male" ))){
 
 
                 let newrow= document.createElement("tr");
                 let newtd1= document.createElement("td");
                 let newtd2= document.createElement("td");
 
-                if(person1.className=="menColumn"){
+                if(person1.className=="Male"){
                     //Lägger till paret i matchtable
 
                     let text1 = document.createTextNode(person1.id);
@@ -156,46 +175,81 @@ const vm= new Vue({
             }
         },
         startEvent: function(){
-            this.counter += 1;
-            document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
-            var countDownDate = new Date().getTime() + 1000*10;
+            let uTable = document.getElementById("unMatchTable");
+            if(uTable.rows.length != 1){
 
-            // Update the count down every 1 second
-            var x = setInterval(function() {
+                alert("All participant must be matched before event starts!");
+            }
+            else{
+                this.counter += 1;
+                document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
+                var countDownDate = new Date().getTime() + 1000*10;
 
-                // Get today's date and time
-                var now = new Date().getTime();
+                // Update the count down every 1 second
+                var x = setInterval(function() {
 
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
+                    // Get today's date and time
+                    var now = new Date().getTime();
 
-                // Time calculations for days, hours, minutes and seconds
-                this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    // Find the distance between now and the count down date
+                    var distance = countDownDate - now;
 
-                // Output the result in an element with id="demo"
-                //document.getElementById("eventState").innerHTML= "Date number:"+this.date;
+                    // Time calculations for days, hours, minutes and seconds
+                    this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById("timer").innerHTML = "Time left:"+this.minutes + "m " + this.seconds + "s ";
-                let button = document.getElementById("startEvent");
-                button.disabled=true;
-                button.className="uClickAble";
+                    // Output the result in an element with id="demo"
+                    //document.getElementById("eventState").innerHTML= "Date number:"+this.date;
 
-                socket.emit('addOrder', {
-                    min: this.minutes,
-                    sec: this.seconds
-                });
+                    document.getElementById("timer").innerHTML = "Time left:"+this.minutes + "m " + this.seconds + "s ";
+                    let button = document.getElementById("startEvent");
+                    button.disabled=true;
+                    button.className="uClickAble";
 
-                // If the count down is over, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
-                    document.getElementById("timer").innerHTML = "Date End";
-                    button.disabled=false;
-                    button.className="buttons";
-                }
+                    socket.emit('addOrder', {
+                        min: this.minutes,
+                        sec: this.seconds
+                    });
 
-            }, 1000);
+                    // If the count down is over, write some text
+                    if (distance < 0) {
+                        clearInterval(x);
+                        document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
+                        document.getElementById("timer").innerHTML = "Date End";
+                        button.disabled=false;
+                        button.className="buttons";
+                    }
+
+                }, 1000);
+            }
+        },
+        loginAsManager: function(){
+            let name = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if(password === "0000"){
+                alert("you logged in as " +name);
+                window.location.assign("manager_start");
+            }
+        },
+        getNext: function(){
+            this.infoId++;
+            return this.infoId;
+        }
+        ,
+        sendInfo: function(){
+
+            this.participants.push(this.fullname);
+            socket.emit("sendInfo", {
+                infoId: this.getNext(),
+                participant: this.fullname,
+                gender: this.gender,
+
+            });
+        },
+        showC: function(){
+            alert(this.selected[0].id);
+            alert(this.selected[1].id);
         }
     }
 

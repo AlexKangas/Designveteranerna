@@ -4,7 +4,8 @@
     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
-    <link rel="stylesheet" href="css/deli-very.css">
+    <script src="js/message.js"defer></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -39,7 +40,9 @@
 
           <div id="eventState" >
             <p>Status: Not started yet </p>
+            
           </div>
+          <div id="timer"> </div>
           <!-------------------UNMATCHED-------------------->
           <div id="gridInsideMainFrame">
 
@@ -49,19 +52,26 @@
                   <th>Unmtached participants</th>
                 </tr>
                 <tr  v-on:click="unMatch($event)">
-                  <td class="menColumn" id="David">
+                  <td class="Male" id="David">
                     David
                   </td>
 
                 </tr>
                 <tr  v-on:click="unMatch($event)">
-                  <td class="womenColumn" id="Monika">
+                  <td class="Female" id="Monika">
                     Monika
                   </td>
                 </tr>
+                <tr  v-for="(i,key) in info" v-on:click="unMatch($event)">
+                  <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}} {{i.gender}}</td>
+                </tr>
+
               </table>
-               <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
+              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
+
+
             </div>
+
             <!-------------------MATCHED----------------------------->
             <div id="matchBox">
               <table id="matchTable">
@@ -73,35 +83,34 @@
 
                 <tr  v-on:click="unMatch($event)">
 
-                  <td class="menColumn"  id="Ingmar">
+                  <td class="Male"  id="Ingmar">
                     Ingmar
                   </td>
 
-                  <td class="womenColumn" id="Ida">
+                  <td class="Female" id="Ida">
                     Ida
                   </td>
                 </tr>
 
                 <tr v-on:click="unMatch($event)">
 
-                  <td class="menColumn"  id="Lars">
+                  <td class="Male"  id="Lars">
                     Lars-Erik
                   </td>
 
-                  <td class="womenColumn" id="Helena">
+                  <td class="Female" id="Helena">
                     Helena
                   </td>
 
                 </tr>
               </table>
-                <button id="startEvent" class="buttons" v-on:click="startEvent">Start Event</button>
+              <button id="startEvent" class="buttons" v-on:click="startEvent">Start Event</button>
             </div>
 
             <div>
 
             </div>
 
-            <div id="timer"> </div>
 
           </div>
 
