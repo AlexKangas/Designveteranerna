@@ -1,5 +1,7 @@
 'use strict';
-const socket = io();
+const socket = io({
+    reconnection: false
+});
 
 
 const vm = new Vue({
@@ -8,6 +10,7 @@ const vm = new Vue({
         //Tänkte användas till att skicka information via socket.
         info: {},
         infoId: 0,
+        socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
         selected: [],
         //Variabler för att visa timerns nedräkning.
@@ -22,15 +25,22 @@ const vm = new Vue({
         age: 0,
         gender: '',
         participants: [],
+
+        from: '',
+        msg:'',
     },
     created: function() {
         socket.on('initialize', function(infoData) {
             this.info = infoData.info;
+            console.log(infoData.id);
         }.bind(this));
 
         socket.on('currentInfo', function(infoData) {
             this.info = infoData.info;
+            this.socketId = infoData.id;
+            console.log(infoData.id);
         }.bind(this));
+
     },
     methods:{
         unMatch: function(event){
@@ -232,7 +242,7 @@ const vm = new Vue({
                 window.location.assign("manager_start");
             }
         },
-        getNext: function(){
+      /*  getNext: function(){
             this.infoId++;
             return this.infoId;
         }
@@ -244,13 +254,13 @@ const vm = new Vue({
                 infoId: this.getNext(),
                 participant: this.fullname,
                 gender: this.gender,
+                socketId: this.socketId
 
             });
-        },
-        showC: function(){
-            alert(this.selected[0].id);
-            alert(this.selected[1].id);
-        }
+            socket.emit('private message', {
+
+            })
+        },*/
     }
 
 
