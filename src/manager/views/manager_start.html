@@ -44,6 +44,7 @@
           <div id="gridInsideMainFrame">
 
             <div id="unMatchBox">
+              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
               <table id="unMatchTable">
                 <tr class="unMatchHeader">
                   <th>Unmtached participants</th>
@@ -60,7 +61,6 @@
                   </td>
                 </tr>
               </table>
-               <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
             </div>
             <!-------------------MATCHED----------------------------->
             <div id="matchBox">
