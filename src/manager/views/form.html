@@ -3,7 +3,7 @@
   <head>
     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/vue_script.js" defer></script>
+    <script src="js/form.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
 
@@ -19,29 +19,36 @@
       <form>
             <p>
               <label for="fullname">Full name:</label><br />
-              <input type="text" id="fullname" name="fn" required="required" placeholder="First and Last name" />
+              <input type="text"  v-model="fullname" id="fullname" placeholder="First and Last name"  />
+
             </p>
             <p>
               <label for="phone">Phone number:</label><br />
-              <input type="number" id="phone" name="pn" required="required" placeholder="Phone number" />
+              <input type="phone" id="phone" name="pn" placeholder="Phone number" v-model="phone" />
+
             </p>
             <p>
               <label for="email">E-mail:</label><br />
-              <input type="email" id="email" name="em" required="required" placeholder="E-mail address" />
+              <input type="email" id="email" name="em" placeholder="E-mail address" v-model="email"/>
+
             </p>
             <p>
               <label for="age">Age:</label><br />
-              <input type="number" id="age" name="age" required="required" placeholder="Age (in years)" />
+              <input type="phone" id="age" name="age" placeholder="Age (in years)" v-model="age"/>
+
             </p>
+
             <p>
               <label>Gender:</label><br />
-              <input type="radio" id="male" name="gr" />
+              <input type="radio" id="male" name="genderr" value="Male" v-model="gender"/>
               <label for="male">Male</label><br />
-              <input type="radio" id="female" name="gr" />
-              <label for="female">Female</label><br />
+              <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
+              <label for="female">Female</label><br/>
+              {{gender}}
             </p>
+
       </form>
-      <button type="submit"><a href="/waiting_for_matching">Send Info</a></button>
+      <button v-on:click="sendInfo"> Send info</button>
     </main>
   </body>
 

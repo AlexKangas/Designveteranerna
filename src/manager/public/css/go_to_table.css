@@ -3,14 +3,12 @@
 body {
     background-color: pink;
     font-family: Times New Roman;
+    font-size:100px;
+    text-align:center;
+    margin-top: 25%;
 }
 
-h2 {
-    font-size: 100px;
-    margin: 0px 100px;
-    padding-top: 300px;
-    padding-left: 100px;
-}
+
 
 /* button { */
 /*     background-color: rgb(254,127,156); */

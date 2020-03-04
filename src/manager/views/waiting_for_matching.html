@@ -3,7 +3,7 @@
   <head>
     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/vue_script.js" defer></script>
+    <script src="js/waiting.js" defer></script>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/waiting_for_matching.css">
 
@@ -17,7 +17,7 @@
     </section>
     <main id="main">
       <h2>Waiting for you to be matched</h2>
-      <button><a href="/go_to_table">Click here when you have been matched</a></button>
+      <button v-on:click="send"> Send Id</button>
     </main>
   </body>
 
