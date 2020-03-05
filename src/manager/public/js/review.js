@@ -1,7 +1,7 @@
 
 
 
-
+localStorage.removeItem("finishedDates");
 
 let link = document.getElementById("link");
 function buttonClicked() {

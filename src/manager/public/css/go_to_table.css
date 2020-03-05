@@ -3,14 +3,19 @@
 body {
     background-color: pink;
     font-family: Times New Roman;
+    font-size:100px;
+    text-align:center;
+    margin-top: 25%;
 }
 
 h2 {
     font-size: 100px;
     margin: 0px 100px;
-    padding-top: 200px;
-    padding-left: 100px;
-    padding-bottom: 100px;
+}
+
+#map-text {
+
+    font-size: 30%;
 }
 
 .map {
@@ -31,7 +36,7 @@ h2 {
     color: #fff;
     border-radius: 10px;
     padding: 5px;
-    font-size: 200%;
+    font-size: 30px;
     width: 40px;
     height: 30px;
     margin: auto;
@@ -88,4 +93,3 @@ h2 {
     grid-row: 2;
     grid-column: 5;
 }
-
