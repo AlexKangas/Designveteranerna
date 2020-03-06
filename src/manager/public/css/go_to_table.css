@@ -8,12 +8,88 @@ body {
     margin-top: 25%;
 }
 
+h2 {
+    font-size: 100px;
+    margin: 0px 100px;
+}
+
+#map-text {
+
+    font-size: 30%;
+}
+
+.map {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-rows: 200px 200px;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #fff;
+    color: #444;
+    border: 10px solid #000000;
+    margin: 50px 100px;
+    border-radius: 10px;
+
+}
+
+.table {
+    background-color: brown;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 30px;
+    width: 40px;
+    height: 30px;
+    margin: auto;
+
+}
 
 
-/* button { */
-/*     background-color: rgb(254,127,156); */
-/*     font-size: 100px; */
-/*     width: 1000px; */
-/*     height: 450px; */
-/*     margin-top: 350px; */
-/* } */
+.1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.4 {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.5 {
+    grid-row: 1;
+    grid-column: 5;
+}
+
+.6 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.7 {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.8 {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.9 {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.10 {
+    grid-row: 2;
+    grid-column: 5;
+}
