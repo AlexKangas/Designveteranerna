@@ -50,18 +50,12 @@
                   <th>Unmtached participants</th>
                 </tr>
                 <tr  v-on:click="unMatch($event)">
-                  <td class="Male" id="David">
-                    David
-                  </td>
-
-                </tr>
-                <tr  v-on:click="unMatch($event)">
                   <td class="Female" id="Monika">
                     Monika
                   </td>
                 </tr>
-                <tr  v-for="(i,key) in info" v-on:click="unMatch($event)">
-                  <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}}  {{i.socketId}}</td>
+                <tr  v-for="i in info" v-on:click="unMatch($event)">
+                  <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}} {{i.gender}}</td>
                 </tr>
 
               </table>
@@ -93,7 +87,7 @@
                 <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Lars">
-                    <button>Unmatch</button>
+
                     Lars-Erik
                   </td>
 

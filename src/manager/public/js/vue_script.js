@@ -1,14 +1,13 @@
 'use strict';
-const socket = io({
-    reconnection: false
-});
+const socket = io();
 
 
 const vm = new Vue({
     el:"#main",
     data:{
         //Tänkte användas till att skicka information via socket.
-        info: {},
+        information: [],
+        info:{},
         infoId: 0,
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
@@ -26,19 +25,15 @@ const vm = new Vue({
         gender: '',
         participants: [],
 
-        from: '',
-        msg:'',
+        dates:[],
     },
     created: function() {
         socket.on('initialize', function(infoData) {
-            this.info = infoData.info;
-            console.log(infoData.id);
+            this.info = infoData.info
         }.bind(this));
 
         socket.on('currentInfo', function(infoData) {
-            this.info = infoData.info;
-            this.socketId = infoData.id;
-            console.log(infoData.id);
+            this.info = infoData.info
         }.bind(this));
 
     },
@@ -220,6 +215,16 @@ const vm = new Vue({
                         min: this.minutes,
                         sec: this.seconds
                     });
+                    let mTable = document.getElementById('matchTable');
+                    console.log(mTable);
+                    let size = mTable.rows.length;
+                    let dates = [];
+                    /*for(let i = 0; i < size; i++){
+                        dates.push( mTable.rows[i+1].cells[0].innerHTML +"will meet" + mTable.rows[i+1].cells[1].innerHTML);
+                    };*/
+                    /*socket.emit('startEvent',{
+
+                    });*/
 
                     // If the count down is over, write some text
                     if (distance < 0) {
@@ -242,25 +247,6 @@ const vm = new Vue({
                 window.location.assign("manager_start");
             }
         },
-      /*  getNext: function(){
-            this.infoId++;
-            return this.infoId;
-        }
-        ,
-        sendInfo: function(){
-
-            this.participants.push(this.fullname);
-            socket.emit("sendInfo", {
-                infoId: this.getNext(),
-                participant: this.fullname,
-                gender: this.gender,
-                socketId: this.socketId
-
-            });
-            socket.emit('private message', {
-
-            })
-        },*/
     }
 
 

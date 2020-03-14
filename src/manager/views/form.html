@@ -20,7 +20,6 @@
             <p>
               <label for="fullname">Full name:</label><br />
               <input type="text"  v-model="fullname" id="fullname" placeholder="First and Last name"  />
-
             </p>
             <p>
               <label for="phone">Phone number:</label><br />
@@ -44,7 +43,9 @@
               <label for="male">Male</label><br />
               <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
               <label for="female">Female</label><br/>
-              {{gender}}
+              <div v-for="i in info">
+                {{i.participant}}
+              </div>
             </p>
 
       </form>

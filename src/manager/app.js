@@ -99,7 +99,6 @@ Data.prototype.getAllOrders = function() {
     return this.orders;
 };
 
-
 Info.prototype.addInfo = function(info){
     this.info[info.infoId] = info;
 }
@@ -109,26 +108,30 @@ Info.prototype.getAllInfo = function(){
 }
 const data = new Data();
 const infoData = new Info();
+const dates = [];
 
 io.on('connection', function(socket) {
     // Send list of orders when a client connects
-    socket.emit('initialize', { orders: data.getAllOrders() });
-    /*socket.on('disconnect', function(){
-        console.log('user disconnected');});*/
+    socket.emit('initialize', {info: infoData.getAllInfo()});
+
     console.log('a user connected');
     // When a connected client emits an "addOrder" message
     socket.on('addOrder', function(order) {
+
         data.addOrder(order);
         // send updated info to all connected clients,
         // note the use of io instead of socket
         io.emit('currentQueue', { orders: data.getAllOrders() });
     });
-
+    socket.on('startEvent', function(date){
+        dates.push(date);
+        io.to(socket.id).emit('currentDates', { dates: dates});
+    });
     socket.on('sendInfo', function(info){
         infoData.addInfo(info);
+        //infoData.addInfo(socket.id);
 
-
-        io.emit('currentInfo' , {info: infoData.getAllInfo() });
+        io.emit('currentInfo' , {info: infoData.getAllInfo()});
     });
 
 });

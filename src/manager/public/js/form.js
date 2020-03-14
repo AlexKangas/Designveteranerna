@@ -13,13 +13,29 @@ const vm = new Vue({
         age: 0,
         gender:'',
         participants: [],
+        information: new Array(),
+        infoId: 0,
+        info: {},
+        dates:[],
 
     },
     created: function(){
+
         socket.on('initialize', function(infoData) {
             this.info = infoData.info;
-            console.log(infoData.id);
         }.bind(this));
+
+        socket.on('currentInfo', function(infoData){
+            var size = 0;
+            for(var key in this.info){
+                if(this.info.hasOwnProperty(key)) size++;
+            }
+            this.info = infoData.info;
+        }.bind(this));
+
+        socket.on('currentDates',function(dates){
+            this.dates = dates;
+        });
     },
 
     methods: {
@@ -30,14 +46,11 @@ const vm = new Vue({
         ,
         sendInfo: function(){
 
-            this.participants.push(this.fullname);
-            this.participants.push(this.gender);
-
             socket.emit("sendInfo", {
-                infoId: this.getNext(),
-                participant: this.participants[0],
-                gender: this.participants[1],
-                socketId: this.socketId,
+                infoId:this.getNext(),
+                participant: this.fullname,
+                gender: this.gender
+
 
             });
         },

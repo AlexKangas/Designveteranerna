@@ -1,6 +1,6 @@
 'use strict';
 const socket = io(
-    reconnection:false
+    { reconnection:false}
 );
 
 
@@ -19,7 +19,7 @@ const vm = new Vue({
     created: function(){
         socket.on('initialize', function(infoData) {
             this.info = infoData.info;
-            console.log(infoData.id);
+            console.log(socket.id);
         }.bind(this));
     },
     methods:{
