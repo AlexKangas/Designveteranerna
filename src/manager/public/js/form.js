@@ -29,18 +29,17 @@ const vm = new Vue({
             this.users = infoData.users;
         }.bind(this));
 
+        socket.on('currentDate', function(date){
+            this.dates = date.dates;
+        }.bind(this));
+
     },
 
     methods: {
-        getNext: function(){
-            this.infoId++;
-            return this.infoId;
-        }
-        ,
         sendInfo: function(){
 
             socket.emit("sendInfo", {
-                infoId:this.getNext(),
+                infoId: socket.id ,
                 participant: this.fullname,
                 gender: this.gender
 

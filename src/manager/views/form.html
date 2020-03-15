@@ -44,16 +44,17 @@
               <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
               <label for="female">Female</label><br/>
 
-               <div v-for="date in dates">
-        {{date}}
-               </div>
-
+            <p> Participant that have joined so far: </p>
+            <br>
               <div v-for="i in users">
                 {{i.participant}}
               </div>
             </p>
 
       </form>
+      <div v-for="date in dates">
+        {{date.join(", ")}}
+      </div>
 
       <button v-on:click="sendInfo"> Send info</button>
     </main>

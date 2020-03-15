@@ -196,6 +196,9 @@ const vm = new Vue({
                 for(var i = 0; i < size-1; ++i){
                     dates.push(mTable.rows[i+1].cells[0].innerHTML +" will meet " + mTable.rows[i+1].cells[1].innerHTML);
                 }
+                socket.emit('startEvent', {
+                    dates: dates,
+                });
 
                 // Update the count down every 1 second
                 var x = setInterval(function() {

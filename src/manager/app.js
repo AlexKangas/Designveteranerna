@@ -86,6 +86,10 @@ function Data() {
 function Info(){
     this.users = [];
 }
+
+function Dates(){
+    this.dates = [];
+}
 /*
   Adds an order to to the queue
 */
@@ -106,9 +110,17 @@ Info.prototype.getAllUsers = function(){
     return this.users;
 }
 
+Dates.prototype.addDates = function(date){
+    this.dates = date;
+}
+
+Dates.prototype.getAllDates = function(){
+    return this.dates;
+}
 
 const data = new Data();
 const infoData = new Info();
+const allDates = new Dates();
 
 io.on('connection', function(socket) {
     // Send list of orders when a client connects
@@ -123,12 +135,15 @@ io.on('connection', function(socket) {
         // note the use of io instead of socket
         io.emit('currentQueue', { orders: data.getAllOrders() });
     });
-
+    // sends info to the manager about themselves from form.html
     socket.on('sendInfo', function(info){
         infoData.addUser(info);
-        //infoData.addInfo(socket.id);
-
         io.emit('currentInfo' , {users: infoData.getAllUsers()});
+    });
+
+    socket.on('startEvent', function(date){
+        allDates.addDates(date);
+        io.emit('currentDate', { dates: allDates.getAllDates()})
     });
 
 });
