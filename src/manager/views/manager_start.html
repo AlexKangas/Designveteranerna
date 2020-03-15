@@ -54,7 +54,7 @@
                     Monika
                   </td>
                 </tr>
-                <tr  v-for="i in info" v-on:click="unMatch($event)">
+                <tr  v-for="i in users" v-on:click="unMatch($event)">
                   <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}} {{i.gender}}</td>
                 </tr>
 

@@ -15,27 +15,20 @@ const vm = new Vue({
         participants: [],
         information: new Array(),
         infoId: 0,
-        info: {},
+        users: [],
         dates:[],
 
     },
     created: function(){
 
         socket.on('initialize', function(infoData) {
-            this.info = infoData.info;
+            this.users = infoData.users;
         }.bind(this));
 
         socket.on('currentInfo', function(infoData){
-            var size = 0;
-            for(var key in this.info){
-                if(this.info.hasOwnProperty(key)) size++;
-            }
-            this.info = infoData.info;
+            this.users = infoData.users;
         }.bind(this));
 
-        socket.on('currentDates',function(dates){
-            this.dates = dates;
-        });
     },
 
     methods: {

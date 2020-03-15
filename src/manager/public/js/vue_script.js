@@ -7,7 +7,7 @@ const vm = new Vue({
     data:{
         //Tänkte användas till att skicka information via socket.
         information: [],
-        info:{},
+        users:[],
         infoId: 0,
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
@@ -29,11 +29,11 @@ const vm = new Vue({
     },
     created: function() {
         socket.on('initialize', function(infoData) {
-            this.info = infoData.info
+            this.users = infoData.users
         }.bind(this));
 
         socket.on('currentInfo', function(infoData) {
-            this.info = infoData.info
+            this.users = infoData.users
         }.bind(this));
 
     },
@@ -190,6 +190,13 @@ const vm = new Vue({
                 document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
                 var countDownDate = new Date().getTime() + 1000*10;
 
+                let mTable = document.getElementById('matchTable');
+                let size = mTable.rows.length;
+                let dates = [];
+                for(var i = 0; i < size-1; ++i){
+                    dates.push(mTable.rows[i+1].cells[0].innerHTML +" will meet " + mTable.rows[i+1].cells[1].innerHTML);
+                }
+
                 // Update the count down every 1 second
                 var x = setInterval(function() {
 
@@ -215,10 +222,9 @@ const vm = new Vue({
                         min: this.minutes,
                         sec: this.seconds
                     });
-                    let mTable = document.getElementById('matchTable');
-                    console.log(mTable);
-                    let size = mTable.rows.length;
-                    let dates = [];
+
+
+
                     /*for(let i = 0; i < size; i++){
                         dates.push( mTable.rows[i+1].cells[0].innerHTML +"will meet" + mTable.rows[i+1].cells[1].innerHTML);
                     };*/
