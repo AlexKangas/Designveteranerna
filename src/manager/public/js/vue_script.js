@@ -192,37 +192,15 @@ const vm = new Vue({
 
                 let mTable = document.getElementById('matchTable');
                 let size = mTable.rows.length;
-                let auxDates = [];
-                for(var i = 0; i < size-1; ++i){           auxDates.push({fst:mTable.rows[i+1].cells[0].innerHTML,
+                let dates = [];
+
+                for(var i = 0; i < size-1; ++i){
+                    console.log("HÄR är jAg")
+                    dates.push({fst:mTable.rows[i+1].cells[0].innerHTML,
                                                                           snd:mTable.rows[i+1].cells[1].innerHTML});
                                                }
-
-               /* let dates = [];
-                for(let i = 0; i < auxDates.length; i++){
-                    let first = auxDates[i].fst;
-                    let second = auxDates[i].snd;
-
-                    let cursor1 = null;
-                    let cursor2 = null;
-
-                    for(let k = 0; k < this.users.length; k++){
-                        cursor1 = this.users[k];
-                        if(first == cursor1){
-                            break;
-                        }
-                    }
-                    for(let l = 0; l < this.users.length; l++){
-                        cursor2 = this.users[l];
-                        if(second == cursor2){
-                            break;
-                        }
-                    }
-                    if(first == cursor1 && second == cursor2){
-                        dates.push({fst:cursor1, snd:cursor2})
-                    }
-                }*/
                 socket.emit('startEvent', {
-                    dates: auxDates,
+                    dates: dates,
                 });
 
                 // Update the count down every 1 second

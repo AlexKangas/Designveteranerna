@@ -142,12 +142,29 @@ io.on('connection', function(socket) {
     });
 
     socket.on('startEvent', function(date){
+
         allDates.addDates(date);
-        if(infoData.getAllUsers() == null){
-            io.emit('currentDate', { dates: allDates.getAllDates()})
-        }
-        else{
-            io.to(infoData.users[0].infoId).emit('currentDate', {dates: infoData.users[1].participant});
+
+
+        let users = infoData.getAllUsers();
+        let arr = allDates.getAllDates().dates;
+
+        console.log(Array.isArray(users));
+
+        for(let k = 0; k < users.length; k++){
+
+            for(let i = 0; i < arr.length; i++){
+
+                if(arr[i].fst === users[k].participant){
+                    io.to(users[k].infoId).emit('currentDate', {dates: arr[i].snd})
+                    break;
+                }
+
+                else if(arr[i].snd == users[k].participant){
+                    io.to(users[k].infoId).emit('currentDate', {dates: arr[i].fst})
+                    break;
+                }
+            }
         }
     });
 
