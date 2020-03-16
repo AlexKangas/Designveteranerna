@@ -104,19 +104,19 @@ Data.prototype.getAllOrders = function() {
 
 Info.prototype.addUser = function(user){
     this.users[this.users.length] = user;
-}
+};
 
 Info.prototype.getAllUsers = function(){
     return this.users;
-}
+};
 
 Dates.prototype.addDates = function(date){
     this.dates = date;
-}
+};
 
 Dates.prototype.getAllDates = function(){
     return this.dates;
-}
+};
 
 const data = new Data();
 const infoData = new Info();
@@ -143,7 +143,12 @@ io.on('connection', function(socket) {
 
     socket.on('startEvent', function(date){
         allDates.addDates(date);
-        io.emit('currentDate', { dates: allDates.getAllDates()})
+        if(infoData.getAllUsers() == null){
+            io.emit('currentDate', { dates: allDates.getAllDates()})
+        }
+        else{
+            io.to(infoData.users[0].infoId).emit('currentDate', {dates: infoData.users[1].participant});
+        }
     });
 
 });

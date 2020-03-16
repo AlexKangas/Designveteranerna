@@ -42,9 +42,9 @@ const vm = new Vue({
                 infoId: socket.id ,
                 participant: this.fullname,
                 gender: this.gender
-
-
             });
+            document.getElementById("form").style.display="none";
+            document.getElementById("sendButton").style.display="none";
         },
     }
 })

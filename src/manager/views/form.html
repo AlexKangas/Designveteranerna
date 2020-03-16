@@ -16,47 +16,52 @@
     <section >
     </section>
     <main id="main">
-      <form>
-            <p>
-              <label for="fullname">Full name:</label><br />
-              <input type="text"  v-model="fullname" id="fullname" placeholder="First and Last name"  />
-            </p>
-            <p>
-              <label for="phone">Phone number:</label><br />
-              <input type="phone" id="phone" name="pn" placeholder="Phone number" v-model="phone" />
+      <div id="form">
+        <form>
+          <p>
+            <label for="fullname">Full name:</label><br />
+            <input type="text"  v-model="fullname" id="fullname" placeholder="First and Last name"  />
+          </p>
+          <p>
+            <label for="phone">Phone number:</label><br />
+            <input type="phone" id="phone" name="pn" placeholder="Phone number" v-model="phone" />
 
-            </p>
-            <p>
-              <label for="email">E-mail:</label><br />
-              <input type="email" id="email" name="em" placeholder="E-mail address" v-model="email"/>
+          </p>
+          <p>
+            <label for="email">E-mail:</label><br />
+            <input type="email" id="email" name="em" placeholder="E-mail address" v-model="email"/>
 
-            </p>
-            <p>
-              <label for="age">Age:</label><br />
-              <input type="phone" id="age" name="age" placeholder="Age (in years)" v-model="age"/>
+          </p>
+          <p>
+            <label for="age">Age:</label><br />
+            <input type="phone" id="age" name="age" placeholder="Age (in years)" v-model="age"/>
 
-            </p>
+          </p>
 
-            <p>
-              <label>Gender:</label><br />
-              <input type="radio" id="male" name="genderr" value="Male" v-model="gender"/>
-              <label for="male">Male</label><br />
-              <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
-              <label for="female">Female</label><br/>
+          <p>
+            <label>Gender:</label><br />
+            <input type="radio" id="male" name="genderr" value="Male" v-model="gender"/>
+            <label for="male">Male</label><br />
+            <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
+            <label for="female">Female</label><br/>
 
-            <p> Participant that have joined so far: </p>
-            <br>
-              <div v-for="i in users">
-                {{i.participant}}
-              </div>
-            </p>
 
-      </form>
-      <div v-for="date in dates">
-        {{date.join(", ")}}
+
+        </form>
       </div>
+      <button v-on:click="sendInfo" id="sendButton"> Send info</button>
 
-      <button v-on:click="sendInfo"> Send info</button>
+      <div id="participantEvent">
+        <div id="dates" >
+          you will meet: {{dates}}
+        </div>
+        <br>
+        <p>Participant that have joined the event so far:</p>
+        <div id="joined" v-for="i in users">
+          {{i.participant}}
+        </div>
+
+      </div>
     </main>
   </body>
 
