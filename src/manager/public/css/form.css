@@ -51,3 +51,10 @@ button {
 #rating{
     display:none;
 }
+#ratingButton{
+    display:none;
+}
+
+#share{
+    display:none;
+}

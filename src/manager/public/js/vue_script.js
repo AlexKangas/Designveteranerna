@@ -187,6 +187,8 @@ const vm = new Vue({
             }
             else{
                 this.counter += 1;
+                let c = this.counter;
+
                 document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
                 var countDownDate = new Date().getTime() + 1000*3;
 
@@ -230,20 +232,24 @@ const vm = new Vue({
 
                     });
 
-
                     // If the count down is over, write some text
                     if (distance < 0) {
+                        if(c == 1){
+                            clearInterval(x);
+                            socket.emit('ending', )
+                        }
+                        else{
+                            alert(this.counter);
+                            clearInterval(x);
+                            document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
+                            document.getElementById("timer").innerHTML = "Date End";
+                            button.disabled=false;
+                            button.className="buttons";
 
-                        clearInterval(x);
-                        document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
-                        document.getElementById("timer").innerHTML = "Date End";
-                        button.disabled=false;
-                        button.className="buttons";
-
-                        socket.emit('timer',{
-                            bool: true,
-                        });
-
+                            socket.emit('timer',{
+                                bool: true,
+                            });
+                        }
                     }
 
                 }, 1000);

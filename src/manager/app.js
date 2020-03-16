@@ -174,6 +174,20 @@ io.on('connection', function(socket) {
         })
     });
 
+    socket.on("ending",function(s){
+        console.log("That was all for today!");
+        io.emit('sharescreen', {
+
+            share:s
+        })
+    });
+
+    socket.on("share", function(){
+
+        io.to().emit('sharing', {
+        })
+    });
+
 });
 
 /* eslint-disable-next-line no-unused-vars */

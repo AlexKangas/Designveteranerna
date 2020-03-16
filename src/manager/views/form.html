@@ -66,34 +66,52 @@
       </div>
 
       <div class="rating">
-         <form id="rating">
+        <form id="rating">
           <h2>Review your date:</h2></br>
-          <label>What did you think about your date?</label>
+          <label>What was your overall impression of your date? 1 is really bad and 5 is really good</label>
           <br></br>
-          <input type="radio" name="q1">1</input>
-          <input type="radio" name="q1">2</input>
-          <input type="radio" name="q1">3</input>
-          <input type="radio" name="q1">4</input>
-          <input type="radio" name="q1">5</input>
+
+          <input type="radio" name="q1" value="1" v-model="rating1">1</input>
+          <input type="radio" name="q1" value="2" v-model="rating1">2</input>
+          <input type="radio" name="q1" value="3" v-model="rating1">3</input>
+          <input type="radio" name="q1" value="4" v-model="rating1">4</input>
+          <input type="radio" name="q1" value="5" v-model="rating1">5</input>
+
           <br></br>
           <label>Did your date talk too much?</label>
           <br></br>
-          <input type="radio" name="q2">1</input>
-          <input type="radio" name="q2">2</input>
-          <input type="radio" name="q2">3</input>
-          <input type="radio" name="q2">4</input>
-          <input type="radio" name="q2">5</input>
+          <input type="radio" name="q2" value="1" v-model="rating2">1</input>
+          <input type="radio" name="q2" value="2" v-model="rating2">2</input>
+          <input type="radio" name="q2" value="3" v-model="rating2">3</input>
+          <input type="radio" name="q2" value="4" v-model="rating2">4</input>
+          <input type="radio" name="q2" value="5" v-model="rating2">5</input>
+
           <br></br>
           <label>Do you want to date this person again?</label>
           <br></br>
-          <input type="radio" name="q3">1</input>
-          <input type="radio" name="q3">2</input>
-          <input type="radio" name="q3">3</input>
-          <input type="radio" name="q3">4</input>
-          <input type="radio" name="q3">5</input>
 
-          <button onclick="buttonClicked()" type="submit"><a id="link" href="/waiting_for_matching">Send Info</a></button>
+          <input type="radio" name="q3" value="1" v-model="rating3">1</input>
+          <input type="radio" name="q3" value="2" v-model="rating3">2</input>
+          <input type="radio" name="q3" value="3" v-model="rating3">3</input>
+          <input type="radio" name="q3" value="4" v-model="rating3">4</input>
+          <input type="radio" name="q3" value="5" v-model="rating3">5</input>
+
+
         </form>
+        <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
+      </div>
+
+      <div id="share">
+        <form>
+
+          <div v-for="user in users">
+            <input type="checkbox" v-model="ratings" v-bind:value=user>
+            <label> {{user.participant}} </label>
+            {{ratings}}
+          </div>
+
+        </form>
+        <button v-on:click="sendInformation">Confirm</button>
       </div>
     </main>
   </body>

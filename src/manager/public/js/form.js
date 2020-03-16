@@ -18,6 +18,12 @@ const vm = new Vue({
         users: [],
         dates:[],
 
+        rating1: 0,
+        rating2: 0,
+        rating3: 0,
+
+        ratings:[],
+
         bool: false,
     },
     created: function(){
@@ -34,11 +40,15 @@ const vm = new Vue({
             this.dates = date.dates;
         }.bind(this));
         socket.on('respond_timer', function(t){
-            this.bool = t.bool;
             document.getElementById("participantEvent").style.display="none";
             document.getElementById("rating").style.display="block";
+            document.getElementById("ratingButton").style.display="block"
         }.bind(this));
 
+        socket.on('sharescreen',function(){
+            document.getElementById("participantEvent").style.display="none";
+            document.getElementById("share").style.display="block";
+        });
 
     },
 
@@ -48,6 +58,8 @@ const vm = new Vue({
             socket.emit("sendInfo", {
                 infoId: socket.id,
                 participant: this.fullname,
+                email: this.email,
+                phone: this.phone,
                 gender: this.gender
             });
 
@@ -56,5 +68,16 @@ const vm = new Vue({
             document.getElementById("participantEvent").style.display="block";
 
         },
+        sendRating: function(){
+            document.getElementById("rating").style.display="none";
+            document.getElementById("ratingButton").style.display="none";
+            document.getElementById("participantEvent").style.display="block";
+
+        },
+        sendInformation: function(){
+            socket.emit('share', {
+                shareInfo: this.ratings,
+            });
+        }
     }
 })
