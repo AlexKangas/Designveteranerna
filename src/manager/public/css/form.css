@@ -41,6 +41,13 @@ button {
 #dates{
     font-size: 4cm;
 }
-#joined{
-    font-size:1cm;
+.joined{
+    font-size:2cm;
+}
+
+#participantEvent{
+    display:none;
+}
+#rating{
+    display:none;
 }

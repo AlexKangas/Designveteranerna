@@ -168,6 +168,12 @@ io.on('connection', function(socket) {
         }
     });
 
+    socket.on('timer', function(t){
+        io.emit('respond_timer',{
+            time:t
+        })
+    });
+
 });
 
 /* eslint-disable-next-line no-unused-vars */

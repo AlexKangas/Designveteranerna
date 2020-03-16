@@ -16,7 +16,7 @@
     <section >
     </section>
     <main id="main">
-      <div id="form">
+      <div id="register">
         <form>
           <p>
             <label for="fullname">Full name:</label><br />
@@ -45,22 +45,55 @@
             <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
             <label for="female">Female</label><br/>
 
-
-
         </form>
       </div>
-      <button v-on:click="sendInfo" id="sendButton"> Send info</button>
+      <button v-on:click="sendInfo" id="sendButton" > Send info</button>
 
       <div id="participantEvent">
+        <div id="timer">
+
+        </div>
         <div id="dates" >
           you will meet: {{dates}}
         </div>
         <br>
-        <p>Participant that have joined the event so far:</p>
-        <div id="joined" v-for="i in users">
+        <p class="joined" >Participant that have joined the event so far:</p>
+        <div class="joined" v-for="i in users">
           {{i.participant}}
         </div>
 
+
+      </div>
+
+      <div class="rating">
+         <form id="rating">
+          <h2>Review your date:</h2></br>
+          <label>What did you think about your date?</label>
+          <br></br>
+          <input type="radio" name="q1">1</input>
+          <input type="radio" name="q1">2</input>
+          <input type="radio" name="q1">3</input>
+          <input type="radio" name="q1">4</input>
+          <input type="radio" name="q1">5</input>
+          <br></br>
+          <label>Did your date talk too much?</label>
+          <br></br>
+          <input type="radio" name="q2">1</input>
+          <input type="radio" name="q2">2</input>
+          <input type="radio" name="q2">3</input>
+          <input type="radio" name="q2">4</input>
+          <input type="radio" name="q2">5</input>
+          <br></br>
+          <label>Do you want to date this person again?</label>
+          <br></br>
+          <input type="radio" name="q3">1</input>
+          <input type="radio" name="q3">2</input>
+          <input type="radio" name="q3">3</input>
+          <input type="radio" name="q3">4</input>
+          <input type="radio" name="q3">5</input>
+
+          <button onclick="buttonClicked()" type="submit"><a id="link" href="/waiting_for_matching">Send Info</a></button>
+        </form>
       </div>
     </main>
   </body>

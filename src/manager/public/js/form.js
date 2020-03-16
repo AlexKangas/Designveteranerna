@@ -18,6 +18,7 @@ const vm = new Vue({
         users: [],
         dates:[],
 
+        bool: false,
     },
     created: function(){
 
@@ -32,6 +33,12 @@ const vm = new Vue({
         socket.on('currentDate', function(date){
             this.dates = date.dates;
         }.bind(this));
+        socket.on('respond_timer', function(t){
+            this.bool = t.bool;
+            document.getElementById("participantEvent").style.display="none";
+            document.getElementById("rating").style.display="block";
+        }.bind(this));
+
 
     },
 
@@ -39,12 +46,15 @@ const vm = new Vue({
         sendInfo: function(){
 
             socket.emit("sendInfo", {
-                infoId: socket.id ,
+                infoId: socket.id,
                 participant: this.fullname,
                 gender: this.gender
             });
-            document.getElementById("form").style.display="none";
+
+            document.getElementById("register").style.display="none";
             document.getElementById("sendButton").style.display="none";
+            document.getElementById("participantEvent").style.display="block";
+
         },
     }
 })

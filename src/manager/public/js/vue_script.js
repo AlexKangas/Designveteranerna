@@ -188,7 +188,7 @@ const vm = new Vue({
             else{
                 this.counter += 1;
                 document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
-                var countDownDate = new Date().getTime() + 1000*10;
+                var countDownDate = new Date().getTime() + 1000*3;
 
                 let mTable = document.getElementById('matchTable');
                 let size = mTable.rows.length;
@@ -227,24 +227,23 @@ const vm = new Vue({
                     socket.emit('addOrder', {
                         min: this.minutes,
                         sec: this.seconds
+
                     });
 
 
-
-                    /*for(let i = 0; i < size; i++){
-                      dates.push( mTable.rows[i+1].cells[0].innerHTML +"will meet" + mTable.rows[i+1].cells[1].innerHTML);
-                      };*/
-                    /*socket.emit('startEvent',{
-
-                      });*/
-
                     // If the count down is over, write some text
                     if (distance < 0) {
+
                         clearInterval(x);
                         document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
                         document.getElementById("timer").innerHTML = "Date End";
                         button.disabled=false;
                         button.className="buttons";
+
+                        socket.emit('timer',{
+                            bool: true,
+                        });
+
                     }
 
                 }, 1000);
