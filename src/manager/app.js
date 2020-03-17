@@ -237,10 +237,10 @@ io.on('connection', function(socket) {
                 let recName = receiverInfo.name;
                 let recId = receiverInfo.socketId;
 
-                console.log("det här är reclist:" +recList);
+                /*console.log("det här är reclist:" +recList);
                 console.log("recName:" + recName);
                 console.log("recId:" + recId);
-                console.log("reqName:" + reqName);
+                console.log("reqName:" + reqName);*/
                 for(let k = 0; k < recList.length; k++){
                     if(recList[k] == recName){
                     }

@@ -53,7 +53,7 @@ const vm = new Vue({
         });
 
         socket.on('receiveInformation', function(msg){
-            alert("Vi får fram något!!!!!!");
+
             this.shareinfo.push(msg.msg);
         }.bind(this));
 
