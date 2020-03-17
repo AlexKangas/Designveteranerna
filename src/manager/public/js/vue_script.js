@@ -89,8 +89,7 @@ const vm = new Vue({
             }
             else if(event.currentTarget.parentNode.parentNode.id == "matchTable"){
 		        let target = event.currentTarget;
-		        let child = "";
-		        child = event.currentTarget.cells[2];
+		        let child = event.currentTarget.cells[2];
 
 		        if(this.selectedTable.includes(child.id) && child.className == "Table"){
 		            this.selectedTable.splice(0,1);
@@ -131,6 +130,7 @@ const vm = new Vue({
         rematch: function(){
             let person1 = document.getElementById(this.selected[0]);
             let person2 = document.getElementById(this.selected[1]);
+
 	        let table = document.getElementById(this.selectedTable[0]);
             let mTable = document.getElementById("matchTable");
 
@@ -139,11 +139,41 @@ const vm = new Vue({
 	           ((person1.className=="Male" && person2.className =="Female") || (person1.className=="Female" && person2.className=="Male"))){
 
 
-                if(person1.className=="Male"){
-                    //Lägger till paret i matchtable
-		            table.parentNode.cells[0].textContent = person1.textContent;
-		            table.parentNode.cells[1].textContent = person2.textContent;
 
+                if(person1.className == "Male"){
+                    //Lägger till paret i matchtable
+		            table.parentNode.cells[0].textContent = person1.id;
+		            table.parentNode.cells[1].textContent = person2.id;
+
+                    table.parentNode.cells[0].id = person1.id;
+                    table.parentNode.cells[1].id = person2.id;
+
+                    table.parentNode.cells[0].className = person1.className;
+                    table.parentNode.cells[1].className = person2.className;
+
+
+                    //Tar bort dem från unMatchTable och selected
+                    let toRemove1 = person1.parentNode;
+                    let toRemove2 = person2.parentNode;
+
+                    toRemove1.parentNode.removeChild(toRemove1);
+                    toRemove2.parentNode.removeChild(toRemove2);
+                    this.selected.pop();
+                    this.selected.pop();
+		            this.selectedTable.pop();
+		            table.parentNode.className = "";
+                }
+                else if(person1.className == "Female"){
+                    alert("HÄR ÄR JAG");
+                    //Lägger till paret i matchtable
+		            table.parentNode.childNodes[0].textContent = person2.id;
+		            table.parentNode.childNodes[1].textContent = person1.id;
+
+                    table.parentNode.childNodes[0].id = person2.id;
+                    table.parentNode.childNodes[1].id = person1.id;
+
+                    table.parentNode.childNodes[0].className = person2.className;
+                    table.parentNode.childNodes[1].className = person1.className;
 
                     //Tar bort dem från unMatchTable och selected
                     let toRemove1 = person1.parentNode;
@@ -157,32 +187,17 @@ const vm = new Vue({
 		            table.parentNode.className = "";
                 }
                 else{
-                    //Lägger till paret i matchtable
-		            table.parentNode.childNodes[0].textContent = person2.textContent;
-		            table.parentNode.childNodes[2].textContent = person1.textContent;
-
-                    //Tar bort dem från unMatchTable och selected
-                    let toRemove1 = person1.parentNode;
-                    let toRemove2 = person2.parentNode;
-                    toRemove1.parentNode.removeChild(toRemove1);
-                    toRemove2.parentNode.removeChild(toRemove2);
-                    this.selected.pop();
-                    this.selected.pop();
-		            this.selectedTable.pop();
-		            table.parentNode.className = "";
+                    alert("nånting gick fel, kolla rematch");
                 }
             }
             else{
-		        let message = "";
-
 		        if (this.selected.length != 2 || person1.className=="Male" && person2.className !="Female" || person1.className=="Female" && person2.className !="Male") {
-		            message += "Select two persons (one man and one woman)\n\n";
+		            alert("Select two persons (one man and one woman)");
 		        }
 
 		        if (this.selectedTable.length != 1) {
-		            message += "Select an empty table\n\n";
+		            alert("Select an empty table")
 		        }
-		        alert(message);
             }
         },
         startEvent: function(){
