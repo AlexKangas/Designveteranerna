@@ -13,33 +13,82 @@ const vm = new Vue({
         age: 0,
         gender:'',
         participants: [],
+        information: new Array(),
+        infoId: 0,
+        users: [],
+        dates:[],
 
+        rating1: 0,
+        rating2: 0,
+        rating3: 0,
+
+        ratings:[],
+
+        shareinfo: "",
+        bool: false,
     },
     created: function(){
+
         socket.on('initialize', function(infoData) {
-            this.info = infoData.info;
-            console.log(infoData.id);
+            this.users = infoData.users;
         }.bind(this));
+
+        socket.on('currentInfo', function(infoData){
+            this.users = infoData.users;
+        }.bind(this));
+
+        socket.on('currentDate', function(date){
+            this.dates = date.dates;
+        }.bind(this));
+
+        socket.on('respond_timer', function(t){
+            document.getElementById("participantEvent").style.display="none";
+            document.getElementById("rating").style.display="block";
+            document.getElementById("ratingButton").style.display="block"
+        }.bind(this));
+
+        socket.on('sharescreen',function(){
+            document.getElementById("participantEvent").style.display="none";
+            document.getElementById("share").style.display="block";
+        });
+
+        socket.on('receiveInformation', function(msg){
+            alert("Vi får fram något!!!!!!");
+            this.shareinfo = msg.msg;
+        }.bind(this));
+
     },
 
     methods: {
-        getNext: function(){
-            this.infoId++;
-            return this.infoId;
-        }
-        ,
         sendInfo: function(){
 
-            this.participants.push(this.fullname);
-            this.participants.push(this.gender);
-
             socket.emit("sendInfo", {
-                infoId: this.getNext(),
-                participant: this.participants[0],
-                gender: this.participants[1],
-                socketId: this.socketId,
-
+                infoId: socket.id,
+                participant: this.fullname,
+                email: this.email,
+                phone: this.phone,
+                gender: this.gender
             });
+
+            document.getElementById("register").style.display="none";
+            document.getElementById("sendButton").style.display="none";
+            document.getElementById("participantEvent").style.display="block";
+
         },
+        sendRating: function(){
+            document.getElementById("rating").style.display="none";
+            document.getElementById("ratingButton").style.display="none";
+            document.getElementById("participantEvent").style.display="block";
+
+        },
+        sendInformation: function(){
+
+            socket.emit('share', {
+                name: this.fullname
+
+            }, {shareInfo: this.ratings,
+                name: this.fullname,
+                socketId: socket.id });
+        }
     }
 })

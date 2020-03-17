@@ -84,9 +84,12 @@ function Data() {
 }
 
 function Info(){
-    this.info = {};
+    this.users = [];
 }
 
+function Dates(){
+    this.dates = [];
+}
 /*
   Adds an order to to the queue
 */
@@ -99,36 +102,164 @@ Data.prototype.getAllOrders = function() {
     return this.orders;
 };
 
+Info.prototype.addUser = function(user){
+    this.users[this.users.length] = user;
+};
 
-Info.prototype.addInfo = function(info){
-    this.info[info.infoId] = info;
+Info.prototype.getAllUsers = function(){
+    return this.users;
+};
+
+Info.prototype.lookUpName = function(target){
+    for(let i = 0 ; i < this.users.length; i++){
+        if(this.users[i].participant == target){
+            return true;
+        }
+    }
+
+};
+
+Dates.prototype.addDates = function(date){
+    this.dates = date;
+};
+
+Dates.prototype.getAllDates = function(){
+    return this.dates;
+};
+
+
+function ShareInfo(){
+    this.shareinfo = {};
 }
 
-Info.prototype.getAllInfo = function(){
-    return this.info;
+ShareInfo.prototype.addShareInformation = function(name,value){
+    this.shareinfo.name = value;
+};
+
+ShareInfo.prototype.getShareInformation = function(name){
+    return this.shareinfo.name;
 }
+
+ShareInfo.prototype.lookUpName = function(name){
+
+    if(this.shareinfo.name != undefined ){
+        return true;
+    }
+}
+
+
+
 const data = new Data();
 const infoData = new Info();
+const allDates = new Dates();
+const sharingData = new ShareInfo();
 
 io.on('connection', function(socket) {
     // Send list of orders when a client connects
-    socket.emit('initialize', { orders: data.getAllOrders() });
-    /*socket.on('disconnect', function(){
-        console.log('user disconnected');});*/
+    socket.emit('initialize', {users: infoData.getAllUsers()});
+
     console.log('a user connected');
     // When a connected client emits an "addOrder" message
     socket.on('addOrder', function(order) {
+
         data.addOrder(order);
         // send updated info to all connected clients,
         // note the use of io instead of socket
         io.emit('currentQueue', { orders: data.getAllOrders() });
     });
-
+    // sends info to the manager about themselves from form.html
     socket.on('sendInfo', function(info){
-        infoData.addInfo(info);
+        infoData.addUser(info);
+        io.emit('currentInfo' , {users: infoData.getAllUsers()});
+    });
+
+    socket.on('startEvent', function(date){
+
+        allDates.addDates(date);
 
 
-        io.emit('currentInfo' , {info: infoData.getAllInfo() });
+        let users = infoData.getAllUsers();
+        let arr = allDates.getAllDates().dates;
+
+        console.log(Array.isArray(users));
+
+        for(let k = 0; k < users.length; k++){
+
+            for(let i = 0; i < arr.length; i++){
+
+                if(arr[i].fst == users[k].participant){
+                    io.to(users[k].infoId).emit('currentDate', {dates: arr[i].snd})
+                    break;
+                }
+
+                else if(arr[i].snd == users[k].participant){
+                    io.to(users[k].infoId).emit('currentDate', {dates: arr[i].fst})
+                    break;
+                }
+            }
+        }
+    });
+
+    socket.on('timer', function(t){
+        io.emit('respond_timer',{
+            time:t
+        })
+    });
+
+    socket.on("ending",function(s){
+        console.log("That was all for today!");
+        io.emit('sharescreen', {
+
+            share:s
+        })
+    });
+
+    socket.on("share", function(name,value){
+
+        sharingData.addShareInformation(name,value);
+
+        // Iterar för varje användare som har registrerat sig
+        for(let i = 0; i < infoData.users.length ; i++){
+            let iterationInfo = infoData.users[i]
+
+
+            // Ta fram personens array med alla den vill dela sina kontauppgifter med
+            let sharingArr = sharingData.getShareInformation(name).shareInfo;
+
+
+            // Iterar för varje namn finns som finns i arrayen
+            for(let k = 0; k < sharingArr.length; k++){
+                // Tar fram en person i arrayen i taget
+                let person = sharingArr[k];
+
+                //Kollar om personen finns i registret och spara personen i "target"-variabeln
+                let target = infoData.lookUpName(person);
+                // target == true
+                if(target){
+                    // Tar fram target-personens motsvaranda ratings-array.
+                    let sharingArr2 = sharingData.getShareInformation(target);
+                    let target2 = sharingData.lookUpName(iterationInfo.participant);
+
+
+                    if(target2){
+                        console.log(person);
+                        console.log(iterationInfo.participant)
+                        io.to(iterationInfo.infoId).emit('receiveInformation',{
+                            msg: person,
+                        })
+                        io.to(person.socketId).emit('receiveInformation',{
+                            msg: iterationInfo.participant,
+                        })
+                    }
+                }
+
+
+
+            }
+
+
+        }
+        //Kolla vilka som vill dela med vilka.
     });
 
 });

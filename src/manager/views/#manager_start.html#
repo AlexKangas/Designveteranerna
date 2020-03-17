@@ -45,18 +45,20 @@
           <div id="gridInsideMainFrame">
 
             <div id="unMatchBox">
-              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
               <table id="unMatchTable">
                 <tr class="unMatchHeader">
-                  <th>Unmatched participants</th>
+                  <th>Unmtached participants</th>
                 </tr>
-                <!--<tr  v-on:click="unMatch($event)"> <td class="Female" id="Monika">Monika</td></tr>-->
+                <tr  v-on:click="unMatch($event)"> <td class="Female" id="Monika">Monika</td></tr>
 
                 <tr  v-for="i in users" v-on:click="unMatch($event)">
                   <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}}</td>
                 </tr>
 
               </table>
+              <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
+
+
             </div>
 
             <!-------------------MATCHED----------------------------->
@@ -112,7 +114,7 @@
                   </td>
 
                 </tr>
-
+ 
 		<tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id=""></td>
