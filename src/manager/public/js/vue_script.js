@@ -164,7 +164,7 @@ const vm = new Vue({
 		            table.parentNode.className = "";
                 }
                 else if(person1.className == "Female"){
-                    alert(document.getElementById(this.selected[0]).className);
+
                     //Lägger till paret i matchtable
 		            table.parentNode.cells[0].textContent = person2.id;
 		            table.parentNode.cells[1].textContent = person1.id;

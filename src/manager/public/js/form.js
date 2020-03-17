@@ -24,6 +24,7 @@ const vm = new Vue({
 
         ratings:[],
 
+        shareinfo: "",
         bool: false,
     },
     created: function(){
@@ -51,6 +52,11 @@ const vm = new Vue({
             document.getElementById("share").style.display="block";
         });
 
+        socket.on('receiveInformation', function(msg){
+            alert("Vi får fram något!!!!!!");
+            this.shareinfo = msg.msg;
+        }.bind(this));
+
     },
 
     methods: {
@@ -76,9 +82,13 @@ const vm = new Vue({
 
         },
         sendInformation: function(){
+
             socket.emit('share', {
-                shareInfo: this.ratings,
-            });
+                name: this.fullname
+
+            }, {shareInfo: this.ratings,
+                name: this.fullname,
+                socketId: socket.id });
         }
     }
 })

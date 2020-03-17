@@ -49,7 +49,7 @@
                 <tr class="unMatchHeader">
                   <th>Unmtached participants</th>
                 </tr>
-                <tr  v-on:click="unMatch($event)"> <td class="Female" id="Monika">Monika</td></tr>
+                <!--<tr  v-on:click="unMatch($event)"> <td class="Female" id="Monika">Monika</td></tr>-->
 
                 <tr  v-for="i in users" v-on:click="unMatch($event)">
                   <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}}</td>

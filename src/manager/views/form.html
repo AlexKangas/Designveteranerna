@@ -105,9 +105,13 @@
         <form>
 
           <div v-for="user in users">
-            <input type="checkbox" v-model="ratings" v-bind:value=user>
+            <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
             {{ratings}}
+          </div>
+
+          <div>
+            {{shareinfo}}
           </div>
 
         </form>

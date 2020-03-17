@@ -110,6 +110,15 @@ Info.prototype.getAllUsers = function(){
     return this.users;
 };
 
+Info.prototype.lookUpName = function(target){
+    for(let i = 0 ; i < this.users.length; i++){
+        if(this.users[i].participant == target){
+            return true;
+        }
+    }
+
+};
+
 Dates.prototype.addDates = function(date){
     this.dates = date;
 };
@@ -118,9 +127,32 @@ Dates.prototype.getAllDates = function(){
     return this.dates;
 };
 
+
+function ShareInfo(){
+    this.shareinfo = {};
+}
+
+ShareInfo.prototype.addShareInformation = function(name,value){
+    this.shareinfo.name = value;
+};
+
+ShareInfo.prototype.getShareInformation = function(name){
+    return this.shareinfo.name;
+}
+
+ShareInfo.prototype.lookUpName = function(name){
+
+    if(this.shareinfo.name != undefined ){
+        return true;
+    }
+}
+
+
+
 const data = new Data();
 const infoData = new Info();
 const allDates = new Dates();
+const sharingData = new ShareInfo();
 
 io.on('connection', function(socket) {
     // Send list of orders when a client connects
@@ -182,10 +214,52 @@ io.on('connection', function(socket) {
         })
     });
 
-    socket.on("share", function(){
+    socket.on("share", function(name,value){
 
-        io.to().emit('sharing', {
-        })
+        sharingData.addShareInformation(name,value);
+
+        // Iterar för varje användare som har registrerat sig
+        for(let i = 0; i < infoData.users.length ; i++){
+            let iterationInfo = infoData.users[i]
+
+
+            // Ta fram personens array med alla den vill dela sina kontauppgifter med
+            let sharingArr = sharingData.getShareInformation(name).shareInfo;
+
+
+            // Iterar för varje namn finns som finns i arrayen
+            for(let k = 0; k < sharingArr.length; k++){
+                // Tar fram en person i arrayen i taget
+                let person = sharingArr[k];
+
+                //Kollar om personen finns i registret och spara personen i "target"-variabeln
+                let target = infoData.lookUpName(person);
+                // target == true
+                if(target){
+                    // Tar fram target-personens motsvaranda ratings-array.
+                    let sharingArr2 = sharingData.getShareInformation(target);
+                    let target2 = sharingData.lookUpName(iterationInfo.participant);
+
+
+                    if(target2){
+                        console.log(person);
+                        console.log(iterationInfo.participant)
+                        io.to(iterationInfo.infoId).emit('receiveInformation',{
+                            msg: person,
+                        })
+                        io.to(person.socketId).emit('receiveInformation',{
+                            msg: iterationInfo.participant,
+                        })
+                    }
+                }
+
+
+
+            }
+
+
+        }
+        //Kolla vilka som vill dela med vilka.
     });
 
 });
