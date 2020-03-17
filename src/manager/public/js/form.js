@@ -39,6 +39,7 @@ const vm = new Vue({
         socket.on('currentDate', function(date){
             this.dates = date.dates;
         }.bind(this));
+
         socket.on('respond_timer', function(t){
             document.getElementById("participantEvent").style.display="none";
             document.getElementById("rating").style.display="block";

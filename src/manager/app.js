@@ -155,7 +155,7 @@ io.on('connection', function(socket) {
 
             for(let i = 0; i < arr.length; i++){
 
-                if(arr[i].fst === users[k].participant){
+                if(arr[i].fst == users[k].participant){
                     io.to(users[k].infoId).emit('currentDate', {dates: arr[i].snd})
                     break;
                 }

@@ -12,7 +12,7 @@ const vm = new Vue({
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
         selected: [],
-	selectedTable: [],
+	    selectedTable: [],
         //Variabler för att visa timerns nedräkning.
         minutes:0,
         seconds:0,
@@ -48,7 +48,7 @@ const vm = new Vue({
                 }
             }
             if((event.currentTarget.parentNode.parentNode == document.getElementById("matchTable") || bool) && event.currentTarget.childNodes[0].textContent != ""){
-	    
+
                 let newrow1= document.createElement("tr");
                 let newtd1= document.createElement("td");
 
@@ -66,8 +66,8 @@ const vm = new Vue({
                 newtd2.id = person2.id;
                 newtd2.className = person2.className;
 
-                let text1 = document.createTextNode(person1.textContent);
-                let text2 = document.createTextNode(person2.textContent);
+                let text1 = document.createTextNode(person1.id);
+                let text2 = document.createTextNode(person2.id);
 
                 newrow1.addEventListener("click",this.unMatch);
                 newrow2.addEventListener("click",this.unMatch);
@@ -83,47 +83,47 @@ const vm = new Vue({
                 uTable.appendChild(newrow2);
 
                 
-		person1.textContent = "";
-		person2.textContent = "";
+		        person1.textContent = "";
+		        person2.textContent = "";
 
             }
             else if(event.currentTarget.parentNode.parentNode.id == "matchTable"){
-		let target = event.currentTarget;
-		let child = "";
-		child = event.currentTarget.cells[2];
+		        let target = event.currentTarget;
+		        let child = "";
+		        child = event.currentTarget.cells[2];
 
-		if(this.selectedTable.includes(child.id) && child.className == "Table"){ 
-		    this.selectedTable.splice(0,1);
-		    target.className = "";
-		}
-		else if (this.selectedTable.length < 1){
-		    target.className="selectedTable";
-		    this.selectedTable.push(child.id);
-		}
-		else{
-		    alert("You cannot mark more than one table");
-		}
-	    }
-	    else{
+		        if(this.selectedTable.includes(child.id) && child.className == "Table"){
+		            this.selectedTable.splice(0,1);
+		            target.className = "";
+		        }
+		        else if (this.selectedTable.length < 1){
+		            target.className="selectedTable";
+		            this.selectedTable.push(child.id);
+		        }
+		        else{
+		            alert("You cannot mark more than one table");
+		        }
+	        }
+	        else{
                 let target = event.currentTarget;
-		let child = event.currentTarget.firstChild;
+		        let child = event.currentTarget.firstChild;
 
                 if((this.selected.includes(child.id) && child.className=="Male") || (this.selected.includes(child.id) && child.className == "Female")){
-		    
-		    for(var i = 0; i < this.selected.length; i++ ){
+
+		            for(var i = 0; i < this.selected.length; i++ ){
                         if(this.selected[i] === child.id){
-			    this.selected.splice(i,1);
-			    target.className = "";
-			}
-		    }
-		}
+			                this.selected.splice(i,1);
+			                target.className = "";
+			            }
+		            }
+		        }
                 else if(this.selected.length < 2){
-		    target.className="selected";
-		    this.selected.push(child.id);
-		    
+		            target.className="selected";
+		            this.selected.push(child.id);
+
                 }
-		else{
-		    alert("You cannot mark more than two person");
+		        else{
+		            alert("You cannot mark more than two person");
                 }
 
             }
@@ -131,18 +131,18 @@ const vm = new Vue({
         rematch: function(){
             let person1 = document.getElementById(this.selected[0]);
             let person2 = document.getElementById(this.selected[1]);
-	    let table = document.getElementById(this.selectedTable[0]);
+	        let table = document.getElementById(this.selectedTable[0]);
             let mTable = document.getElementById("matchTable");
 
             if(this.selected.length == 2 &&
-	       this.selectedTable.length == 1 &&
-	       ((person1.className=="Male" && person2.className =="Female") || (person1.className=="Female" && person2.className=="Male"))){
+	           this.selectedTable.length == 1 &&
+	           ((person1.className=="Male" && person2.className =="Female") || (person1.className=="Female" && person2.className=="Male"))){
 
 
                 if(person1.className=="Male"){
                     //Lägger till paret i matchtable
-		    table.parentNode.cells[0].textContent = person1.textContent;
-		    table.parentNode.cells[1].textContent = person2.textContent;
+		            table.parentNode.cells[0].textContent = person1.textContent;
+		            table.parentNode.cells[1].textContent = person2.textContent;
 
 
                     //Tar bort dem från unMatchTable och selected
@@ -153,13 +153,13 @@ const vm = new Vue({
                     toRemove2.parentNode.removeChild(toRemove2);
                     this.selected.pop();
                     this.selected.pop();
-		    this.selectedTable.pop();
-		    table.parentNode.className = "";
+		            this.selectedTable.pop();
+		            table.parentNode.className = "";
                 }
                 else{
                     //Lägger till paret i matchtable
-		    table.parentNode.childNodes[0].textContent = person2.textContent;
-		    table.parentNode.childNodes[2].textContent = person1.textContent;		    
+		            table.parentNode.childNodes[0].textContent = person2.textContent;
+		            table.parentNode.childNodes[2].textContent = person1.textContent;
 
                     //Tar bort dem från unMatchTable och selected
                     let toRemove1 = person1.parentNode;
@@ -168,21 +168,21 @@ const vm = new Vue({
                     toRemove2.parentNode.removeChild(toRemove2);
                     this.selected.pop();
                     this.selected.pop();
-		    this.selectedTable.pop();
-		    table.parentNode.className = "";
+		            this.selectedTable.pop();
+		            table.parentNode.className = "";
                 }
             }
             else{
-		let message = "";
-		
-		if (this.selected.length != 2 || person1.className=="Male" && person2.className !="Female" || person1.className=="Female" && person2.className !="Male") {
-		    message += "Select two persons (one man and one woman)\n\n";
-		}
+		        let message = "";
 
-		if (this.selectedTable.length != 1) {
-		    message += "Select an empty table\n\n";
-		}
-		alert(message);
+		        if (this.selected.length != 2 || person1.className=="Male" && person2.className !="Female" || person1.className=="Female" && person2.className !="Male") {
+		            message += "Select two persons (one man and one woman)\n\n";
+		        }
+
+		        if (this.selectedTable.length != 1) {
+		            message += "Select an empty table\n\n";
+		        }
+		        alert(message);
             }
         },
         startEvent: function(){
@@ -205,8 +205,8 @@ const vm = new Vue({
                 for(var i = 0; i < size-1; ++i){
                     console.log("HÄR är jAg")
                     dates.push({fst:mTable.rows[i+1].cells[0].innerHTML,
-                                                                          snd:mTable.rows[i+1].cells[1].innerHTML});
-                                               }
+                                snd:mTable.rows[i+1].cells[1].innerHTML});
+                }
                 socket.emit('startEvent', {
                     dates: dates,
                 });
