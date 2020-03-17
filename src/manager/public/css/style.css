@@ -181,7 +181,7 @@ li a:hover {
     margin-left: 1cm;
 }
 .buttons:hover{
-    background-color: rgb(255, 0, 221);
+    background-color: rgb(255,190,200);
 }
 .uClickAble:disabled{
     background: black;
