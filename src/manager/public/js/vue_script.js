@@ -164,16 +164,16 @@ const vm = new Vue({
 		            table.parentNode.className = "";
                 }
                 else if(person1.className == "Female"){
-                    alert("HÄR ÄR JAG");
+                    alert(document.getElementById(this.selected[0]).className);
                     //Lägger till paret i matchtable
-		            table.parentNode.childNodes[0].textContent = person2.id;
-		            table.parentNode.childNodes[1].textContent = person1.id;
+		            table.parentNode.cells[0].textContent = person2.id;
+		            table.parentNode.cells[1].textContent = person1.id;
 
-                    table.parentNode.childNodes[0].id = person2.id;
-                    table.parentNode.childNodes[1].id = person1.id;
+                    table.parentNode.cells[0].id = person2.id;
+                    table.parentNode.cells[1].id = person1.id;
 
-                    table.parentNode.childNodes[0].className = person2.className;
-                    table.parentNode.childNodes[1].className = person1.className;
+                    table.parentNode.cells[0].className = person2.className;
+                    table.parentNode.cells[1].className = person1.className;
 
                     //Tar bort dem från unMatchTable och selected
                     let toRemove1 = person1.parentNode;
