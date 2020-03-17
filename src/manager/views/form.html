@@ -107,11 +107,13 @@
           <div v-for="user in users">
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
-            {{ratings}}
           </div>
+          Du har markerat dessa personer:
+          {{ratings}}
 
           <div>
-            {{shareinfo}}
+            Dessa vill fortsätta hålla kontakten med dig:
+            {{shareinfo.join(", ")}}
           </div>
 
         </form>

@@ -24,7 +24,7 @@ const vm = new Vue({
 
         ratings:[],
 
-        shareinfo: "",
+        shareinfo: [],
         bool: false,
     },
     created: function(){
@@ -54,7 +54,7 @@ const vm = new Vue({
 
         socket.on('receiveInformation', function(msg){
             alert("Vi får fram något!!!!!!");
-            this.shareinfo = msg.msg;
+            this.shareinfo.push(msg.msg);
         }.bind(this));
 
     },
@@ -83,10 +83,9 @@ const vm = new Vue({
         },
         sendInformation: function(){
 
-            socket.emit('share', {
-                name: this.fullname
+            socket.emit('share',this.fullname
 
-            }, {shareInfo: this.ratings,
+            , {shareInfo: this.ratings,
                 name: this.fullname,
                 socketId: socket.id });
         }
