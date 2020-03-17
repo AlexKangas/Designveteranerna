@@ -87,7 +87,9 @@ const vm = new Vue({
 
             , {shareInfo: this.ratings,
                 name: this.fullname,
-                socketId: socket.id });
+               socketId: socket.id });
+            document.getElementById("marked").style.display="none";
+            document.getElementById("sendInformation").style.display="none";
         }
     }
 })

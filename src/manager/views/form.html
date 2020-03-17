@@ -104,20 +104,20 @@
       <div id="share">
         <form>
 
-          <div v-for="user in users">
+          <div v-for="user in users" id="marked">
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
-          </div>
+          </div >
           Du har markerat dessa personer:
           {{ratings}}
 
-          <div>
+          <div id="receiveInformation">
             Dessa vill fortsätta hålla kontakten med dig:
             {{shareinfo.join(", ")}}
           </div>
 
         </form>
-        <button v-on:click="sendInformation">Confirm</button>
+        <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
       </div>
     </main>
   </body>

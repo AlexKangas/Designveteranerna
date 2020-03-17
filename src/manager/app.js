@@ -242,8 +242,10 @@ io.on('connection', function(socket) {
                 console.log("recId:" + recId);
                 console.log("reqName:" + reqName);
                 for(let k = 0; k < recList.length; k++){
-                    if(recList[k] == reqName){
-                        console.log("VI SKICKAR RECEIVEINFORMATION")
+                    if(recList[k] == recName){
+                    }
+                    else if(recList[k] == reqName){
+
                         io.to(recId).emit('receiveInformation', {
                             msg: reqName
                         })
@@ -251,6 +253,9 @@ io.on('connection', function(socket) {
                         io.to(reqId).emit('receiveInformation', {
                             msg: recName
                         })
+                    }
+                    else{
+                        console.log("SOMETHING WENT WRONG AT 'SHARE' EMIT");
                     }
                 }
             }
