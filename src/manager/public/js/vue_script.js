@@ -87,6 +87,12 @@ const vm = new Vue({
 		        person1.textContent = "";
 		        person2.textContent = "";
 
+                person1.id = "";
+                person2.id = "";
+
+                person1.className = "";
+                person2.className = "";
+
 		        let unMatchButton = document.getElementById("")
 
             }
@@ -338,7 +344,7 @@ const vm = new Vue({
 
                         let male = males.splice(randMNumber,1)[0];
                         let female = females.splice(randFNumber,1)[0];
-                        let tableNumber = freeTables.pop();
+                        let tableNumber = freeTables.splice(0,1)[0];
 
                         let table = mTableRows[tableNumber];
 
@@ -359,6 +365,9 @@ const vm = new Vue({
 
 
                     }
+
+                    freeTable.splice(1);
+
                 }
                 else{
                     console.log("There must be as many men as women and vice versa for running the algorithm")
