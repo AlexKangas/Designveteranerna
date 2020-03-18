@@ -103,10 +103,10 @@
 
       <div id="share">
         <form>
-
-          <div id="receiveInformation">
-            <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
-            {{shareinfo.join(", \n")}}
+          <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
+          <div id="receiveInformation" v-for=" person in shareinfo">
+            Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
+            <br>
           </div>
 
           <div v-for="user in users" id="marked">

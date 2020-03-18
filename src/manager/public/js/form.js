@@ -53,7 +53,6 @@ const vm = new Vue({
         });
 
         socket.on('receiveInformation', function(msg){
-
             this.shareinfo.push(msg.msg);
         }.bind(this));
 
@@ -67,7 +66,8 @@ const vm = new Vue({
                 participant: this.fullname,
                 email: this.email,
                 phone: this.phone,
-                gender: this.gender
+                gender: this.gender,
+                age: this.age
             });
 
             document.getElementById("register").style.display="none";
@@ -84,10 +84,15 @@ const vm = new Vue({
         sendInformation: function(){
 
             socket.emit('share',this.fullname
-
-            , {shareInfo: this.ratings,
-                name: this.fullname,
-               socketId: socket.id });
+                        , {
+                            shareInfo: this.ratings,
+                            name: this.fullname,
+                            socketId: socket.id,
+                            email:this.email,
+                            gender:this.gender,
+                            phone:this.phone,
+                            age:this.age
+                        });
             document.getElementById("marked").style.display="none";
             document.getElementById("sendInformation").style.display="none";
         }

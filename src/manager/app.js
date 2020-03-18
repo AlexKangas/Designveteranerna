@@ -247,11 +247,11 @@ io.on('connection', function(socket) {
                     else if(recList[k] == reqName){
 
                         io.to(recId).emit('receiveInformation', {
-                            msg: reqName
+                            msg: value
                         })
 
                         io.to(reqId).emit('receiveInformation', {
-                            msg: recName
+                            msg: receiverInfo
                         })
                     }
                     else{
