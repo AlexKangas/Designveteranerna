@@ -178,8 +178,13 @@ li a:hover {
 /*BUTTONS*/
 #match{
 
-    width:5.5cm;
+    width:5.0cm;
     margin-left: 1cm;
+}
+#algorithmButton{
+    width:5.0cm;
+    margin-top: 0.5cm;
+    margin-left:1cm;
 }
 #startEvent{
     margin-left: 1cm;

@@ -285,6 +285,50 @@ const vm = new Vue({
                 window.location.assign("manager_start");
             }
         },
+        runAlgorithm: function(){
+            let uTable = document.getElementById("unMatchTable");
+            let tableRows = uTable.rows
+
+            if(tableRows.length == 1){
+                alert("All participants are matched")
+            }
+            else if((tableRows.length % 2) == 0){
+                alert("Uneven number of participants!");
+            }
+            else{
+                let males = [];
+                let females = [];
+                //Stoppar in alla personer i arrayerna "males" och "females" beroende på kön
+                for (let i = 1 ; i < tableRows.length; i++){
+                    let target = tableRows[i].firstChild;
+                    if(target.className == "Male"){
+                        males.push(target.id);
+                    }
+                    else if(target.className == "Female"){
+                        females.push(target.id);
+                    }
+                    else{
+                        console.log("NÅNTING GICK FEL I LOOPEN");
+                    }
+                }
+                if(males.length == females.length){
+                    for(let k = 0; k < males.length; k++){
+                        let randMNumber = Math.floor(Math.random() * Math.floor(males.length));
+                        let randFNumber = Math.floor(Math.random() * Math.floor(males.length));
+
+                        let male = males.splice(randMNumber,1)[0];
+                        let female = females.splice(randFNumber,1)[0];
+                        //Allt ovanför fungerar
+
+
+
+                    }
+                }
+                else{
+                    console.log("There must be as many men as women and vice versa for running the algorithm")
+                }
+            }
+        }
     }
 
 
