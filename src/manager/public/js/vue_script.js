@@ -291,12 +291,16 @@ const vm = new Vue({
             let uTable = document.getElementById("unMatchTable");
             let tableRows = uTable.rows
 
+            //Om inga är 'unmatchade' så finns det ingen anledning att göra något
             if(tableRows.length == 1){
                 alert("All participants are matched")
             }
+            //Vi tar inte hand om fallet då det är ett ojämnt antal personer som 'unmtached'
+            // Vi kollar modulo 0 eftersom det är alltid en rad i unMatch vilket är '<th>'
             else if((tableRows.length % 2) == 0){
                 alert("Uneven number of participants!");
             }
+            //Här kör vi algoritmen
             else{
                 let males = [];
                 let females = [];
@@ -313,14 +317,43 @@ const vm = new Vue({
                         console.log("NÅNTING GICK FEL I LOOPEN");
                     }
                 }
+                console.log(males +" " +females );
+
                 if(males.length == females.length){
-                    for(let k = 0; k < males.length; k++){
+                    let mTable = document.getElementById("matchTable");
+                    let mTableRows = mTable.rows;
+                    let freeTables = [];
+
+                    //Sparar alla lediga bord i 'freeTables'
+                    for(let t = 1; t < mTableRows.length ; t++){
+                        if(mTableRows[t].cells[0].id == null || mTableRows[t].cells[0].id == ""){
+                            freeTables.push(t);
+                        }
+                    }
+                    //Matchar all par till ett av borden i 'freeTables'
+                    for(let k = 0; k < males.length;){
                         let randMNumber = Math.floor(Math.random() * Math.floor(males.length));
                         let randFNumber = Math.floor(Math.random() * Math.floor(males.length));
 
                         let male = males.splice(randMNumber,1)[0];
                         let female = females.splice(randFNumber,1)[0];
-                        //Allt ovanför fungerar
+                        let tableNumber = freeTables.pop();
+
+                        let table = mTableRows[tableNumber];
+
+                        let toRemove1 = document.getElementById(male).parentNode;
+                        let toRemove2 = document.getElementById(female).parentNode;
+
+                        toRemove1.parentNode.removeChild(toRemove1)
+                        toRemove2.parentNode.removeChild(toRemove2)
+
+                        table.cells[0].textContent = male;
+                        table.cells[0].id = male;
+                        table.cells[0].className = "Male";
+
+                        table.cells[1].textContent = female;
+                        table.cells[1].id = female;
+                        table.cells[1].className = "Female";
 
 
 
