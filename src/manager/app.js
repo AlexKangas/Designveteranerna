@@ -255,7 +255,6 @@ io.on('connection', function(socket) {
                         })
                     }
                     else{
-                        console.log("SOMETHING WENT WRONG AT 'SHARE' EMIT");
                     }
                 }
             }
