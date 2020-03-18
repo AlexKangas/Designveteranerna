@@ -54,6 +54,14 @@ const vm = new Vue({
 
         socket.on('receiveInformation', function(msg){
             this.shareinfo.push(msg.msg);
+	    if(localStorage.shareinfo){
+		let shareinfoTotal = JSON.parse(localStorage.getItem("shareinfo") || "[]");
+		shareinfoTotal = shareinfoTotal.concat(this.shareinfo);
+		localStorage.setItem("shareinfo", JSON.stringify(shareinfoTotal));
+	    }
+	    else{
+		localStorage.setItem("shareinfo", JSON.stringify(this.shareinfo));
+	    }
         }.bind(this));
 
     },
@@ -73,6 +81,7 @@ const vm = new Vue({
             document.getElementById("register").style.display="none";
             document.getElementById("sendButton").style.display="none";
             document.getElementById("participantEvent").style.display="block";
+	    document.getElementById("previousDatesButton").style.display="none";
 
         },
         sendRating: function(){
@@ -95,6 +104,7 @@ const vm = new Vue({
                         });
             document.getElementById("marked").style.display="none";
             document.getElementById("sendInformation").style.display="none";
+	    
         }
     }
 })

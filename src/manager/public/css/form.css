@@ -70,3 +70,12 @@ button {
 #receiveInformation{
     font-size:100px;
 }
+
+#previousDatesButton {
+    font-size: 30px;
+    margin-left: 10px;
+    width: 140px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

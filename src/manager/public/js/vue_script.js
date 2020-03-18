@@ -12,7 +12,7 @@ const vm = new Vue({
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
         selected: [],
-	    selectedTable: [],
+	selectedTable: [],
         //Variabler för att visa timerns nedräkning.
         minutes:0,
         seconds:0,
