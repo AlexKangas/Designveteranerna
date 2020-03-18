@@ -86,6 +86,8 @@ const vm = new Vue({
 		        person1.textContent = "";
 		        person2.textContent = "";
 
+		        let unMatchButton = document.getElementById("")
+
             }
             else if(event.currentTarget.parentNode.parentNode.id == "matchTable"){
 		        let target = event.currentTarget;
