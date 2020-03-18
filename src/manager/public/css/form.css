@@ -30,6 +30,12 @@ input[type="radio"] {
     width: 100px;
     margin: 40px 40px;
 }
+input[type="checkbox"]{
+    background-color: rgb(254,127,156);
+    height: 100px;
+    width: 100px;
+    margin: 40px 40px;
+}
 
 button {
     background-color: rgb(254,127,156);
@@ -57,4 +63,8 @@ button {
 
 #share{
     display:none;
+}
+
+#receiveInformation{
+    font-size:100px;
 }

@@ -104,6 +104,11 @@
       <div id="share">
         <form>
 
+          <div id="receiveInformation">
+            <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
+            {{shareinfo.join(", \n")}}
+          </div>
+
           <div v-for="user in users" id="marked">
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
@@ -111,10 +116,7 @@
           Du har markerat dessa personer:
           {{ratings}}
 
-          <div id="receiveInformation">
-            Dessa vill också fortsätta hålla kontakten med dig!:
-            {{shareinfo.join(", ")}}
-          </div>
+
 
         </form>
         <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
