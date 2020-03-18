@@ -4,6 +4,7 @@
     <script src="https://vuejs.org/js/vue.js" ></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="js/vue_script.js" defer></script>
+    <script src="js/algorithm_script.js"><</script>>
     <link rel="stylesheet" href="css/deli-very.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -60,7 +61,8 @@
                   </td>
                 </tr>
               </table>
-               <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button>
+              <!-- <button  id="match"  class="buttons" v-on:click="rematch">Match choices</button> -->
+               <button  id="match"  class="buttons" v-on:click="rematch" onclick="randomMatch()">Match choices</button>
             </div>
             <!-------------------MATCHED----------------------------->
             <div id="matchBox">
