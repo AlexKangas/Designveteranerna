@@ -27,6 +27,7 @@ const vm = new Vue({
         participants: [],
 
         dates:[],
+        unMatchButton: false,
     },
     created: function() {
         socket.on('initialize', function(infoData) {
@@ -47,8 +48,8 @@ const vm = new Vue({
                     bool = true;
                 }
             }
-            if((event.currentTarget.parentNode.parentNode == document.getElementById("matchTable") || bool) && event.currentTarget.childNodes[0].textContent != ""){
-
+            if((event.currentTarget.parentNode.parentNode == document.getElementById("matchTable") || bool) && event.currentTarget.childNodes[0].textContent != "" && this.unMatchButton){
+                this.unMatchButton = false;
                 let newrow1= document.createElement("tr");
                 let newtd1= document.createElement("td");
 
