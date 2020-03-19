@@ -217,10 +217,7 @@ io.on('connection', function(socket) {
 
     socket.on("ending",function(s){
         console.log("That was all for today!");
-        io.emit('sharescreen', {
-
-            share:s
-        })
+        io.to(s).emit('sharescreen',)
     });
 
     socket.on("share", function(name,value){
