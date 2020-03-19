@@ -3,6 +3,10 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://vuejs.org/js/vue.js" ></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="js/previous_dates.js" defer></script>
+
     <title>User Information</title>
     <meat charset="utf-8"/>
 
@@ -38,8 +42,8 @@
 <div class="ex">
     <button id="hide">Hide</button>
     <button id="show">Show</button>
-
     <p>
+    <br>
         Age: 35
         <br>
         Persona group: The romantist
@@ -51,7 +55,7 @@
         Personal information: Ida lives outside of Uppsala and likes art. Shes very creative, likes to draw and paint but also enjoys reading.
         <br>
     </p>
-</div>
+    </div>
 
     <h3>Ingmar</h3>
     <div class="ex">
@@ -104,7 +108,7 @@
             <br>
             Goals: Helena would like to meet new people and hopefully the love of her life.
             <br>
-            Personal information: Helena lives in stockholm and enjoys creating new programs for computers, hang around with her friends and cook food.
+            Personal information: Helena lives in stockholm and enjoys creating new programs for computers and cooking.
             <br>
 
         </p>
