@@ -143,8 +143,7 @@ ShareInfo.prototype.addShareInformation = function(key,val){
 ShareInfo.prototype.getShareInformation = function(key){
 
     for (let i = 0 ; i < this.shareinfo.length; i++){
-        console.log("inute getShareInformation key =:"+key);
-        console.log("inuti getshareinformation: listan ="+this.shareinfo[i].value);
+
         if(this.shareinfo[i].name == key){
             return this.shareinfo[i].value;
         }
@@ -192,7 +191,6 @@ io.on('connection', function(socket) {
         let users = infoData.getAllUsers();
         let arr = allDates.getAllDates().dates;
 
-        console.log(Array.isArray(users));
 
         for(let k = 0; k < users.length; k++){
 

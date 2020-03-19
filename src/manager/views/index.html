@@ -18,7 +18,7 @@
       <br>
       <br>
       <a href="/form" alt="participant login">Login as participant</a>
-   <!--   <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+     <!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login as Manager</button> -->
 
       <div id="id01" class="modal">
 
@@ -28,23 +28,11 @@
           </div>
 
           <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" id="username" required>
-
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" id="password"required>
-
-            <button  v-on:click="loginAsManager()">Login</button>
-            <label>
-              <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-          </div>
-
-          <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
           </div>
         </form>
+        <button  v-on:click="loginAsManager()">Login</button>
       </div>
     </main>
   </body>

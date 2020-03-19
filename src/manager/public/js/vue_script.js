@@ -264,12 +264,11 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 1){
+                        if(c == 4){
                             clearInterval(x);
                             socket.emit('ending', )
                         }
                         else{
-                            alert(this.counter);
                             clearInterval(x);
                             document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
                             document.getElementById("timer").innerHTML = "Date End";
@@ -286,11 +285,9 @@ const vm = new Vue({
             }
         },
         loginAsManager: function(){
-            let name = document.getElementById("username").value;
             let password = document.getElementById("password").value;
-
-            if(password === "0000"){
-                alert("you logged in as " +name);
+            console.log("MANAGERSTART");
+            if(password == "0000"){
                 window.location.assign("manager_start");
             }
         },
