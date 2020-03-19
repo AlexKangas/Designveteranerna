@@ -24,8 +24,11 @@ const vm = new Vue({
 
         ratings:[],
 
-        shareinfo: "",
+        shareinfo: [],
         bool: false,
+
+	contactInfo: JSON.parse(localStorage.getItem("contactInfo") || "[]"),
+	state: "register",
     },
     created: function(){
 
@@ -44,7 +47,7 @@ const vm = new Vue({
         socket.on('respond_timer', function(t){
             document.getElementById("participantEvent").style.display="none";
             document.getElementById("rating").style.display="block";
-            document.getElementById("ratingButton").style.display="block"
+            document.getElementById("ratingButton").style.display="block";
         }.bind(this));
 
         socket.on('sharescreen',function(){
@@ -53,8 +56,15 @@ const vm = new Vue({
         });
 
         socket.on('receiveInformation', function(msg){
-            alert("Vi får fram något!!!!!!");
-            this.shareinfo = msg.msg;
+            this.shareinfo.push(msg.msg);
+	    if(localStorage.contactInfo){
+		let contactInfoTotal = JSON.parse(localStorage.getItem("contactInfo") || "[]");
+		contactInfoTotal = contactInfoTotal.concat(this.shareinfo);
+		localStorage.setItem("contactInfo", JSON.stringify(contactInfoTotal));
+	    }
+	    else{
+		localStorage.setItem("contactInfo", JSON.stringify(this.shareinfo));
+	    }
         }.bind(this));
 
     },
@@ -67,13 +77,14 @@ const vm = new Vue({
                 participant: this.fullname,
                 email: this.email,
                 phone: this.phone,
-                gender: this.gender
+                gender: this.gender,
+                age: this.age
             });
 
             document.getElementById("register").style.display="none";
             document.getElementById("sendButton").style.display="none";
             document.getElementById("participantEvent").style.display="block";
-
+	    document.getElementById("contactInfoButton").style.display="none";
         },
         sendRating: function(){
             document.getElementById("rating").style.display="none";
@@ -83,12 +94,52 @@ const vm = new Vue({
         },
         sendInformation: function(){
 
-            socket.emit('share', {
-                name: this.fullname
-
-            }, {shareInfo: this.ratings,
-                name: this.fullname,
-                socketId: socket.id });
-        }
+            socket.emit('share',this.fullname
+                        , {
+                            shareInfo: this.ratings,
+                            name: this.fullname,
+                            socketId: socket.id,
+                            email:this.email,
+                            gender:this.gender,
+                            phone:this.phone,
+                            age:this.age
+                        });
+            document.getElementById("marked").style.display="none";
+            document.getElementById("sendInformation").style.display="none";
+	    document.getElementById("contactInfoButton").style.display="block";
+	    this.state = "share";
+        },
+	viewContactInfo: function(){
+	    console.log(this.state);
+	    this.contactInfo = JSON.parse(localStorage.getItem("contactInfo") || "[]");
+	    if (this.state == "register"){
+		document.getElementById("register").style.display="none";
+		document.getElementById("sendButton").style.display="none";
+		
+	    }
+	    else if (this.state == "share") {
+		document.getElementById("share").style.display="none";
+		document.getElementById("sharescreen").style.display="none";
+	    }
+	    document.getElementById("contactInfoButton").style.display="none";
+	    document.getElementById("contactInfo").style.display="block";
+	},
+	goBack: function(){
+	    console.log(this.state);
+	    if (this.state == "register") {
+		document.getElementById("register").style.display="block";
+		document.getElementById("sendButton").style.display="block";
+	    }
+	    else if (this.state == "share") {
+		document.getElementById("share").style.display="block";
+		document.getElementById("sharescreen").style.display="block";
+	    }
+	    document.getElementById("contactInfoButton").style.display="block";
+	    document.getElementById("contactInfo").style.display="none";
+	},
+	clearData: function(){
+	    localStorage.clear();
+	    this.contactInfo = null;
+	},
     }
 })

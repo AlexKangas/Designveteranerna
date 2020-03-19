@@ -72,6 +72,10 @@ app.get('/participant_start', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/participant_start.html'));
 
 });
+app.get('/previous_dates', function(req, res) {
+    res.sendFile(path.join(__dirname, 'views/previous_dates.html'));
+
+});
 app.get('/manager_start', function(req, res) {
     res.sendFile(path.join(__dirname, 'views/manager_start.html'));
 
@@ -112,11 +116,11 @@ Info.prototype.getAllUsers = function(){
 
 Info.prototype.lookUpName = function(target){
     for(let i = 0 ; i < this.users.length; i++){
+
         if(this.users[i].participant == target){
-            return true;
+            return {bool:true, value:this.users[i]};
         }
     }
-
 };
 
 Dates.prototype.addDates = function(date){
@@ -129,25 +133,31 @@ Dates.prototype.getAllDates = function(){
 
 
 function ShareInfo(){
-    this.shareinfo = {};
+    this.shareinfo = [];
 }
 
-ShareInfo.prototype.addShareInformation = function(name,value){
-    this.shareinfo.name = value;
+ShareInfo.prototype.addShareInformation = function(key,val){
+    this.shareinfo[this.shareinfo.length] = {name: key,value: val};
 };
 
-ShareInfo.prototype.getShareInformation = function(name){
-    return this.shareinfo.name;
-}
+ShareInfo.prototype.getShareInformation = function(key){
 
-ShareInfo.prototype.lookUpName = function(name){
+    for (let i = 0 ; i < this.shareinfo.length; i++){
 
-    if(this.shareinfo.name != undefined ){
-        return true;
+        if(this.shareinfo[i].name == key){
+            return this.shareinfo[i].value;
+        }
     }
 }
 
+ShareInfo.prototype.lookUpName = function(keyName){
 
+    for(let i = 0; i < this.shareinfo.length; i++){
+        if(this.shareinfo[i].name == keyName){
+            return {bool: true, value: this.shareinfo[i]};
+        }
+    }
+}
 
 const data = new Data();
 const infoData = new Info();
@@ -181,7 +191,6 @@ io.on('connection', function(socket) {
         let users = infoData.getAllUsers();
         let arr = allDates.getAllDates().dates;
 
-        console.log(Array.isArray(users));
 
         for(let k = 0; k < users.length; k++){
 
@@ -217,49 +226,44 @@ io.on('connection', function(socket) {
     socket.on("share", function(name,value){
 
         sharingData.addShareInformation(name,value);
+        let reqList = value.shareInfo;
+        let reqName = value.name;
+        let reqId = value.socketId;
 
-        // Iterar för varje användare som har registrerat sig
-        for(let i = 0; i < infoData.users.length ; i++){
-            let iterationInfo = infoData.users[i]
+        for(let i = 0; i < reqList.length; i++){
 
+            let receiverInfo = sharingData.getShareInformation(reqList[i]);
+            if(receiverInfo != undefined){
 
-            // Ta fram personens array med alla den vill dela sina kontauppgifter med
-            let sharingArr = sharingData.getShareInformation(name).shareInfo;
+                let recList = receiverInfo.shareInfo;
+                let recName = receiverInfo.name;
+                let recId = receiverInfo.socketId;
 
+                /*console.log("det här är reclist:" +recList);
+                console.log("recName:" + recName);
+                console.log("recId:" + recId);
+                console.log("reqName:" + reqName);*/
+                for(let k = 0; k < recList.length; k++){
+                    if(recList[k] == recName){
+                    }
+                    else if(recList[k] == reqName){
 
-            // Iterar för varje namn finns som finns i arrayen
-            for(let k = 0; k < sharingArr.length; k++){
-                // Tar fram en person i arrayen i taget
-                let person = sharingArr[k];
-
-                //Kollar om personen finns i registret och spara personen i "target"-variabeln
-                let target = infoData.lookUpName(person);
-                // target == true
-                if(target){
-                    // Tar fram target-personens motsvaranda ratings-array.
-                    let sharingArr2 = sharingData.getShareInformation(target);
-                    let target2 = sharingData.lookUpName(iterationInfo.participant);
-
-
-                    if(target2){
-                        console.log(person);
-                        console.log(iterationInfo.participant)
-                        io.to(iterationInfo.infoId).emit('receiveInformation',{
-                            msg: person,
+                        io.to(recId).emit('receiveInformation', {
+                            msg: value
                         })
-                        io.to(person.socketId).emit('receiveInformation',{
-                            msg: iterationInfo.participant,
+
+                        io.to(reqId).emit('receiveInformation', {
+                            msg: receiverInfo
                         })
                     }
+                    else{
+                    }
                 }
-
-
-
             }
 
-
         }
-        //Kolla vilka som vill dela med vilka.
+
+
     });
 
 });

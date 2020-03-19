@@ -16,6 +16,7 @@
     <section >
     </section>
     <main id="main">
+      <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
       <div id="register">
         <form>
           <p>
@@ -47,6 +48,7 @@
 
         </form>
       </div>
+      
       <button v-on:click="sendInfo" id="sendButton" > Send info</button>
 
       <div id="participantEvent">
@@ -61,14 +63,25 @@
         <div class="joined" v-for="i in users">
           {{i.participant}}
         </div>
-
+	<div class="map">
+	  <div class="table 1">1</div>
+	  <div class="table 2">2</div>
+	  <div class="table 3">3</div>
+	  <div class="table 4">4</div>
+	  <div class="table 5">5</div>
+	  <div class="table 6">6</div>
+	  <div class="table 7">7</div>
+	  <div class="table 8">8</div>
+	  <div class="table 9">9</div>
+	  <div class="table 10">10</div>
+	</div>
 
       </div>
 
       <div class="rating">
         <form id="rating">
           <h2>Review your date:</h2></br>
-          <label>What was your overall impression of your date? 1 is really bad and 5 is really good</label>
+          <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
           <br></br>
 
           <input type="radio" name="q1" value="1" v-model="rating1">1</input>
@@ -78,7 +91,7 @@
           <input type="radio" name="q1" value="5" v-model="rating1">5</input>
 
           <br></br>
-          <label>Did your date talk too much?</label>
+          <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
           <br></br>
           <input type="radio" name="q2" value="1" v-model="rating2">1</input>
           <input type="radio" name="q2" value="2" v-model="rating2">2</input>
@@ -87,7 +100,7 @@
           <input type="radio" name="q2" value="5" v-model="rating2">5</input>
 
           <br></br>
-          <label>Do you want to date this person again?</label>
+          <label>Did you find your date funny? 1 = not funny at all, 5 = really funny</label>
           <br></br>
 
           <input type="radio" name="q3" value="1" v-model="rating3">1</input>
@@ -102,20 +115,36 @@
       </div>
 
       <div id="share">
-        <form>
 
-          <div v-for="user in users">
+        <form id="sharescreen">
+          <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
+          <div id="receiveInformation" v-for=" person in shareinfo">
+            Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
+            <br>
+          </div>
+
+          <div v-for="user in users" id="marked">
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
-            {{ratings}}
-          </div>
+          </div >
+          Du har markerat dessa personer:
+          {{ratings}}
 
-          <div>
-            {{shareinfo}}
-          </div>
 
         </form>
-        <button v-on:click="sendInformation">Confirm</button>
+        <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
+      </div>
+
+      <div id="contactInfo">
+	<h1>Contact information of your previous dates:</h1>
+	<div id="listContactInfo" v-for=" person in shareinfo">
+          Name:{{person.name}} <br>
+	  Phone number: {{person.phone}}<br>
+	  E-mail:{{person.email}} <br></br>
+	</div>
+
+	<button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
+	<button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
       </div>
     </main>
   </body>

@@ -12,7 +12,7 @@ const vm = new Vue({
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
         selected: [],
-	    selectedTable: [],
+	selectedTable: [],
         //Variabler för att visa timerns nedräkning.
         minutes:0,
         seconds:0,
@@ -27,6 +27,7 @@ const vm = new Vue({
         participants: [],
 
         dates:[],
+        unMatchButton: false,
     },
     created: function() {
         socket.on('initialize', function(infoData) {
@@ -47,8 +48,8 @@ const vm = new Vue({
                     bool = true;
                 }
             }
-            if((event.currentTarget.parentNode.parentNode == document.getElementById("matchTable") || bool) && event.currentTarget.childNodes[0].textContent != ""){
-
+            if((event.currentTarget.parentNode.parentNode == document.getElementById("matchTable") || bool) && event.currentTarget.childNodes[0].textContent != "" && this.unMatchButton){
+                this.unMatchButton = false;
                 let newrow1= document.createElement("tr");
                 let newtd1= document.createElement("td");
 
@@ -85,6 +86,14 @@ const vm = new Vue({
                 
 		        person1.textContent = "";
 		        person2.textContent = "";
+
+                person1.id = "";
+                person2.id = "";
+
+                person1.className = "";
+                person2.className = "";
+
+		        let unMatchButton = document.getElementById("")
 
             }
             else if(event.currentTarget.parentNode.parentNode.id == "matchTable"){
@@ -255,12 +264,11 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 1){
+                        if(c == 4){
                             clearInterval(x);
                             socket.emit('ending', )
                         }
                         else{
-                            alert(this.counter);
                             clearInterval(x);
                             document.getElementById("eventState").innerHTML= "Event-Status: No ongoing dates";
                             document.getElementById("timer").innerHTML = "Date End";
@@ -277,14 +285,92 @@ const vm = new Vue({
             }
         },
         loginAsManager: function(){
-            let name = document.getElementById("username").value;
             let password = document.getElementById("password").value;
-
-            if(password === "0000"){
-                alert("you logged in as " +name);
+            console.log("MANAGERSTART");
+            if(password == "0000"){
                 window.location.assign("manager_start");
             }
         },
+        runAlgorithm: function(){
+            let uTable = document.getElementById("unMatchTable");
+            let tableRows = uTable.rows
+
+            //Om inga är 'unmatchade' så finns det ingen anledning att göra något
+            if(tableRows.length == 1){
+                alert("All participants are matched")
+            }
+            //Vi tar inte hand om fallet då det är ett ojämnt antal personer som 'unmtached'
+            // Vi kollar modulo 0 eftersom det är alltid en rad i unMatch vilket är '<th>'
+            else if((tableRows.length % 2) == 0){
+                alert("Uneven number of participants!");
+            }
+            //Här kör vi algoritmen
+            else{
+                let males = [];
+                let females = [];
+                //Stoppar in alla personer i arrayerna "males" och "females" beroende på kön
+                for (let i = 1 ; i < tableRows.length; i++){
+                    let target = tableRows[i].firstChild;
+                    if(target.className == "Male"){
+                        males.push(target.id);
+                    }
+                    else if(target.className == "Female"){
+                        females.push(target.id);
+                    }
+                    else{
+                        console.log("NÅNTING GICK FEL I LOOPEN");
+                    }
+                }
+                console.log(males +" " +females );
+
+                if(males.length == females.length){
+                    let mTable = document.getElementById("matchTable");
+                    let mTableRows = mTable.rows;
+                    let freeTables = [];
+
+                    //Sparar alla lediga bord i 'freeTables'
+                    for(let t = 1; t < mTableRows.length ; t++){
+                        if(mTableRows[t].cells[0].id == null || mTableRows[t].cells[0].id == ""){
+                            freeTables.push(t);
+                        }
+                    }
+                    //Matchar all par till ett av borden i 'freeTables'
+                    for(let k = 0; k < males.length;){
+                        let randMNumber = Math.floor(Math.random() * Math.floor(males.length));
+                        let randFNumber = Math.floor(Math.random() * Math.floor(males.length));
+
+                        let male = males.splice(randMNumber,1)[0];
+                        let female = females.splice(randFNumber,1)[0];
+                        let tableNumber = freeTables.splice(0,1)[0];
+
+                        let table = mTableRows[tableNumber];
+
+                        let toRemove1 = document.getElementById(male).parentNode;
+                        let toRemove2 = document.getElementById(female).parentNode;
+
+                        toRemove1.parentNode.removeChild(toRemove1)
+                        toRemove2.parentNode.removeChild(toRemove2)
+
+                        table.cells[0].textContent = male;
+                        table.cells[0].id = male;
+                        table.cells[0].className = "Male";
+
+                        table.cells[1].textContent = female;
+                        table.cells[1].id = female;
+                        table.cells[1].className = "Female";
+
+
+
+                    }
+
+                    freeTable.splice(1);
+
+                }
+                else{
+                    console.log("There must be as many men as women and vice versa for running the algorithm")
+                }
+            }
+        }
     }
 
 
