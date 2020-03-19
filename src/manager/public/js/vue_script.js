@@ -229,7 +229,8 @@ const vm = new Vue({
                 for(var i = 0; i < size-1; ++i){
                     console.log("HÄR är jAg")
                     dates.push({fst:mTable.rows[i+1].cells[0].innerHTML,
-                                snd:mTable.rows[i+1].cells[1].innerHTML});
+                                snd:mTable.rows[i+1].cells[1].innerHTML,
+                                table:mTable.rows[i+1].cells[2].id});
                 }
                 socket.emit('startEvent', {
                     dates: dates,

@@ -18,6 +18,8 @@ const vm = new Vue({
         users: [],
         dates:[],
 
+        table: [],
+
         rating1: 0,
         rating2: 0,
         rating3: 0,
@@ -42,6 +44,7 @@ const vm = new Vue({
 
         socket.on('currentDate', function(date){
             this.dates = date.dates;
+            this.table = date.table;
         }.bind(this));
 
         socket.on('respond_timer', function(t){
