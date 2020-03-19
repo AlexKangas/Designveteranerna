@@ -48,7 +48,6 @@ const vm = new Vue({
             document.getElementById("participantEvent").style.display="none";
             document.getElementById("rating").style.display="block";
             document.getElementById("ratingButton").style.display="block";
-	    this.state = "rating";
         }.bind(this));
 
         socket.on('sharescreen',function(){
