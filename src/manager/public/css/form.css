@@ -67,15 +67,42 @@ button {
     display:none;
 }
 
+#contactInfo{
+    display:none;
+}
+
 #receiveInformation{
     font-size:100px;
 }
 
-#previousDatesButton {
+#contactInfoButton {
     font-size: 30px;
     margin-left: 10px;
     width: 140px;
     height: 100px;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+#listContactInfo {
+    font-size: 60px;
+    margin-top: 50px;
+}
+
+#clearDataButton {
+    background-color: rgb(254,127,156);
+    font-size: 80px;
+    margin-left: 20px;
+    width: 450px;
+    height: 300px;
+    margin-top: 10px;
+}
+
+#goBackButton {
+    background-color: rgb(254,127,156);
+    font-size: 80px;
+    margin-left: 20px;
+    width: 450px;
+    height: 300px;
+    margin-top: 10px;
 }

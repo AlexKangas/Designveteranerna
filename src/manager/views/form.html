@@ -16,7 +16,7 @@
     <section >
     </section>
     <main id="main">
-      <button id="previousDatesButton" type="button"><a id="previousDates" href="/previous_dates">Previous dates</a></button>
+      <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
       <div id="register">
         <form>
           <p>
@@ -105,7 +105,7 @@
 
       <div id="share">
 
-        <form>
+        <form id="sharescreen">
           <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
           <div id="receiveInformation" v-for=" person in shareinfo">
             Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
@@ -122,6 +122,18 @@
 
         </form>
         <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
+      </div>
+
+      <div id="contactInfo">
+	<h1>Contact information of your previous dates:</h1>
+	<div id="listContactInfo" v-for=" person in contactInfo">
+          Name:{{person.name}} <br>
+	  Phone number: {{person.phone}}<br>
+	  E-mail:{{person.email}} <br></br>
+	</div>
+
+	<button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
+	<button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
       </div>
     </main>
   </body>
