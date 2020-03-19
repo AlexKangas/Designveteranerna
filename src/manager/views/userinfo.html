@@ -13,12 +13,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $("#hide").click(function(){
-                $("p").hide();
+
+            $('#meet_growlab, #buddy_tv').hide();
+
+            $('a#growlab').click(function(){
+                $('#meet_growlab').show('slow');
             });
-            $("#show").click(function(){
-                $("p").show();
+
+            $('a#growlab_close').click(function(){
+                $('#meet_growlab').hide('slow');
+            })
+
+            $('a#buddytv').click(function(){
+                $('#buddy_tv').show('slow');
             });
+
+            $('a#buddytv_close').click(function(){
+                $('#buddy_tv').hide('slow');
+            })
+
+
         });
     </script>
 
@@ -40,10 +54,9 @@
 
     <h3> Ida </h3>
 <div class="ex">
-    <button id="hide">Hide</button>
-    <button id="show">Show</button>
     <p>
-    <br>
+       <u> About: </u>
+        <br>
         Age: 35
         <br>
         Persona group: The romantist
@@ -54,14 +67,15 @@
         <br>
         Personal information: Ida lives outside of Uppsala and likes art. Shes very creative, likes to draw and paint but also enjoys reading.
         <br>
+        <u> Previous dates: </u>
     </p>
     </div>
 
     <h3>Ingmar</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+             <br>
             Age: 21
             <br>
             Persona group: Student
@@ -72,16 +86,17 @@
             <br>
             Personal information: Ingmar lives in Uppsala and enjoys watching Netflix. He usually study exercises or hang around with his friends.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
 
     <h3>Lars-erik</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
-            Age: 79
 
+            <u> About</u>
+            <br>
+            Age: 79
             <br>
             Persona group: Pansionär
             <br>
@@ -92,14 +107,15 @@
             Personal information: Lars-erik has lived in västerfärnebo for 79 years. His favorite hobby is fishing
             and the wildlife. He usualy went out and daped with his wife but since last year she died.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
 
     <h3>Helena</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u> About:</u>
+            <br>
             Age: 41
             <br>
             Persona group: Computer scientist
@@ -110,15 +126,16 @@
             <br>
             Personal information: Helena lives in stockholm and enjoys creating new programs for computers and cooking.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
 
     <h3>Henrik</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 43
             <br>
             Persona group: Computer scientist
@@ -130,15 +147,16 @@
             <br>
             Personal information: Henrik lives outside of Stockholm and enjoys watching Netflix. He trains often and loves computer science.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
 
     <h3>Bertil</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 25
             <br>
             Persona group: Student
@@ -149,15 +167,17 @@
             <br>
             Personal information: Bertil lives in Uppsala and studies law. He usually study exercises or hang around with his friends.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
 
     <h3>Anders</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+
+            <u>About:</u>
+            <br>
             Age: 67
             <br>
             Persona group: Pensionär
@@ -168,14 +188,15 @@
             <br>
             Personal information: Anders lives outside of Uppsala and is a former fotball player. He usually exercises or watch sports.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Gabriel</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 30
             <br>
             Persona group: The movie enthusiast
@@ -186,14 +207,15 @@
             <br>
             Personal information: Gabriel lives outside of Stockholm and enjoys watching Netflix. He usually watch movies or hang around with his friends.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Jakob</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 25
             <br>
             Persona group: The romantist
@@ -204,14 +226,16 @@
             <br>
             Personal information: Jakob lives in Uppsala and enjoys watching Netflix. He usually exercises and enjoys fishing.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Sven</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+
+            <u>About:</u>
+            <br>
             Age: 30
             <br>
             Persona group: The chief
@@ -222,13 +246,14 @@
             <br>
             Personal information: Sven lives in Västerås and enjoys watching Netflix. He enjoys reading and cooking food .
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
     <h3>Adam</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 38
             <br>
             Persona group: The basketball player
@@ -239,14 +264,16 @@
             <br>
             Personal information: Adam lives in Uppsala and plays basketball . He usually exercises or hang around with his friends and family.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Sandra</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+
+            <u>About:</u>
+            <br>
             Age: 33
             <br>
             Persona group: The athlete
@@ -257,14 +284,15 @@
             <br>
             Personal information: Sandra lives outside of Uppsala and enjoys playing fotball. She now works as a fotball trainer and loves working with the youth.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Lejla</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 30
             <br>
             Persona group: The book enthusiast
@@ -275,13 +303,15 @@
             <br>
             Personal information: Lejla lives outside of Uppsala and loves reading books and novels. She works at a gym as a personal trainer and likes to spend time with family and friend on her spare time.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
     <h3>Ann-sofie</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+
+            <u>About:</u>
+            <br>
             Age: 41
             <br>
             Persona group: The romantist
@@ -292,14 +322,15 @@
             <br>
             Personal information: Ann-sofie works as a social-worker and enjoys working with young people. She usually exercises or spends time with her family on her spare time.
             <br>
+            <u> Previous dates: </u>
 
         </p>
     </div>
     <h3>Birgit</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 66
             <br>
             Persona group: Pensionär
@@ -310,13 +341,14 @@
             <br>
             Personal information: Birgit lives in Uppsala and loves to exercise. She is a former athlete and loves skiing.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
     <h3>Sara</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 37
             <br>
             Persona group: The movie enthusiast
@@ -327,13 +359,14 @@
             <br>
             Personal information: Sara enjoys watching movies and is a aspiring movie director. A part from that she loves dancing and spending time wiht her family.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
     <h3>Sofia</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 21
             <br>
             Persona group: The romantist
@@ -344,13 +377,14 @@
             <br>
             Personal information: Sofia lives in Uppsala and studies interior design. Sofia is a student that works part-time at a cafe and enjoys baking and interior design.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
     <h3>Anna</h3>
     <div class="ex">
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
         <p>
+            <u>About:</u>
+            <br>
             Age: 36
             <br>
             Persona group: The romantist
@@ -361,6 +395,7 @@
             <br>
             Personal information: Anna lives in  Stockholm and enjoys dancing. she works at her own dance studio or hang around with her friends.
             <br>
+            <u> Previous dates: </u>
         </p>
     </div>
 
