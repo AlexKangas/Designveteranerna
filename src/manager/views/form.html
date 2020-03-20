@@ -82,16 +82,7 @@
       <div class="rating">
         <form id="rating">
           <h2>Review your date:</h2></br>
-          <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
-          <br></br>
 
-          <input type="radio" name="q1" value="1" v-model="rating1">1</input>
-          <input type="radio" name="q1" value="2" v-model="rating1">2</input>
-          <input type="radio" name="q1" value="3" v-model="rating1">3</input>
-          <input type="radio" name="q1" value="4" v-model="rating1">4</input>
-          <input type="radio" name="q1" value="5" v-model="rating1">5</input>
-
-          <br></br>
           <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
           <br></br>
           <input type="radio" name="q2" value="1" v-model="rating2">1</input>
@@ -109,8 +100,15 @@
           <input type="radio" name="q3" value="3" v-model="rating3">3</input>
           <input type="radio" name="q3" value="4" v-model="rating3">4</input>
           <input type="radio" name="q3" value="5" v-model="rating3">5</input>
+          <br><br>
+          <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
+          <br></br>
 
-
+          <input type="radio" name="q1" value="1" v-model="rating1">1</input>
+          <input type="radio" name="q1" value="2" v-model="rating1">2</input>
+          <input type="radio" name="q1" value="3" v-model="rating1">3</input>
+          <input type="radio" name="q1" value="4" v-model="rating1">4</input>
+          <input type="radio" name="q1" value="5" v-model="rating1">5</input>
         </form>
         <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
       </div>
@@ -118,7 +116,7 @@
       <div id="share">
 
         <form id="sharescreen">
-          <h1>Dessa vill också fortsätta hålla kontakten med dig!:</h1>
+          <h1>Theese  also wants to keep in touch with you!!:</h1>
           <div id="receiveInformation" v-for=" person in shareinfo">
             Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
             <br>
@@ -138,7 +136,7 @@
 
       <div id="contactInfo">
 	<h1>Previous matches!</h1>
-	<div id="listContactInfo" v-for=" person in shareinfo">
+	<div id="listContactInfo" v-for=" person in contactInfo">
           Name:{{person.name}} <br>
 	  Phone number: {{person.phone}}<br>
 	  E-mail:{{person.email}} <br></br>

@@ -97,7 +97,7 @@ const vm = new Vue({
         sendRating: function(){
             let c =this.counter;
 
-            if(c == 2){
+            if(c == 0){
 
                 this.ratedDates.push({
                     name: this.dates,
