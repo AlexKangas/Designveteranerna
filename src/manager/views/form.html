@@ -57,13 +57,9 @@
 
         </div>
         <div id="dates" >
-          you will meet: {{dates}} at {{table}}
+          you will meet {{dates}} at {{table}}
         </div>
         <br>
-        <p class="joined" >Participant that have joined the event so far:</p>
-        <div class="joined" v-for="i in users">
-          {{i.participant}}
-        </div>
 	<div class="map">
 	  <div class="table 1">1</div>
 	  <div class="table 2">2</div>
@@ -81,7 +77,7 @@
 
       <div class="rating">
         <form id="rating">
-          <h2>Review your date:</h2></br>
+          <h1>Review your date</h1></br>
 
           <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
           <br></br>
@@ -116,7 +112,7 @@
       <div id="share">
 
         <form id="sharescreen">
-          <h1>Theese  also wants to keep in touch with you!!:</h1>
+          <h1>Theese also wants to keep in touch with you!</h1>
           <div id="receiveInformation" v-for=" person in shareinfo">
             Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
             <br>
@@ -126,7 +122,7 @@
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
           </div >
-          Du har markerat dessa personer:
+          Du har markerat dessa personer
           {{ratings}}
 
 
