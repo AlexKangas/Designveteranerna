@@ -97,7 +97,14 @@ const vm = new Vue({
         sendRating: function(){
             let c =this.counter;
 
-            if(c == 1){
+            if(c == 2){
+
+                this.ratedDates.push({
+                    name: this.dates,
+                    fst: this.rating1,
+                    snd: this.rating2,
+                    rd: this.rating3,
+                });
                 socket.emit('ending',socket.id)
             }
             else{
