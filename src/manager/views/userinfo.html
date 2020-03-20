@@ -5,18 +5,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>User Information</title>
     <meat charset="utf-8"/>
-
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#hide").click(function(){
-                $("p").hide();
-            });
-            $("#show").click(function(){
-                $("p").show();
-            });
-        });
-    </script>
+    <script src="js/vue_script.js" defer></script>
+
 
     <style>
         div.ex {
@@ -358,6 +351,19 @@
             Personal information: Anna lives in  Stockholm and enjoys dancing. she works at her own dance studio or hang around with her friends.
             <br>
         </p>
+    </div>
+    <div v-for="person in users">
+      Name: {{person.participant}}
+      <br>
+      Age: {{person.age}}
+      <br>
+      E-mail: {{person.email}}
+      <br>
+      phone number: {{person.phone}}
+      <br>
+      gender: {{person.gender}}
+      <br>
+      <br>
     </div>
 
     <main>
