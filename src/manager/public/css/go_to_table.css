@@ -1,8 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+@import 'https://fonts.googleapis.com/css?family=ABeeZee';
 
 body {
-    background-color: pink;
-    font-family: Times New Roman;
+    background-color: rgb(125,150,250);
+    background-image:linear-gradient(rgb(125,150,250),white);
+    font-family: "ABeeZee",Times New Roman;
     font-size:100px;
     text-align:center;
     margin-top: 25%;

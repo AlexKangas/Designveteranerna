@@ -14,16 +14,15 @@
   </head>
 
   <body>
-    <header id="header2">
+    
+    <header id="header1">
       <h1 id="">Welcome to SonicDating! </h1>
     </header>
 
     <!--------------------------MAINFRAME---------------->
     <main id="main">
-      <!-----------------SIDEBARSECTION-------------------->
-
       <div id="grid">
-
+      <!-----------------SIDEBARSECTION-------------------->
         <div  id="mySidebar">
 
           <ul>
@@ -37,7 +36,7 @@
         <div id="mainframe">
 
           <div id="eventState" >
-            <p>Status: Not started yet </p>
+            <h2>Status: Not started yet </h2>
             
           </div>
           <div id="timer"> </div>
@@ -55,6 +54,12 @@
 
                 <tr  v-for="i in users" v-on:click="unMatch($event)">
                   <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}}</td>
+                </tr>
+
+                <tr v-on:click="unMatch($event)">
+                  <td class="Female" id="Monika">
+                    Monika
+                  </td>
                 </tr>
 
               </table>

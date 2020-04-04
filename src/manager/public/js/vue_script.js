@@ -220,7 +220,7 @@ const vm = new Vue({
                 let c = this.counter;
 
                 document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
-                var countDownDate = new Date().getTime() + 1000*20;
+                var countDownDate = new Date().getTime() + 1000*2;
 
                 let mTable = document.getElementById('matchTable');
                 let size = mTable.rows.length;
@@ -265,7 +265,7 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 4){
+                        if(c == 2){
                             clearInterval(x);
                             socket.emit('ending', )
                         }

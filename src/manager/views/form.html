@@ -114,8 +114,9 @@
         <form id="sharescreen">
           <h1>Theese also wants to keep in touch with you!</h1>
           <div id="receiveInformation" v-for=" person in shareinfo">
-            Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}} |
-            <br>
+            <p>Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}<p>
+            <hline>
+            <br><br><br>
           </div>
 
           <div v-for="user in users" id="marked">
