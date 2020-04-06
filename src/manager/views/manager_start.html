@@ -22,14 +22,14 @@
     <!--------------------------MAINFRAME---------------->
     <main id="main">
       <div id="grid">
-      <!-----------------SIDEBARSECTION-------------------->
+        <!-----------------SIDEBARSECTION-------------------->
         <div  id="mySidebar">
 
           <ul>
-            <li><a href="/algorithm">Algorithm</a></li>
-            <li><a href="/userinfo">Participant Information</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="quit.asp">Quit</a></li>
+            <li><button>Algorithm</button></li>
+            <li><button >Participant Information</button></li>
+            <li><button v-on:click="viewRatings">User-Ratings</button></li>
+            <li><button>Quit</button></li>
           </ul>
         </div>
         <!--------------------------TABLE--------------------------->
@@ -56,10 +56,10 @@
                   <td v-bind:class="i.gender" v-bind:id="i.participant"> {{i.participant}}</td>
                 </tr>
 
-               <!-- <tr v-on:click="unMatch($event)">
-                  <td class="Female" id="Monika">
-                    Monika
-                  </td>
+                <!-- <tr v-on:click="unMatch($event)">
+                     <td class="Female" id="Monika">
+                       Monika
+                     </td>
                 </tr> -->
 
               </table>
@@ -88,10 +88,10 @@
                     Ida
                   </td>
 
-		  <td class="Table" id="Table1">
+		          <td class="Table" id="Table1">
                     1
                   </td>
-                  <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
 
@@ -107,13 +107,13 @@
                     Helena
                   </td>
 
-		  <td class="Table" id="Table2">
+		          <td class="Table" id="Table2">
                     2
                   </td>
-                  <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Gabriel">
                     Gabriel
@@ -123,13 +123,13 @@
                     Lejla
                   </td>
 
-		  <td class="Table" id="Table3">
+		          <td class="Table" id="Table3">
                     3
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Adam">
                     Adam
@@ -137,69 +137,69 @@
 
                   <td class="Female" id="Sara">Sara</td>
 
-		  <td class="Table" id="Table4">
+		          <td class="Table" id="Table4">
                     4
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Bertil">Bertil</td>
 
                   <td class="Female" id="Sandra">Sandra</td>
 
-		  <td class="Table" id="Table5">
+		          <td class="Table" id="Table5">
                     5
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"> <br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Anders">Anders</td>
                   <td class="Female" id="Sofia">Sofia</td>
 
-		  <td class="Table" id="Table6">
+		          <td class="Table" id="Table6">
                     6
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Sven">Sven</td>
 
                   <td class="Female" id="Ann-sofie">Ann-sofie</td>
 
-		  <td class="Table" id="Table7">
+		          <td class="Table" id="Table7">
                     7
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
                   <td class="Male"  id="Jakob">Jakob</td>
 
                   <td class="Female" id="Birgit">Birgit</td>
 
-		  <td class="Table" id="Table8">
+		          <td class="Table" id="Table8">
                     8
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
                 </tr>
 
-		<tr v-on:click="unMatch($event)">
+		        <tr v-on:click="unMatch($event)">
 
-                  <td class="Male"  id="Henrik">Henrik</td>
+                  <td class="Male"  id=""></td>
 
-                  <td class="Female" id="Anna">Anna</td>
+                  <td class="Female" id=""></td>
 
-		  <td class="Table" id="Table9">
+		          <td class="Table" id="Table9">
                     9
                   </td>
-          <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
 
                 <tr v-on:click="unMatch($event)">
 
@@ -210,7 +210,7 @@
                   <td class="Table" id="Table10">
                     10
                   </td>
-                  <td class="unMatchButton" v-on:click="unMatchButton = true"><button>Unmatch</button></td>
+                  <td class="unMatchButton" v-on:click="unMatchButton = true"><br><button>Unmatch</button></td>
                 </tr>
               </table>
 
@@ -226,6 +226,30 @@
         </div>
 
       </div>
+      <div id="userRatings">
+        <div  v-for="rating in ratings">
+          {{rating.user}}'s ratings
+
+          <div v-for="target in rating.dates">
+            {{target.name}}
+            <p>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</p>
+            {{target.fst}}
+            <br>
+
+            <p>Did you find your date funny? 1 = not funny at all, 5 = really funny</p>
+            {{target.snd}}
+            <br>
+
+            <p>What was your overall impression of your date? 1 = really bad,  5 = really good</p>
+            {{target.rd}}
+            <br>
+            <hr>
+            <br>
+          </div>
+        </div>
+
+      </div>
+      <button id="hideRatingsButton" v-on:click="hideRatings">Return to main page</button>
 
     </main>
   </body>

@@ -151,7 +151,6 @@ ShareInfo.prototype.getShareInformation = function(key){
         }
     }
 }
-
 ShareInfo.prototype.lookUpName = function(keyName){
 
     for(let i = 0; i < this.shareinfo.length; i++){
@@ -161,10 +160,25 @@ ShareInfo.prototype.lookUpName = function(keyName){
     }
 }
 
+function Ratings(){
+    this.ratings = [];
+}
+
+Ratings.prototype.addRating = function(r){
+    this.ratings[this.ratings.length] = r
+}
+
+Ratings.prototype.getAllRatings = function(){
+    return this.ratings;
+}
+
+
+
 const data = new Data();
 const infoData = new Info();
 const allDates = new Dates();
 const sharingData = new ShareInfo();
+const ratingData = new Ratings();
 
 io.on('connection', function(socket) {
     // Send list of orders when a client connects
@@ -188,8 +202,6 @@ io.on('connection', function(socket) {
     socket.on('startEvent', function(date){
 
         allDates.addDates(date);
-
-
         let users = infoData.getAllUsers();
         let arr = allDates.getAllDates().dates;
 
@@ -216,6 +228,27 @@ io.on('connection', function(socket) {
             time:t
         })
     });
+    socket.on('sendRating', function(rating){
+
+        let userExistInArray = false;
+        let ratings = ratingData.getAllRatings();
+        for(let i = 0; i < ratings.length; i++){
+            if(rating.user == ratings[i].user){
+                ratingData.getAllRatings()[i] = rating;
+                userExistInArray = true;
+                break;
+            }
+
+        }
+
+        if(userExistInArray == false){
+            ratingData.addRating(rating);
+        }
+        io.emit('receiveRating',{
+            ratingInfoArray: ratingData.getAllRatings()
+        });
+
+    })
 
     socket.on("ending",function(s){
         console.log("That was all for today!");

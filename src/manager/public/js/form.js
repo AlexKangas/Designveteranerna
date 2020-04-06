@@ -103,9 +103,9 @@ const vm = new Vue({
             document.getElementById("viewRatings").style.display="none";
         },
         sendRating: function(){
-            let c =this.counter;
+            let c = this.counter;
 
-            if(c == 0){
+            if(c == 1){
 
                 this.ratedDates.push({
                     name: this.dates,
@@ -113,7 +113,11 @@ const vm = new Vue({
                     snd: this.rating2,
                     rd: this.rating3,
                 });
-                socket.emit('ending',socket.id)
+                socket.emit('sendRating',{
+                    user: this.fullname,
+                    dates:this.ratedDates,
+                });
+                socket.emit('ending',socket.id);
             }
             else{
                 this.counter+=1;
@@ -122,6 +126,11 @@ const vm = new Vue({
                     fst: this.rating1,
                     snd: this.rating2,
                     rd: this.rating3,
+                });
+
+                socket.emit('sendRating',{
+                    user: this.fullname,
+                    dates:this.ratedDates,
                 });
 
                 document.getElementById("rating").style.display="none";

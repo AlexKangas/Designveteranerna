@@ -6,13 +6,13 @@ const vm = new Vue({
     el:"#main",
     data:{
         //Tänkte användas till att skicka information via socket.
-        information: [],
+        //information: [],
         users:[],
         infoId: 0,
         socketId:'',
         // Markerade användare stoppas in här vid manuell matchning
         selected: [],
-	selectedTable: [],
+	    selectedTable: [],
         //Variabler för att visa timerns nedräkning.
         minutes:0,
         seconds:0,
@@ -28,7 +28,11 @@ const vm = new Vue({
 
         dates:[],
         unMatchButton: false,
+
+        ratings:[],
     },
+
+
     created: function() {
         socket.on('initialize', function(infoData) {
             this.users = infoData.users
@@ -38,7 +42,14 @@ const vm = new Vue({
             this.users = infoData.users
         }.bind(this));
 
+        socket.on('receiveRating', function(rating){
+            this.ratings = rating.ratingInfoArray
+        }.bind(this));
+
     },
+
+
+
     methods:{
         unMatch: function(event){
             let children = document.getElementById("matchTable").childNodes;
@@ -136,6 +147,8 @@ const vm = new Vue({
 
             }
         },
+
+
         rematch: function(){
             let person1 = document.getElementById(this.selected[0]);
             let person2 = document.getElementById(this.selected[1]);
@@ -209,6 +222,8 @@ const vm = new Vue({
 		        }
             }
         },
+
+
         startEvent: function(){
             let uTable = document.getElementById("unMatchTable");
             if(uTable.rows.length != 1){
@@ -265,7 +280,7 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 2){
+                        if(c == 3){
                             clearInterval(x);
                             socket.emit('ending', )
                         }
@@ -285,6 +300,9 @@ const vm = new Vue({
                 }, 1000);
             }
         },
+
+
+
         loginAsManager: function(){
             let password = document.getElementById("password").value;
             console.log("MANAGERSTART");
@@ -371,6 +389,21 @@ const vm = new Vue({
                     console.log("There must be as many men as women and vice versa for running the algorithm")
                 }
             }
+        },
+
+        viewRatings: function(){
+            document.getElementById("grid").style.display = "none";
+            document.getElementById("userRatings").style.display = "inline";
+            document.getElementById("hideRatingsButton").style.display="block";
+        },
+        hideRatings:function(){
+
+
+            document.getElementById("grid").style.display = "flex";
+            document.getElementById("userRatings").style.display = "none";
+            document.getElementById("hideRatingsButton").style.display="none"
+
+
         }
     }
 
