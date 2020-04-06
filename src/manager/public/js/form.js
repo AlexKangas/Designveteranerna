@@ -128,7 +128,7 @@ const vm = new Vue({
                 document.getElementById("ratingButton").style.display="none";
                 document.getElementById("participantEvent").style.display="block";
             }
-            console.log(c);
+            //console.log(c);
 
         },
         sendInformation: function(){
@@ -143,8 +143,9 @@ const vm = new Vue({
                             phone:this.phone,
                             age:this.age
                         });
-            document.getElementById("marked").style.display="none";
+
             document.getElementById("sendInformation").style.display="none";
+            document.getElementById("marked").style.display="none";
 	        document.getElementById("contactInfoButton").style.display="inline";
             document.getElementById("viewRatings").style.display="inline";
 	        this.state = "share";

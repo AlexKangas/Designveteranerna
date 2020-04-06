@@ -20,6 +20,9 @@ h1{
 h2{
     font-size:2cm;
 }
+p{
+    font-size:1cm;
+}
 hr{
     background-color: black;
 }
@@ -75,6 +78,7 @@ button:hover{
     display:none;
 }
 #ratingButton{
+    font-size:100px;
     display:none;
 }
 
@@ -85,7 +89,10 @@ button:hover{
 #contactInfo{
     display:none;
 }
+#sendInformation{
+    font-size:100px;
 
+}
 #receiveInformation{
     font-size:100px;
 }
@@ -103,7 +110,9 @@ button:hover{
     height: 100px;
 
 }
-
+#sendButton{
+    font-size:100px;
+}
 #listContactInfo {
     font-size: 60px;
     margin-top: 50px;
