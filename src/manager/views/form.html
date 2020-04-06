@@ -16,33 +16,35 @@
     <section >
     </section>
     <main id="main">
-      <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
-      <button v-on:click="viewRatings()"id="viewRatings">Rating history</button>
+      <div id="buttonbox">
+        <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
+        <button v-on:click="viewRatings()" id="viewRatings">Rating history</button>
+      </div>
       <div id="register">
         <form>
           <p>
-            <label for="fullname">Full name:</label><br />
+            <label for="fullname">Full name</label><br />
             <input type="text"  v-model="fullname" id="fullname" placeholder="First and Last name"  />
           </p>
           <p>
-            <label for="phone">Phone number:</label><br />
+            <label for="phone">Phone number</label><br />
             <input type="phone" id="phone" name="pn" placeholder="Phone number" v-model="phone" />
 
           </p>
           <p>
-            <label for="email">E-mail:</label><br />
+            <label for="email">E-mail</label><br />
             <input type="email" id="email" name="em" placeholder="E-mail address" v-model="email"/>
 
           </p>
           <p>
-            <label for="age">Age:</label><br />
+            <label for="age">Age</label><br />
             <input type="phone" id="age" name="age" placeholder="Age (in years)" v-model="age"/>
 
           </p>
 
           <p>
-            <label>Gender:</label><br />
-            <input type="radio" id="male" name="genderr" value="Male" v-model="gender"/>
+            <label>Gender</label><br />
+            <input type="radio" id="male" name="gender" value="Male" v-model="gender"/>
             <label for="male">Male</label><br />
             <input type="radio" id="female" name="gender" value="Female" v-model="gender"/>
             <label for="female">Female</label><br/>
@@ -57,21 +59,21 @@
 
         </div>
         <div id="dates" >
-          you will meet {{dates}} at {{table}}
+          you will meet {{currentDate}} at {{ seat}}
         </div>
         <br>
-	<div class="map">
-	  <div class="table 1">1</div>
-	  <div class="table 2">2</div>
-	  <div class="table 3">3</div>
-	  <div class="table 4">4</div>
-	  <div class="table 5">5</div>
-	  <div class="table 6">6</div>
-	  <div class="table 7">7</div>
-	  <div class="table 8">8</div>
-	  <div class="table 9">9</div>
-	  <div class="table 10">10</div>
-	</div>
+	    <div class="map">
+	      <div class="table 1">1</div>
+	      <div class="table 2">2</div>
+	      <div class="table 3">3</div>
+	      <div class="table 4">4</div>
+	      <div class="table 5">5</div>
+	      <div class="table 6">6</div>
+	      <div class="table 7">7</div>
+	      <div class="table 8">8</div>
+	      <div class="table 9">9</div>
+	      <div class="table 10">10</div>
+	    </div>
 
       </div>
 
@@ -113,34 +115,32 @@
 
         <form id="sharescreen">
           <h1>Theese also wants to keep in touch with you!</h1>
+          <hr>
           <div id="receiveInformation" v-for=" person in shareinfo">
-            <p>Name:{{person.name}},Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}<p>
-            <hline>
-            <br><br><br>
+            <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}<p>
+              <hr>
+              <br><br>
           </div>
 
           <div v-for="user in users" id="marked">
             <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
             <label> {{user.participant}} </label>
-          </div >
-          Du har markerat dessa personer
-          {{ratings}}
-
+          </div v-for"date in ratings">
 
         </form>
         <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
       </div>
 
       <div id="contactInfo">
-	<h1>Previous matches!</h1>
-	<div id="listContactInfo" v-for=" person in contactInfo">
-          Name:{{person.name}} <br>
-	  Phone number: {{person.phone}}<br>
-	  E-mail:{{person.email}} <br></br>
-	</div>
+	    <h1>Previous matches!</h1>
+	    <div id="listContactInfo" v-for=" person in contactInfo">
+          Name - {{person.name}} <br>
+	      Phone number - {{person.phone}}<br>
+	      E-mail - {{person.email}} <br></br>
+	    </div>
 
-	<button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
-	<button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
+	    <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
+	    <button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
       </div>
 
       <div id="formerRatings">

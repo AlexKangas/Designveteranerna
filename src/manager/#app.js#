@@ -200,7 +200,7 @@ io.on('connection', function(socket) {
 
                 if(arr[i].fst == users[k].participant){
                     io.to(users[k].infoId).emit('currentDate', {dates: arr[i].snd, table: arr[i].table})
-                    break;
+                    break;"
                 }
 
                 else if(arr[i].snd == users[k].participant){

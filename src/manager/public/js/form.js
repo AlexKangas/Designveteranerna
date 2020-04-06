@@ -7,19 +7,25 @@ const socket = io(
 const vm = new Vue({
     el:"#main",
     data:{
+        // User information
         fullname:'',
         phone: 0,
         email: '',
         age: 0,
         gender:'',
         participants: [],
-        information: new Array(),
         infoId: 0,
         users: [],
+
+        //Users sees the currentDate during the date
         dates:[],
+        currentDate:"",
 
+        //users gets informed of where they should go with the seat variable
         table: [],
+        seat:"",
 
+        // ratings from 1-5 for all the 3 questions these get updated during new ratings
         rating1: 0,
         rating2: 0,
         rating3: 0,
@@ -46,7 +52,9 @@ const vm = new Vue({
 
         socket.on('currentDate', function(date){
             this.dates = date.dates;
+            this.currentDate = this.dates;
             this.table = date.table;
+            this.seat = this.table;
         }.bind(this));
 
         socket.on('respond_timer', function(t){
