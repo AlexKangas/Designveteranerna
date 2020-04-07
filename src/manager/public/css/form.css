@@ -5,6 +5,7 @@ body {
     background-color: rgb(125,150,250);
     background-image: linear-gradient(rgb(125,150,250),white);
     font-family: "ABeeZee",Times New Roman;
+    height:100%;
 }
 em{
     font-size: 80px;

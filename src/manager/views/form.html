@@ -115,15 +115,16 @@
           <h1>Theese also wants to keep in touch with you!</h1>
           <hr>
           <div id="receiveInformation" v-for=" person in shareinfo">
-            <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}<p>
+            <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}</p>
               <hr>
               <br><br>
           </div>
 
-          <div v-for="user in users" id="marked">
-            <input type="checkbox" v-model="ratings" v-bind:value=user.participant>
-            <label> {{user.participant}} </label>
-          </div v-for"date in ratings">
+          <div v-for="user in ratedDates" id="marked">
+            <input type="checkbox" v-model="ratings" v-bind:value=user.name>
+            <label> {{user.name}} </label>
+
+          </div>
 
         </form>
         <button v-on:click="sendInformation" id="sendInformation">Confirm</button>

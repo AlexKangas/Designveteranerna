@@ -404,6 +404,24 @@ const vm = new Vue({
             document.getElementById("hideRatingsButton").style.display="none"
 
 
+        },
+        viewAlgorithm: function(){
+            document.getElementById("grid").style.display = "none";
+            document.getElementById("Algorithm").style.display = "inline";
+            document.getElementById("hideAlgorithmButton").style.display ="block";
+        },
+        hideAlgorithm:function(){
+            document.getElementById("grid").style.display = "flex";
+            document.getElementById("Algorithm").style.display = "none";
+            document.getElementById("hideAlgorithmButton").style.display ="none";
+        },
+        viewUserInfo: function(){
+            document.getElementById("grid").style.display = "none";
+            document.getElementById("userInfo").style.display = "inline";
+        },
+        hideUserInfo: function(){
+            document.getElementById("grid").style.display = "flex";
+            document.getElementById("userInfo").style.display = "none";
         }
     }
 

@@ -255,6 +255,7 @@ io.on('connection', function(socket) {
         io.to(s).emit('sharescreen',)
     });
 
+    // user sends a share signal when sharing personal information
     socket.on("share", function(name,value){
 
         sharingData.addShareInformation(name,value);
