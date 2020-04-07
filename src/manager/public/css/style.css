@@ -43,16 +43,18 @@ header{
 #grid{
     width:100%;
     height:100%;
-    display: flex;
+    display:grid;
+
+    /*display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center;*/
     border: 10px solid black;
 
 }
 
 #gridInsideMainFrame{
     display: grid;
-    grid-gap: 7cm;
+    grid-gap: 10cm;
     grid-template-columns: 5cm 10cm ;
 
 }
@@ -69,11 +71,13 @@ header{
 
 #mainframe{
     display:grid;
+    grid-column:2;
+    text-align:center;
+
     width:100%;
     height:100%;
 
     grid-template-columns: 40cm;
-    justify-content:center;
 
 
 }
@@ -157,10 +161,10 @@ li button:hover {
     width: 8cm;
     height:100%;
     border: 10px groove black;
-    margin-left: auto;
-    style:block;
     background-image: linear-gradient(rgb(125,150,250), white);
     justify-self:left;
+    grid-column:1;
+    /*style:block;*/
 }
 /*BUTTONS*/
 button{
