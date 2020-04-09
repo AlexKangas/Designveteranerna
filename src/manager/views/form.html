@@ -110,7 +110,7 @@
       </div>
 
       <div id="sharescreen">
-        <h1>Theese also wants to keep in touch with you!</h1>
+        <h1>These also wants to keep in touch with you!</h1>
         <hr>
         <div id="receiveInformation" v-for=" person in shareinfo">
           <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}</p>
@@ -123,8 +123,8 @@
         <form id="markscreen">
           <h1>Select the ones you want to keep in touch with below!</h1>
           <div v-for="user in ratedDates" id="marked">
-            <input type="checkbox" v-model="ratings" v-bind:value=user.name>
-            <label> {{user.name}} </label>
+            <input v-bind:id=user.name type="checkbox" v-model="ratings" v-bind:value=user.name>
+            <label v-bind:for=user.name> {{user.name}} </label>
 
           </div>
 
@@ -138,6 +138,7 @@
           Name - {{person.name}} <br>
 	      Phone number - {{person.phone}}<br>
 	      E-mail - {{person.email}} <br></br>
+          <hr>
 	    </div>
 
 	    <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>

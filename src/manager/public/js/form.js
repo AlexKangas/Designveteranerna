@@ -113,7 +113,7 @@ const vm = new Vue({
         sendRating: function(){
             let c = this.counter;
 
-            if(c == 1){
+            if(c == 2){
 
                 this.ratedDates.push({
                     name: this.dates,
@@ -177,8 +177,8 @@ const vm = new Vue({
 
 	        }
 	        else if (this.state == "share") {
-		        document.getElementById("share").style.display="none";
-		        document.getElementById("markscreen").style.display="none";
+                //document.getElementById("share").style.display="none";
+		        document.getElementById("sharescreen").style.display="none";
 	        }
 	        document.getElementById("contactInfoButton").style.display="none";
             document.getElementById("viewRatings").style.display="none";
@@ -193,8 +193,7 @@ const vm = new Vue({
 
 	        }
 	        else if (this.state == "share") {
-		        document.getElementById("share").style.display="none";
-		        document.getElementById("markscreen").style.display="none";
+		        document.getElementById("sharescreen").style.display="none";
 	        }
             document.getElementById("contactInfoButton").style.display="none";
             document.getElementById("viewRatings").style.display="none";
@@ -208,8 +207,8 @@ const vm = new Vue({
 		        document.getElementById("sendButton").style.display="block";
 	        }
 	        else if (this.state == "share") {
-		        document.getElementById("share").style.display="block";
-		        document.getElementById("markscreen").style.display="block";
+		        document.getElementById("sharescreen").style.display="block";
+
 	        }
             document.getElementById("viewRatings").style.display="inline";
 	        document.getElementById("contactInfoButton").style.display="inline";

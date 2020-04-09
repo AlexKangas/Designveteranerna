@@ -25,7 +25,10 @@ p{
     font-size:1cm;
 }
 hr{
+
     background-color: black;
+    color:black;
+    height: 10px;
 }
 input {
     background-color: white;

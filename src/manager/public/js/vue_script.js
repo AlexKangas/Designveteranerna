@@ -280,7 +280,7 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 3){
+                        if(c == 4){
                             clearInterval(x);
                             socket.emit('ending', )
                         }
