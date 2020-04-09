@@ -235,7 +235,7 @@ const vm = new Vue({
                 let c = this.counter;
 
                 document.getElementById("eventState").innerHTML= "Date No." + this.counter+"    ongoing";
-                var countDownDate = new Date().getTime() + 1000*2;
+                var countDownDate = new Date().getTime() + 1000*60;
 
                 let mTable = document.getElementById('matchTable');
                 let size = mTable.rows.length;
