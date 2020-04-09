@@ -41,15 +41,17 @@ const vm = new Vue({
 
     },
     created: function(){
-
+        // Initializes so that recently logged-in-users haves the same data of users as the rest.
         socket.on('initialize', function(infoData) {
             this.users = infoData.users;
         }.bind(this));
 
+        // Updates whenever another user logs in.
         socket.on('currentInfo', function(infoData){
             this.users = infoData.users;
         }.bind(this));
 
+        // Called whenever a 'startEvent' message is sent, usually with the 'startEvent' function. Keeps track of all the dates
         socket.on('currentDate', function(date){
             this.dates = date.dates;
             this.currentDate = this.dates;
@@ -57,12 +59,14 @@ const vm = new Vue({
             this.seat = this.table;
         }.bind(this));
 
+        // Called whenever a 'timer' message is sent, usually with the 'startEvent' function
         socket.on('respond_timer', function(t){
             document.getElementById("participantEvent").style.display="none";
             document.getElementById("rating").style.display="block";
             document.getElementById("ratingButton").style.display="block";
         }.bind(this));
 
+        // Called whwnever an 'ending' message is sent, usually with the 'sendRating' function
         socket.on('sharescreen',function(){
             document.getElementById("rating").style.display="none";
             document.getElementById("ratingButton").style.display="none";
@@ -70,7 +74,9 @@ const vm = new Vue({
 
         });
 
+        // Called whenever a 'share' message is sent, usually with the function 'sendInformation'
         socket.on('receiveInformation', function(msg){
+            // All matches is stored inside the array 'shareinfo'
             this.shareinfo.push(msg.msg);
 	        if(localStorage.contactInfo){
 		        let contactInfoTotal = JSON.parse(localStorage.getItem("contactInfo") || "[]");
@@ -80,11 +86,13 @@ const vm = new Vue({
 	        else{
 		        localStorage.setItem("contactInfo", JSON.stringify(this.shareinfo));
 	        }
+            alert("You and "+msg.msg.name+" matched!");
         }.bind(this));
 
     },
 
     methods: {
+        // Called whenever a participants signs in, information is sent to the manager.
         sendInfo: function(){
 
             socket.emit("sendInfo", {
@@ -154,9 +162,10 @@ const vm = new Vue({
                         });
 
             document.getElementById("sendInformation").style.display="none";
-            document.getElementById("marked").style.display="none";
+            document.getElementById("share").style.display="none";
 	        document.getElementById("contactInfoButton").style.display="inline";
             document.getElementById("viewRatings").style.display="inline";
+            document.getElementById("sharescreen").style.display="inline";
 	        this.state = "share";
         },
 	    viewContactInfo: function(){
@@ -169,7 +178,7 @@ const vm = new Vue({
 	        }
 	        else if (this.state == "share") {
 		        document.getElementById("share").style.display="none";
-		        document.getElementById("sharescreen").style.display="none";
+		        document.getElementById("markscreen").style.display="none";
 	        }
 	        document.getElementById("contactInfoButton").style.display="none";
             document.getElementById("viewRatings").style.display="none";
@@ -185,7 +194,7 @@ const vm = new Vue({
 	        }
 	        else if (this.state == "share") {
 		        document.getElementById("share").style.display="none";
-		        document.getElementById("sharescreen").style.display="none";
+		        document.getElementById("markscreen").style.display="none";
 	        }
             document.getElementById("contactInfoButton").style.display="none";
             document.getElementById("viewRatings").style.display="none";
@@ -200,7 +209,7 @@ const vm = new Vue({
 	        }
 	        else if (this.state == "share") {
 		        document.getElementById("share").style.display="block";
-		        document.getElementById("sharescreen").style.display="block";
+		        document.getElementById("markscreen").style.display="block";
 	        }
             document.getElementById("viewRatings").style.display="inline";
 	        document.getElementById("contactInfoButton").style.display="inline";
@@ -213,7 +222,7 @@ const vm = new Vue({
 	        }
 	        else if (this.state == "share") {
 		        document.getElementById("share").style.display="block";
-		        document.getElementById("sharescreen").style.display="block";
+		        document.getElementById("markscreen").style.display="block";
 	        }
             document.getElementById("viewRatings").style.display="inline";
 	        document.getElementById("contactInfoButton").style.display="inline";
