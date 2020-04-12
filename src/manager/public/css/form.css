@@ -54,6 +54,8 @@ input[type="checkbox"]{
     margin: 40px 40px;
 }
 button {
+    background-color: white;
+
     border:5px solid  black;
     font-size: 30px;
     width:100%;

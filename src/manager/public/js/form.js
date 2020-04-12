@@ -220,8 +220,8 @@ const vm = new Vue({
 		        document.getElementById("sendButton").style.display="block";
 	        }
 	        else if (this.state == "share") {
-		        document.getElementById("share").style.display="block";
-		        document.getElementById("markscreen").style.display="block";
+		        document.getElementById("sharescreen").style.display="block";
+
 	        }
             document.getElementById("viewRatings").style.display="inline";
 	        document.getElementById("contactInfoButton").style.display="inline";
