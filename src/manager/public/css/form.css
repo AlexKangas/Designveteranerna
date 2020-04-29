@@ -1,61 +1,68 @@
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 @import 'https://fonts.googleapis.com/css?family=ABeeZee';
 
-body {
-    background-color: rgb(125,150,250);
+html{
+    height:100%;
     background-image: linear-gradient(rgb(125,150,250),white);
+    background-repeat:no-repeat;
+}
+
+body {
     font-family: "ABeeZee",Times New Roman;
     height:100%;
 }
-em{
-    font-size: 80px;
-}
-form {
-    font-size: 70px;
-    text-align:left;
 
+h1 {
+    font-size:100px
 }
-h1{
-    font-size:2.5cm;
-}
-h2{
-    font-size:2cm;
-}
-p{
-    font-size:1cm;
-}
-hr{
 
-    background-color: black;
-    color:black;
-    height: 10px;
+h2 {
+    font-size:75px;
 }
-input {
-    background-color: white;
-    font-size: 70px;
-    height: 120px;
-    width: 75%;
+
+p {
+
+    font-size:50px;
 }
 
 label {
     font-size:70px;
 
- }
+}
+
+
+form {
+    font-size: 70px;
+    text-align:left;
+}
+
+hr {
+    background-color: black;
+    color:black;
+    height: 10px;
+}
+
+input {
+    font-size: inherit;
+    background-color: white;
+    height: 120px;
+    width: 75%;
+}
+
+
 input[type="radio"] {
     /*transform: scale(5);*/
-    height: 100px;
-    width: 100px;
-    margin: 40px 40px;
+    height: 75px;
+    width: 75px;
+    margin: 30px 30px
 }
 input[type="checkbox"]{
-    background-color: rgb(254,127,156);
-    height: 100px;
-    width: 100px;
-    margin: 40px 40px;
+    height: 75px;
+    width: 75px;
+    margin: 30px 30px;
 }
 button {
     background-color: white;
-
     border:5px solid  black;
     font-size: 30px;
     width:100%;
@@ -67,22 +74,29 @@ button {
 button:hover{
     background-color:rgb(125,150,250);
 }
+
 #buttonbox{
     display:grid;
     justify-content: left;
     grid-gap:20px;
 }
+
 /*The "you will meet" - section */
-#dates{
-    font-size: 4cm;
+
+#waitroom{
+    display:none;
+    margin-top: 30%;
+    text-align:center;
 }
 
 #participantEvent{
     display:none;
 }
+
 #rating{
     display:none;
 }
+
 #ratingButton{
     font-size:100px;
     display:none;
@@ -105,13 +119,14 @@ button:hover{
 }
 
 #contactInfoButton {
-
+    display:none;
     grid-column:1;
     width: 140px;
     height: 100px;
     margin-bottom: 20px;
 }
 #viewRatings{
+    display:none;
     grid-column:2;
     width: 140px;
     height: 100px;
@@ -185,3 +200,4 @@ button:hover{
     display:none;
     height: 100%;
 }
+

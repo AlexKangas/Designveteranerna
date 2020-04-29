@@ -2,7 +2,6 @@
 @import 'https://fonts.googleapis.com/css?family=ABeeZee';
 html{
     height:100%;
-    width:100%;
     background-image: linear-gradient(rgb(125,150,250),white);
     background-repeat:no-repeat;
 }
@@ -11,7 +10,7 @@ body {
     width:100%;
     height:100%;
     font-family: "ABeeZee" ,Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 0.8cm;
     margin: 0 auto;
     background-color: rgb(125,150,250); /* For browsers that do not support gradients */
     background-image: linear-gradient(rgb(125,150,250), white);
@@ -88,7 +87,7 @@ header{
 
 }
 #eventState{
-    width: 100%;
+    width: 100%%;
     text-align: center;
 }
 #unMatchTable{
@@ -109,12 +108,12 @@ header{
 }
 
 td{
-    height: 113px;
+    height: 110px;
     border: 10px groove black;
 }
 
 tr:not(.matchHeader):not(.unMatchHeader):hover{
-    height:113px;
+    height:110px;
     background-color: rgb(200,200,200);
 
 }

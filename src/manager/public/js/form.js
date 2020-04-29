@@ -49,6 +49,7 @@ const vm = new Vue({
         // Updates whenever another user logs in.
         socket.on('currentInfo', function(infoData){
             this.users = infoData.users;
+
         }.bind(this));
 
         // Called whenever a 'startEvent' message is sent, usually with the 'startEvent' function. Keeps track of all the dates
@@ -57,6 +58,8 @@ const vm = new Vue({
             this.currentDate = this.dates;
             this.table = date.table;
             this.seat = this.table;
+            document.getElementById("waitroom").style.display="none";
+            document.getElementById("participantEvent").style.display="block";
         }.bind(this));
 
         // Called whenever a 'timer' message is sent, usually with the 'startEvent' function
@@ -106,7 +109,7 @@ const vm = new Vue({
 
             document.getElementById("register").style.display="none";
             document.getElementById("sendButton").style.display="none";
-            document.getElementById("participantEvent").style.display="block";
+            document.getElementById("waitroom").style.display="block";
 	        document.getElementById("contactInfoButton").style.display="none";
             document.getElementById("viewRatings").style.display="none";
         },
@@ -141,9 +144,10 @@ const vm = new Vue({
                     dates:this.ratedDates,
                 });
 
+                document.getElementById("rating").reset();
                 document.getElementById("rating").style.display="none";
                 document.getElementById("ratingButton").style.display="none";
-                document.getElementById("participantEvent").style.display="block";
+                document.getElementById("waitroom").style.display="block";
             }
             //console.log(c);
 

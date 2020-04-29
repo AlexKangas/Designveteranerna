@@ -51,121 +51,121 @@
       </div>
       
       <button v-on:click="sendInfo" id="sendButton" > Send info</button>
-
+      <div id="waitroom">
+        <h1>Wait a moment!</h1>
+      </div>
       <div id="participantEvent">
-        <div id="timer">
 
+        <div id="dates">
+          <h1>You will meet {{currentDate}} at {{ seat}}</h1>
         </div>
-        <div id="dates" >
-          You will meet {{currentDate}} at {{ seat}}
-        </div>
-        <br>
-	    <div class="map">
-	      <div class="table 1">1</div>
-	      <div class="table 2">2</div>
-	      <div class="table 3">3</div>
-	      <div class="table 4">4</div>
-	      <div class="table 5">5</div>
-	      <div class="table 6">6</div>
-	      <div class="table 7">7</div>
-	      <div class="table 8">8</div>
-	      <div class="table 9">9</div>
-	      <div class="table 10">10</div>
-	    </div>
+      <br>
+	  <div class="map">
+	    <div class="table 1">1</div>
+	    <div class="table 2">2</div>
+	    <div class="table 3">3</div>
+	    <div class="table 4">4</div>
+	    <div class="table 5">5</div>
+	    <div class="table 6">6</div>
+	    <div class="table 7">7</div>
+	    <div class="table 8">8</div>
+	    <div class="table 9">9</div>
+	    <div class="table 10">10</div>
+	  </div>
 
-      </div>
+</div>
 
-      <div class="rating">
-        <form id="rating">
-          <h1>Review your date</h1></br>
+<div class="rating">
+  <form id="rating">
+    <h1>Review your date</h1></br>
 
-          <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
-          <br></br>
-          <input type="radio" name="q2" value="1" v-model="rating2">1</input>
-          <input type="radio" name="q2" value="2" v-model="rating2">2</input>
-          <input type="radio" name="q2" value="3" v-model="rating2">3</input>
-          <input type="radio" name="q2" value="4" v-model="rating2">4</input>
-          <input type="radio" name="q2" value="5" v-model="rating2">5</input>
+    <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
+    <br></br>
+    <input type="radio" name="q2" value="1" v-model="rating2">1</input>
+    <input type="radio" name="q2" value="2" v-model="rating2">2</input>
+    <input type="radio" name="q2" value="3" v-model="rating2">3</input>
+    <input type="radio" name="q2" value="4" v-model="rating2">4</input>
+    <input type="radio" name="q2" value="5" v-model="rating2">5</input>
 
-          <br></br>
-          <label>Did you find your date funny? 1 = not funny at all, 5 = really funny</label>
-          <br></br>
+    <br></br>
+    <label>Did you find your date funny? 1 = not funny at all, 5 = really funny</label>
+    <br></br>
 
-          <input type="radio" name="q3" value="1" v-model="rating3">1</input>
-          <input type="radio" name="q3" value="2" v-model="rating3">2</input>
-          <input type="radio" name="q3" value="3" v-model="rating3">3</input>
-          <input type="radio" name="q3" value="4" v-model="rating3">4</input>
-          <input type="radio" name="q3" value="5" v-model="rating3">5</input>
-          <br><br>
-          <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
-          <br></br>
+    <input type="radio" name="q3" value="1" v-model="rating3">1</input>
+    <input type="radio" name="q3" value="2" v-model="rating3">2</input>
+    <input type="radio" name="q3" value="3" v-model="rating3">3</input>
+    <input type="radio" name="q3" value="4" v-model="rating3">4</input>
+    <input type="radio" name="q3" value="5" v-model="rating3">5</input>
+    <br><br>
+    <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
+    <br></br>
 
-          <input type="radio" name="q1" value="1" v-model="rating1">1</input>
-          <input type="radio" name="q1" value="2" v-model="rating1">2</input>
-          <input type="radio" name="q1" value="3" v-model="rating1">3</input>
-          <input type="radio" name="q1" value="4" v-model="rating1">4</input>
-          <input type="radio" name="q1" value="5" v-model="rating1">5</input>
-        </form>
-        <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
-      </div>
+    <input type="radio" name="q1" value="1" v-model="rating1">1</input>
+    <input type="radio" name="q1" value="2" v-model="rating1">2</input>
+    <input type="radio" name="q1" value="3" v-model="rating1">3</input>
+    <input type="radio" name="q1" value="4" v-model="rating1">4</input>
+    <input type="radio" name="q1" value="5" v-model="rating1">5</input>
+  </form>
+  <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
+</div>
 
-      <div id="sharescreen">
-        <h1>These also wants to keep in touch with you!</h1>
-        <hr>
-        <div id="receiveInformation" v-for=" person in shareinfo">
-          <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}</p>
-          <hr>
-          <br><br>
-        </div>
-      </div>
-      <div id="share">
+<div id="sharescreen">
+  <h1>These also wants to keep in touch with you!</h1>
+  <hr>
+  <div id="receiveInformation" v-for=" person in shareinfo">
+    <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}</p>
+    <hr>
+    <br><br>
+  </div>
+</div>
+<div id="share">
 
-        <form id="markscreen">
-          <h1>Select the ones you want to keep in touch with below!</h1>
-          <div v-for="user in ratedDates" id="marked">
-            <input v-bind:id=user.name type="checkbox" v-model="ratings" v-bind:value=user.name>
-            <label v-bind:for=user.name> {{user.name}} </label>
+  <form id="markscreen">
+    <h1>Select the ones you want to keep in touch with below!</h1>
+    <div v-for="user in ratedDates" id="marked">
+      <input v-bind:id=user.name type="checkbox" v-model="ratings" v-bind:value=user.name>
+      <label v-bind:for=user.name> {{user.name}} </label>
 
-          </div>
+    </div>
 
-        </form>
-        <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
-      </div>
+  </form>
+  <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
+</div>
 
-      <div id="contactInfo">
-	    <h1>Previous matches!</h1>
-	    <div id="listContactInfo" v-for=" person in contactInfo">
-          Name - {{person.name}} <br>
-	      Phone number - {{person.phone}}<br>
-	      E-mail - {{person.email}} <br></br>
-          <hr>
-	    </div>
+<div id="contactInfo">
+  <h1>Previous matches!</h1>
+  <div id="listContactInfo" v-for=" person in contactInfo">
+    Name - {{person.name}} <br>
+	Phone number - {{person.phone}}<br>
+	E-mail - {{person.email}} <br></br>
+    <hr>
+  </div>
 
-	    <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
-	    <button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
-      </div>
+  <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
+  <button v-on:click="clearData()" id="clearDataButton" type="button">Clear data</button>
+</div>
 
-      <div id="formerRatings">
-        <h1>Rating history</h1>
-        <div v-for="date in ratedDates">
+<div id="formerRatings">
+  <h1>Rating history</h1>
+  <div v-for="date in ratedDates">
 
-          <p class="ratingValues">{{date.name}} Got a {{date.fst}} on </p><em>"What was your overall impression of your date? 1 = really bad,  5 = really good"</em>
-          <br>
-          <br>
+    <p class="ratingValues">{{date.name}} Got a {{date.fst}} on "What was your overall impression of your date? 1 = really bad,  5 = really good"</p>
+    <br>
+    <br>
 
-          <p class="ratingValues">{{date.name}} Got a {{date.snd}} on </p><em>"Did your date talk too much? 1 = didn't say much, 5 = talked way too much"</em>
-          <br>
-          <br>
+    <p class="ratingValues">{{date.name}} Got a {{date.snd}} on "Did your date talk too much? 1 = didn't say much, 5 = talked way too much"</p>
+    <br>
+    <br>
 
-          <p class="ratingValues">{{date.name}} got a {{date.rd}} on </p><em>"Did you find your date funny? 1 = not funny at all, 5 = really funny"</em>
-          <br>
-          <br>
+    <p class="ratingValues">{{date.name}} got a {{date.rd}} on "Did you find your date funny? 1 = not funny at all, 5 = really funny"</p>
+    <br>
+    <br>
 
-          <hr>
-        </div>
-        <button v-on:click="hideRatings()" id="hideRatingsButton">Go back</button>
-      </div>
-    </main>
-  </body>
+    <hr>
+  </div>
+  <button v-on:click="hideRatings()" id="hideRatingsButton">Go back</button>
+</div>
+</main>
+</body>
 
 </html>

@@ -280,9 +280,13 @@ const vm = new Vue({
 
                     // If the count down is over, write some text
                     if (distance < 0) {
-                        if(c == 4){
+                        if(c == 3){
                             clearInterval(x);
-                            socket.emit('ending', )
+                            socket.emit('timer',{
+                                bool: true,
+                            });
+                            //button.disabled=true;
+                            //button.className="uClickAble";
                         }
                         else{
                             clearInterval(x);
@@ -399,7 +403,7 @@ const vm = new Vue({
         hideRatings:function(){
 
 
-            document.getElementById("grid").style.display = "flex";
+            document.getElementById("grid").style.display = "grid";
             document.getElementById("userRatings").style.display = "none";
             document.getElementById("hideRatingsButton").style.display="none"
 
@@ -411,7 +415,7 @@ const vm = new Vue({
             document.getElementById("hideAlgorithmButton").style.display ="block";
         },
         hideAlgorithm:function(){
-            document.getElementById("grid").style.display = "flex";
+            document.getElementById("grid").style.display = "grid";
             document.getElementById("Algorithm").style.display = "none";
             document.getElementById("hideAlgorithmButton").style.display ="none";
         },
@@ -420,7 +424,7 @@ const vm = new Vue({
             document.getElementById("userInfo").style.display = "inline";
         },
         hideUserInfo: function(){
-            document.getElementById("grid").style.display = "flex";
+            document.getElementById("grid").style.display = "grid";
             document.getElementById("userInfo").style.display = "none";
         }
     }
