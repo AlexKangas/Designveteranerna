@@ -81,39 +81,41 @@
 
     <label>Did your date talk too much? 1 = didn't say much, 5 = talked way too much</label>
     <br></br>
-    <input type="radio" name="q2" value="1" v-model="rating2">1</input>
-    <input type="radio" name="q2" value="2" v-model="rating2">2</input>
-    <input type="radio" name="q2" value="3" v-model="rating2">3</input>
-    <input type="radio" name="q2" value="4" v-model="rating2">4</input>
-    <input type="radio" name="q2" value="5" v-model="rating2">5</input>
+    <input type="radio" id="a2.1" name="q2" value="1" v-model="rating2"><label for="a2.1">1</label>
+    <input type="radio" id="a2.2" name="q2" value="2" v-model="rating2"><label for="a2.2">2</label>
+    <input type="radio" id="a2.3" name="q2" value="3" v-model="rating2"><label for="a2.3">3</label>
+    <input type="radio" id="a2.4" name="q2" value="4" v-model="rating2"><label for="a2.4">4</label>
+    <input type="radio" id="a2.5" name="q2" value="5" v-model="rating2"><label for="a2.5">5</label>
 
     <br></br>
     <label>Did you find your date funny? 1 = not funny at all, 5 = really funny</label>
     <br></br>
 
-    <input type="radio" name="q3" value="1" v-model="rating3">1</input>
-    <input type="radio" name="q3" value="2" v-model="rating3">2</input>
-    <input type="radio" name="q3" value="3" v-model="rating3">3</input>
-    <input type="radio" name="q3" value="4" v-model="rating3">4</input>
-    <input type="radio" name="q3" value="5" v-model="rating3">5</input>
+    <input type="radio" id="a3.1" name="q3" value="1" v-model="rating3"><label for="a3.1" >1</label>
+    <input type="radio" id="a3.2" name="q3" value="2" v-model="rating3"><label for="a3.2" >2</label>
+    <input type="radio" id="a3.3" name="q3" value="3" v-model="rating3"><label for="a3.3" >3</label>
+    <input type="radio" id="a3.4" name="q3" value="4" v-model="rating3"><label for="a3.4" >4</label>
+    <input type="radio" id="a3.5" name="q3" value="5" v-model="rating3"><label for="a3.5" >5</label>
     <br><br>
     <label>What was your overall impression of your date? 1 = really bad,  5 = really good</label>
     <br></br>
 
-    <input type="radio" name="q1" value="1" v-model="rating1">1</input>
-    <input type="radio" name="q1" value="2" v-model="rating1">2</input>
-    <input type="radio" name="q1" value="3" v-model="rating1">3</input>
-    <input type="radio" name="q1" value="4" v-model="rating1">4</input>
-    <input type="radio" name="q1" value="5" v-model="rating1">5</input>
+    <input type="radio" id="a1.1" name="q1" value="1" v-model="rating1"><label for="a1.1" >1</label>
+    <input type="radio" id="a1.2" name="q1" value="2" v-model="rating1"><label for="a1.2" >2</label>
+    <input type="radio" id="a1.3" name="q1" value="3" v-model="rating1"><label for="a1.3" >3</label>
+    <input type="radio" id="a1.4" name="q1" value="4" v-model="rating1"><label for="a1.4" >4</label>
+    <input type="radio" id="a1.5" name="q1" value="5" v-model="rating1"><label for="a1.5" >5</label>
   </form>
   <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
 </div>
 
 <div id="sharescreen">
-  <h1>These also wants to keep in touch with you!</h1>
+  <h1>Your matches!</h1>
   <hr>
   <div id="receiveInformation" v-for=" person in shareinfo">
-    <p>Name:{{person.name}} Age:{{person.age}} Phonenumber: {{person.phone}} E-mail:{{person.email}} Gender:{{person.gender}}</p>
+    <h2>{{person.name}}, {{person.age}} years old also wants to keep in touch with you!</h2>
+      <br>
+      <p> You can reach {{person.name}} at the phonenumber {{person.phone}} or by this e-mail {{person.email}} </p>
     <hr>
     <br><br>
   </div>
@@ -135,9 +137,9 @@
 <div id="contactInfo">
   <h1>Previous matches!</h1>
   <div id="listContactInfo" v-for=" person in contactInfo">
-    Name - {{person.name}} <br>
-	Phone number - {{person.phone}}<br>
-	E-mail - {{person.email}} <br></br>
+    <h2>Name - {{person.name}}</h2> <br>
+	<p>{{person.name}}'s Phone number - {{person.phone}}</p><br>
+	<p>{{person.name}}'s E-mail - {{person.email}} </p><br></br>
     <hr>
   </div>
 
