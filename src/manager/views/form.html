@@ -83,19 +83,17 @@
     <h2>Did your date talk too much?</h2>
     <h2>1 = didn't say much,</h2>
     <h2>5 = talked way too much</h2>
-    <br></br>
+
     <input type="radio" id="a2.1" name="q2" value="1" v-model="rating2"><label for="a2.1">1</label>
     <input type="radio" id="a2.2" name="q2" value="2" v-model="rating2"><label for="a2.2">2</label>
     <input type="radio" id="a2.3" name="q2" value="3" v-model="rating2"><label for="a2.3">3</label>
     <input type="radio" id="a2.4" name="q2" value="4" v-model="rating2"><label for="a2.4">4</label>
     <input type="radio" id="a2.5" name="q2" value="5" v-model="rating2"><label for="a2.5">5</label>
-
     <br></br>
+
     <h2>Did you find your date funny?</h2>
     <h2>1 = not funny at all,</h2>
     <h2>5 = really funny</h2>
-
-    <br></br>
 
     <input type="radio" id="a3.1" name="q3" value="1" v-model="rating3"><label for="a3.1" >1</label>
     <input type="radio" id="a3.2" name="q3" value="2" v-model="rating3"><label for="a3.2" >2</label>
@@ -103,10 +101,10 @@
     <input type="radio" id="a3.4" name="q3" value="4" v-model="rating3"><label for="a3.4" >4</label>
     <input type="radio" id="a3.5" name="q3" value="5" v-model="rating3"><label for="a3.5" >5</label>
     <br><br>
+
     <h2>Your overall impression of your date</h2>
     <h2>1 = really bad, </h2>
     <h2>5 = really good</h2>
-    <br></br>
 
     <input type="radio" id="a1.1" name="q1" value="1" v-model="rating1"><label for="a1.1" >1</label>
     <input type="radio" id="a1.2" name="q1" value="2" v-model="rating1"><label for="a1.2" >2</label>
@@ -118,7 +116,7 @@
 </div>
 
 <div id="sharescreen">
-  <h1>Your matches!</h1>
+  <h1>Waiting for matches...</h1>
   <hr>
   <div id="receiveInformation" v-for=" person in shareinfo">
     <div id="notification">
