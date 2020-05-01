@@ -3,15 +3,17 @@
 
 html{
     height:100%;
-
+    width:100%;
     background-image: linear-gradient(rgb(125,150,250),white);
-    background-repeat:no-repeat;
-
+    background-repeat:repeat-x;
+    background-size: 100% 100%;
+    background-position: center;
 
 }
 
 body {
     font-family: "ABeeZee",Times New Roman;
+    width:100%;
     height:100%;
 }
 
@@ -110,6 +112,7 @@ input[type="checkbox"], input[type="radio"]{
 
 #rating{
     display:none;
+    white-space: nowrap;
 }
 
 #ratingButton{
