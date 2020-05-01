@@ -18,7 +18,8 @@ body {
 }
 
 h1 {
-    font-size:85px
+    font-size:85px;
+    text-align:center;
 }
 
 h2 {
@@ -79,7 +80,7 @@ input[type="checkbox"], input[type="radio"]{
 /*Grid och tillhörande knappar*/
 #buttonbox{
     display:grid;
-    justify-content: left;
+    justify-content: center;
     grid-gap: 20px;
 
 }
@@ -118,7 +119,28 @@ input[type="checkbox"], input[type="radio"]{
 #ratingButton{
     display:none;
 }
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 60px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
+.closebtn:hover {
+    color: black;
+}
+#notification{
+    width:75%;
+    margin: 0 auto;
+    padding:30px;
+    color:black;
+    background-color: rgb(50,255,50);
+    border:10px solid black;
+}
 #share{
     display:none;
     height: 100%;
@@ -150,7 +172,7 @@ input[type="checkbox"], input[type="radio"]{
     grid-template-columns: auto auto auto auto auto;
     background-color: #fff;
     color: #444;
-    border: 10px solid #000000;
+    border: 10px solid black;
     margin: 50px 100px;
     border-radius: 10px;
 }

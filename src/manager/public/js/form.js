@@ -89,7 +89,7 @@ const vm = new Vue({
 	        else{
 		        localStorage.setItem("contactInfo", JSON.stringify(this.shareinfo));
 	        }
-            alert("You and "+msg.msg.name+" matched!");
+
         }.bind(this));
 
     },
