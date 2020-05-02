@@ -84,7 +84,7 @@ input[type="checkbox"], input[type="radio"]{
 }
 
 /*Grid och tillhörande knappar*/
-#buttonbox{
+.buttonbox{
     display:grid;
     justify-content: center;
     grid-gap: 20px;
@@ -164,6 +164,9 @@ input[type="checkbox"], input[type="radio"]{
     text-align:center;
 }
 
+#clearDataButton{
+    font-size:70px;
+}
 #clearDataButton, #hideRatingsButton, #goBackButton {
     /*background-color: rgb(254,127,156);*/
     font-size: 80px;

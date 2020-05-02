@@ -15,7 +15,7 @@
   <body>
 
     <main id="main">
-      <div id="buttonbox">
+      <div class="buttonbox">
         <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
         <button v-on:click="viewRatings()" id="viewRatings">Rating history</button>
       </div>
@@ -50,8 +50,9 @@
 
         </form>
       </div>
-      
-      <button v-on:click="sendInfo" id="sendButton" > Send info</button>
+      <div class="buttonbox">
+        <button v-on:click="sendInfo" id="sendButton" > Send info</button>
+      </div>
       <div id="waitroom">
         <h1>Wait a moment!</h1>
       </div>
@@ -102,7 +103,7 @@
     <input type="radio" id="a3.5" name="q3" value="5" v-model="rating3"><label for="a3.5" >5</label>
     <br><br>
 
-    <h2>Your overall impression of your date</h2>
+    <h2>Your overall impression of the date</h2>
     <h2>1 = really bad, </h2>
     <h2>5 = really good</h2>
 
@@ -112,12 +113,14 @@
     <input type="radio" id="a1.4" name="q1" value="4" v-model="rating1"><label for="a1.4" >4</label>
     <input type="radio" id="a1.5" name="q1" value="5" v-model="rating1"><label for="a1.5" >5</label>
   </form>
-  <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
+  <div class="buttonbox">
+    <button id="ratingButton" v-on:click="sendRating" type="submit">Send rating</button>
+  </div>
 </div>
 
 <div id="sharescreen">
   <h1>Waiting for matches...</h1>
-  <hr>
+
   <div id="receiveInformation" v-for=" person in shareinfo">
     <div id="notification">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -125,7 +128,7 @@
       <br>
       <p> You can reach {{person.name}} at the phonenumber {{person.phone}} or by this e-mail {{person.email}} </p>
       </div>
-    <hr>
+
     <br><br>
   </div>
 </div>
@@ -140,7 +143,9 @@
     </div>
 
   </form>
-  <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
+  <div class="buttonbox">
+    <button v-on:click="sendInformation" id="sendInformation">Confirm</button>
+  </div>
 </div>
 
 <div id="contactInfo">
@@ -151,9 +156,10 @@
 	<p>{{person.name}}'s E-mail - {{person.email}} </p><br></br>
     <hr>
   </div>
-
+<div class="buttonbox">
   <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
   <button v-on:click="clearData()" id="clearDataButton" type="button">Clear matches</button>
+</div>
 </div>
 
 <div id="formerRatings">
@@ -174,7 +180,9 @@
 
     <hr>
   </div>
-  <button v-on:click="hideRatings()" id="hideRatingsButton">Go back</button>
+  <div class="buttonbox">
+    <button v-on:click="hideRatings()" id="hideRatingsButton">Go back</button>
+  </div>
 </div>
 </main>
 </body>
