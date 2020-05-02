@@ -9,6 +9,7 @@ Example: If the host's ip-adress is 999.999 then the users simply need to visit 
 Users logs in by clicking at the link "Log in as participant" while the manager clicks on the link "Log in as manager". The manager view isn't password protected yet.
 
 ### Replace dummy participants
-To replace the precoded users it is required to manually go inside the manager_start.html - file and remove the desired dummy users. When doing this make sure to remove both the id within the 'td' element and the text content between the 'td' tag and '/td' tag when doing this.
+To replace the precoded users it is required to manually go inside the manager_start.html - file and remove the desired dummy users. When doing this make sure to remove both the id within the 'td' element and the text content between the 'td' tag and '/td' tag when doing this. Remember to also remove the corresponding user information inside "Participant Information" (you'll find it in the sidebar). To do this it is required to remove the corresponding "h3" - element and the div beneath it. However do no remove the div element att bottom of the file (unless desired) since it is used to show information about actual users.
 
 If it is desired to add a dummy user then it is required to manually open the 'manager_start.html' - file and add desired usernames between the 'td' tag and the '/td' tag, remember to write in the name inside the id of the 'td' element.
+
