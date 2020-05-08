@@ -235,5 +235,10 @@ const vm = new Vue({
 	        localStorage.clear();
 	        this.contactInfo = null;
 	    },
+        closeNotification: function(event){
+            let div = event.currentTarget.parentNode;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 1000);
+        },
     }
 })

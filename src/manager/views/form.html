@@ -16,8 +16,8 @@
 
     <main id="main">
       <div class="buttonbox">
-        <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Contact info</button>
-        <button v-on:click="viewRatings()" id="viewRatings">Rating history</button>
+        <button v-on:click="viewContactInfo()" id="contactInfoButton" type="button">Matches</button>
+        <button v-on:click="viewRatings()" id="viewRatings">Ratings</button>
       </div>
       <div id="register">
         <form>
@@ -122,12 +122,12 @@
   <h1>Waiting for matches...</h1>
 
   <div id="receiveInformation" v-for=" person in shareinfo">
-    <div id="notification">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <div id="notification" class="msgbox">
+      <span class="closebtn" v-on:click="closeNotification($event)">&times;</span>
       <h2>{{person.name}}, {{person.age}} years olds wants to keep in touch with you!</h2>
       <br>
       <p> You can reach {{person.name}} at the phonenumber {{person.phone}} or by this e-mail {{person.email}} </p>
-      </div>
+    </div>
 
     <br><br>
   </div>
@@ -157,7 +157,7 @@
     <hr>
   </div>
 <div class="buttonbox">
-  <button v-on:click="goBack()" id="goBackButton" type="button">Go back</button>
+  <button v-on:click="goBack()" id="goBackButton" type="button">Return</button>
   <button v-on:click="clearData()" id="clearDataButton" type="button">Clear matches</button>
 </div>
 </div>
@@ -181,7 +181,7 @@
     <hr>
   </div>
   <div class="buttonbox">
-    <button v-on:click="hideRatings()" id="hideRatingsButton">Go back</button>
+    <button v-on:click="hideRatings()" id="hideRatingsButton">Return</button>
   </div>
 </div>
 </main>

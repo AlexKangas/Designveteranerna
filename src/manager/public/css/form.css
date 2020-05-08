@@ -20,7 +20,7 @@ body {
 h1 {
     font-size:85px;
     text-align:center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 h2 {
@@ -33,7 +33,7 @@ p {
 }
 
 label {
-    font-size:55px;
+    font-size:60px;
     margin-top: 20px ;
     margin-bottom: 20px;
     margin-right: 20px;
@@ -50,32 +50,35 @@ hr {
 }
 
 input {
-    font-size: 55px;
+    font-size: 60px;
     background-color: white;
-    height: 100px;
+    height: 90px;
     width:600px;
     margin-top: 20px;
     margin-bottom:60px;
 }
+/*This input has an*/
 #age{
-    width:300px;
+    width:200px;
+
 }
+
 button {
     background-color: white;
     border:10px solid  black;
     font-size: 75px;
     width:600px;
-    height: 150px;
+    height: 110px;
     margin-top: 100px;
     cursor:pointer;
 }
 
 button:hover{
     background-color:rgb(125,150,250);
+
 }
 
 input[type="checkbox"], input[type="radio"]{
-    font-size:70px;
     height: 75px;
     width: 75px;
     margin-top: 20px;
@@ -90,8 +93,9 @@ input[type="checkbox"], input[type="radio"]{
     grid-gap: 20px;
 
 }
+/*These buttons needs to be smaller so that they fit besides each other at the top, and a smaller font-size so that the text will fit*/
 #contactInfoButton, #viewRatings{
-    font-size:50px;
+
     display:none;
     width:400px;
     margin-bottom: 20px;
@@ -107,7 +111,7 @@ input[type="checkbox"], input[type="radio"]{
 /*Väntrum*/
 #waitroom{
     display:none;
-    margin-top: 30%;
+    margin-top: 33%;
     text-align:center;
 }
 
@@ -125,6 +129,17 @@ input[type="checkbox"], input[type="radio"]{
 #ratingButton{
     display:none;
 }
+
+.msgbox{
+    width:75%;
+    margin: 0 auto;
+    padding:30px;
+    color:black;
+    background-color: rgb(50,255,50);
+    border:10px solid black;
+    opacity:1;
+    transition: opacity 1.0s;
+}
 .closebtn {
     margin-left: 15px;
     color: white;
@@ -133,20 +148,12 @@ input[type="checkbox"], input[type="radio"]{
     font-size: 60px;
     line-height: 40px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .closebtn:hover {
     color: black;
 }
-#notification{
-    width:75%;
-    margin: 0 auto;
-    padding:30px;
-    color:black;
-    background-color: rgb(50,255,50);
-    border:10px solid black;
-}
+
 #share{
     display:none;
     height: 100%;
@@ -164,9 +171,12 @@ input[type="checkbox"], input[type="radio"]{
     text-align:center;
 }
 
+/*this button has a different font-size than the buttons below so that the text fits inside the button*/
 #clearDataButton{
     font-size:70px;
 }
+
+/**/
 #clearDataButton, #hideRatingsButton, #goBackButton {
     /*background-color: rgb(254,127,156);*/
     font-size: 80px;
@@ -203,6 +213,4 @@ input[type="checkbox"], input[type="radio"]{
 
 #sharescreen{
     display:none;
-    height: 100%;
 }
-
