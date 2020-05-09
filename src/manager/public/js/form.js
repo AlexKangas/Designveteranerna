@@ -238,7 +238,7 @@ const vm = new Vue({
         closeNotification: function(event){
             let div = event.currentTarget.parentNode;
             div.style.opacity = "0";
-            setTimeout(function(){ div.style.display = "none"; }, 1000);
+            setTimeout(function(){ div.style.display = "none"; }, 700);
         },
     }
 })

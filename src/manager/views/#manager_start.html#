@@ -192,9 +192,9 @@
 
 		        <tr v-on:click="unMatch($event)">
 
-                  <td class="Male"  ></td>
+                  <td class="Male" ></td>
 
-                  <td class="Female" ></td>
+                  <td class="Female"></td>
 
 		          <td class="Table" id="Table 9">
                     9
