@@ -229,7 +229,7 @@
       <!--------------------------------Ratings----------------------------------->
       <div id="userRatings">
         <div  v-for="rating in ratings">
-          {{rating.user}}'s ratings
+          <h2>{{rating.user}}'s ratings</h2>
 
           <div v-for="target in rating.dates">
             {{target.name}}
@@ -244,9 +244,10 @@
             <p>What was your overall impression of your date? 1 = really bad,  5 = really good</p>
             {{target.rd}}
             <br>
-            <hr>
             <br>
+
           </div>
+          <hr>
         </div>
 
       </div>
@@ -258,6 +259,7 @@
       </div>
       <button id="hideAlgorithmButton" v-on:click="hideAlgorithm">Return</button>
 
+      <!-------------------------------Userinfo---------------------------->
       <div id="userInfo">
 
         <h3> Ida </h3>
@@ -277,6 +279,8 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Ingmar</h3>
         <div class="ex">
@@ -294,6 +298,8 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Lars-erik</h3>
         <div class="ex">
@@ -313,6 +319,8 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Helena</h3>
         <div class="ex">
@@ -331,6 +339,8 @@
 
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Henrik</h3>
         <div class="ex">
@@ -350,6 +360,8 @@
 
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Bertil</h3>
         <div class="ex">
@@ -368,6 +380,8 @@
 
           </p>
         </div>
+        <br>
+        <br>
 
         <h3>Anders</h3>
         <div class="ex">
@@ -386,6 +400,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Gabriel</h3>
         <div class="ex">
 
@@ -403,6 +420,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Jakob</h3>
         <div class="ex">
 
@@ -420,6 +440,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Sven</h3>
         <div class="ex">
 
@@ -436,6 +459,9 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Adam</h3>
         <div class="ex">
 
@@ -453,6 +479,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Sandra</h3>
         <div class="ex">
 
@@ -470,6 +499,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Lejla</h3>
         <div class="ex">
 
@@ -486,6 +518,9 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Ann-sofie</h3>
         <div class="ex">
 
@@ -503,6 +538,9 @@
 
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Birgit</h3>
         <div class="ex">
 
@@ -519,6 +557,9 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Sara</h3>
         <div class="ex">
 
@@ -536,6 +577,9 @@
           </p>
         </div>
         <h3>Sofia</h3>
+        <br>
+        <br>
+
         <div class="ex">
 
           <p>
@@ -551,6 +595,9 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
+
         <h3>Anna</h3>
         <div class="ex">
 
@@ -567,6 +614,8 @@
             <br>
           </p>
         </div>
+        <br>
+        <br>
         <div v-for="person in
                     users">
           Name: {{person.participant}}
